@@ -1,0 +1,25 @@
+[package]
+name = "nd-drv-postgres"
+edition.workspace = true
+version.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+rust-version.workspace = true
+publish = false
+
+[dependencies]
+nd-driver = { path = "../nd-driver" }
+nd-sql = { path = "../nd-sql" }
+async-trait.workspace = true
+bytes = "1"
+futures-util.workspace = true
+tokio.workspace = true
+tokio-postgres = "0.7.18"
+tokio-postgres-rustls = "0.14"
+rustls = { version = "0.23", default-features = false, features = ["ring", "std", "tls12"] }
+rustls-native-certs = "0.8"
+tracing.workspace = true
+
+[lints]
+workspace = true

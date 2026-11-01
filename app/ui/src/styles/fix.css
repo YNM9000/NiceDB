@@ -1,0 +1,142 @@
+.cw-risks li {
+  display: grid;
+  gap: 4px;
+}
+.cw-rows {
+  margin: 0;
+  font: 500 12px/1.4 var(--nd-font-mono);
+  color: var(--nd-ink-2);
+}
+.cw-rows.unknown {
+  font-weight: 400;
+  color: var(--nd-ink-3);
+}
+.cw-stale {
+  margin: 0;
+  padding: 6px 10px;
+  border-left: 2px solid var(--nd-warn);
+  background: var(--nd-surface-2);
+  font-size: 13px;
+  color: var(--nd-ink);
+}
+
+[data-style='registro'] .cw-rows {
+  font: italic 400 13px/1.4 var(--nd-font-display);
+}
+[data-style='registro'] .cw-rows::before {
+  content: '— ';
+  color: var(--nd-ink-3);
+}
+
+[data-style='tavola'] .cw-rows {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 11px;
+}
+[data-style='tavola'] .cw-stale {
+  border-left-width: 3px;
+  background: none;
+  border-top: 1px solid var(--nd-rule);
+  border-bottom: 1px solid var(--nd-rule);
+}
+
+[data-style='banco'] .cw-rows::before {
+  content: '';
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 7px;
+  border-radius: 50%;
+  background: var(--nd-warn);
+  vertical-align: 1px;
+}
+[data-style='banco'] .cw-rows.unknown::before {
+  background: var(--nd-ink-3);
+}
+
+.audit .history-head .menu .btn {
+  height: 26px;
+  padding: 0 8px;
+  font-size: 12px;
+}
+.audit-failure {
+  margin: 0;
+  padding: 6px 14px;
+  font-size: 12px;
+  color: var(--nd-error);
+}
+
+.wlock-bubble {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 25;
+  width: max-content;
+  max-width: 280px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  background: var(--nd-raised);
+  box-shadow: 0 0 0 1px var(--nd-rule), 0 8px 24px rgb(var(--nd-shade) / 0.22);
+  font-size: 12.5px;
+  line-height: 1.4;
+  color: var(--nd-ink);
+  pointer-events: none;
+}
+.wlock-closing {
+  box-shadow: 0 0 0 1px var(--nd-warn), 0 8px 24px rgb(var(--nd-shade) / 0.22);
+}
+.wlock-closing::before {
+  content: '';
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: var(--nd-warn);
+  vertical-align: 1px;
+  animation: nd-closing 1.6s ease-in-out infinite;
+}
+@keyframes nd-closing {
+  50% {
+    opacity: 0.3;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wlock-closing::before {
+    animation: none;
+  }
+}
+@media (max-width: 1360px) {
+  .toolbar kbd,
+  .tab-tools .wlock-stamp {
+    display: none;
+  }
+}
+
+[data-style='registro'] .wlock-bubble {
+  font: italic 14px/1.35 var(--nd-font-display);
+}
+[data-style='tavola'] .wlock-bubble {
+  border-radius: 0;
+  box-shadow: 0 0 0 1px var(--nd-ink);
+  font: 500 10.5px/1.5 var(--nd-font-ui);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+[data-style='tavola'] .wlock-closing {
+  box-shadow: 0 0 0 1px var(--nd-warn), inset 3px 0 0 var(--nd-warn);
+}
+[data-style='banco'] .wlock-bubble {
+  font: 500 11.5px/1.45 var(--nd-font-mono);
+}
+
+[data-style='tavola'] .btn.danger {
+  border-color: var(--nd-error);
+  background: var(--nd-error);
+  color: var(--nd-surface);
+}
+[data-style='banco'] .btn.danger {
+  color: var(--nd-surface);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--nd-error) 82%, var(--nd-glint)), var(--nd-error) 60%);
+  text-shadow: none;
+}

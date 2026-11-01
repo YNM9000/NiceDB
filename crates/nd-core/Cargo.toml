@@ -1,0 +1,49 @@
+[package]
+name = "nd-core"
+edition.workspace = true
+version.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+rust-version.workspace = true
+publish = false
+
+[dependencies]
+nd-diff = { path = "../nd-diff" }
+nd-driver = { path = "../nd-driver" }
+nd-drv-duckdb = { path = "../nd-drv-duckdb" }
+nd-drv-libsql = { path = "../nd-drv-libsql" }
+nd-drv-mongo = { path = "../nd-drv-mongo" }
+nd-drv-clickhouse = { path = "../nd-drv-clickhouse" }
+nd-drv-redis = { path = "../nd-drv-redis" }
+nd-drv-cassandra = { path = "../nd-drv-cassandra" }
+nd-drv-dynamo = { path = "../nd-drv-dynamo" }
+nd-drv-elastic = { path = "../nd-drv-elastic" }
+nd-drv-firebird = { path = "../nd-drv-firebird" }
+nd-drv-oracle = { path = "../nd-drv-oracle" }
+nd-drv-odbc = { path = "../nd-drv-odbc" }
+nd-drv-hana = { path = "../nd-drv-hana" }
+nd-drv-mssql = { path = "../nd-drv-mssql" }
+nd-drv-mysql = { path = "../nd-drv-mysql" }
+nd-drv-postgres = { path = "../nd-drv-postgres" }
+nd-drv-sqlite = { path = "../nd-drv-sqlite" }
+nd-gen = { path = "../nd-gen" }
+nd-net = { path = "../nd-net" }
+nd-pack = { path = "../nd-pack" }
+nd-plan = { path = "../nd-plan" }
+nd-secrets = { path = "../nd-secrets" }
+nd-sql = { path = "../nd-sql" }
+nd-store = { path = "../nd-store" }
+nd-transfer = { path = "../nd-transfer" }
+rusqlite.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+specta.workspace = true
+thiserror.workspace = true
+tokio = { workspace = true, features = ["process", "fs"] }
+tracing.workspace = true
+uuid.workspace = true
+zeroize = "1"
+
+[lints]
+workspace = true

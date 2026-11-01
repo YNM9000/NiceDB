@@ -1,0 +1,74 @@
+.sidebar,
+.side-panel,
+.history {
+  position: relative;
+}
+
+.resizer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 3;
+  width: 7px;
+  cursor: col-resize;
+  touch-action: none;
+  outline: none;
+}
+.resizer-end {
+  right: 0;
+}
+.resizer-start {
+  left: 0;
+}
+.resizer::before,
+.resizer::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  border-radius: 1px;
+  transition: background-color 0.12s, opacity 0.12s;
+}
+.resizer-end::before,
+.resizer-end::after {
+  right: 1px;
+}
+.resizer-start::before,
+.resizer-start::after {
+  left: 1px;
+}
+.resizer::before {
+  top: calc(50% - 14px);
+  height: 28px;
+  background: var(--nd-rule);
+  opacity: 0.7;
+}
+.resizer::after {
+  top: 0;
+  bottom: 0;
+  background: transparent;
+}
+.resizer:hover::before,
+.resizer:focus-visible::before,
+.resizer.dragging::before {
+  opacity: 0;
+}
+.resizer:hover::after {
+  background: color-mix(in srgb, var(--nd-focus) 60%, transparent);
+}
+.resizer:focus-visible::after,
+.resizer.dragging::after {
+  background: var(--nd-focus);
+}
+
+:root.col-resizing,
+:root.col-resizing * {
+  cursor: col-resize !important;
+  user-select: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .resizer::before,
+  .resizer::after {
+    transition: none;
+  }
+}

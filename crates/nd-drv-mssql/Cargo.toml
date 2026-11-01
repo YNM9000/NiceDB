@@ -1,0 +1,21 @@
+[package]
+name = "nd-drv-mssql"
+edition.workspace = true
+version.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+rust-version.workspace = true
+publish = false
+
+[dependencies]
+nd-driver = { path = "../nd-driver" }
+async-trait.workspace = true
+futures-util.workspace = true
+tokio.workspace = true
+tokio-util = { workspace = true, features = ["compat"] }
+tiberius = { version = "0.13", default-features = false, features = ["tds80", "rustls", "tds73"] }
+tracing.workspace = true
+
+[lints]
+workspace = true

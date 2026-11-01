@@ -1,0 +1,93 @@
+.run-progress {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 14px;
+  border-top: 1px solid var(--nd-rule);
+  font: 12px var(--nd-font-mono);
+  color: var(--nd-ink-2);
+  font-variant-numeric: tabular-nums;
+}
+.run-progress-bar {
+  position: relative;
+  flex: 0 0 min(320px, 40%);
+  height: 4px;
+  border-radius: 2px;
+  background: color-mix(in srgb, var(--nd-ink) 9%, transparent);
+  overflow: hidden;
+}
+.run-progress-bar > span {
+  display: block;
+  height: 100%;
+  background: var(--nd-accent);
+  transition: inline-size 0.4s ease-out;
+}
+.run-progress-bar.unknown > span {
+  inline-size: 30%;
+  animation: run-progress-sweep 1.6s ease-in-out infinite;
+}
+@keyframes run-progress-sweep {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(340%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .run-progress-bar > span {
+    transition: none;
+  }
+  .run-progress-bar.unknown > span {
+    animation: none;
+    inline-size: 100%;
+    opacity: 0.35;
+  }
+}
+.run-progress-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tool-table.partitions tr.group-start td {
+  border-top: 1px solid var(--nd-rule);
+}
+.tool-table.partitions td.warn {
+  color: var(--nd-warn);
+}
+.tool-table.mon-merges {
+  margin-bottom: 18px;
+}
+.tool-table.mon-merges .bar-col {
+  width: 22%;
+}
+
+[data-style='registro'] .run-progress {
+  font-family: var(--nd-font-ui);
+}
+[data-style='registro'] .run-progress-bar {
+  height: 3px;
+  border-radius: 0;
+}
+[data-style='tavola'] .run-progress-bar {
+  height: 6px;
+  border-radius: 0;
+  background: none;
+  outline: 1px solid var(--nd-rule);
+  outline-offset: -1px;
+}
+[data-style='banco'] .run-progress-bar {
+  height: 6px;
+  border-radius: 3px;
+}
+[data-style='listino'] .run-progress {
+  padding-block: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 11px;
+}
+[data-style='listino'] .run-progress-bar {
+  height: 3px;
+  border-radius: 0;
+}

@@ -1,0 +1,12 @@
+.setting.row.pref-path {
+  grid-template-columns: 160px minmax(200px, 420px) auto;
+  gap: 10px;
+}
+.pref-path .field {
+  width: 100%;
+  box-sizing: border-box;
+}
+.pref-path .field input {
+  width: 100%;
+  font-family: var(--nd-font-mono);
+}

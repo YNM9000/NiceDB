@@ -1,0 +1,1048 @@
+{
+  "after": {
+    "at": 1793091000000,
+    "dialect": "postgres",
+    "elapsed_ms": 12.0,
+    "execution": {
+      "kind": "measured"
+    },
+    "findings": [
+      {
+        "column": "data",
+        "factor": null,
+        "kb": null,
+        "kept": 360.0,
+        "node": 5,
+        "rows": 120000.0,
+        "rule": "seq_scan",
+        "severity": "medium",
+        "share": 0.4521841794569067,
+        "suggestion": "CREATE INDEX CONCURRENTLY ordini_data_idx ON ordini (data);",
+        "table": "ordini",
+        "wrapper": null
+      }
+    ],
+    "from": 0,
+    "plan": {
+      "analyzed": true,
+      "engine": "postgres",
+      "nodes": [
+        {
+          "alias": null,
+          "buffers": {
+            "hit": 6598.0,
+            "read": 160.0,
+            "temp_read": 0.0,
+            "temp_written": 0.0,
+            "written": 0.0
+          },
+          "children": [
+            1
+          ],
+          "condition": null,
+          "depth": 0,
+          "details": [],
+          "est_examined": null,
+          "est_rows": 50.0,
+          "filter": null,
+          "id": 0,
+          "index": null,
+          "kind": "limit",
+          "loops": 1.0,
+          "op": "Limit",
+          "parallel": false,
+          "parent": null,
+          "relation": null,
+          "rows": 36.0,
+          "rows_removed": null,
+          "self_ms": 0.0030000000000001137,
+          "spill": null,
+          "startup_cost": 17090.29,
+          "time_ms": 11.831,
+          "total_cost": 17090.41,
+          "width": 64.0
+        },
+        {
+          "alias": null,
+          "buffers": {
+            "hit": 6598.0,
+            "read": 160.0,
+            "temp_read": 0.0,
+            "temp_written": 0.0,
+            "written": 0.0
+          },
+          "children": [
+            2
+          ],
+          "condition": null,
+          "depth": 1,
+          "details": [
+            {
+              "key": "Parent Relationship",
+              "value": "Outer"
+            },
+            {
+              "key": "Sort Key",
+              "value": "(sum((r.quantita * r.prezzo))) DESC"
+            },
+            {
+              "key": "Sort Method",
+              "value": "quicksort"
+            },
+            {
+              "key": "Sort Space Type",
+              "value": "Memory"
+            },
+            {
+              "key": "Sort Space Used",
+              "value": "27"
+            }
+          ],
+          "est_examined": null,
+          "est_rows": 2400.0,
+          "filter": null,
+          "id": 1,
+          "index": null,
+          "kind": "sort",
+          "loops": 1.0,
+          "op": "Sort",
+          "parallel": false,
+          "parent": 0,
+          "relation": null,
+          "rows": 36.0,
+          "rows_removed": null,
+          "self_ms": 0.014999999999998792,
+          "spill": null,
+          "startup_cost": 17090.29,
+          "time_ms": 11.828,
+          "total_cost": 17096.29,
+          "width": 64.0
+        },
+        {
+          "alias": null,
+          "buffers": {
+            "hit": 6598.0,
+            "read": 160.0,
+            "temp_read": 0.0,
+            "temp_written": 0.0,
+            "written": 0.0
+          },
+          "children": [
+            3
+          ],
+          "condition": null,
+          "depth": 2,
+          "details": [
+            {
+              "key": "Disk Usage",
+              "value": "0"
+            },
+            {
+              "key": "Group Key",
+              "value": "c.ragione_sociale"
+            },
+            {
+              "key": "HashAgg Batches",
+              "value": "1"
+            },
+            {
+              "key": "Parent Relationship",
+              "value": "Outer"
+            },
+            {
+              "key": "Peak Memory Usage",
+              "value": "129"
+            },
+            {
+              "key": "Planned Partitions",
+              "value": "0"
+            }
+          ],
+          "est_examined": null,
+          "est_rows": 2400.0,
+          "filter": null,
+          "id": 2,
+          "index": null,
+          "kind": "aggregate",
+          "loops": 1.0,
+          "op": "HashAggregate",
+          "parallel": false,
+          "parent": 1,
+          "relation": null,
+          "rows": 36.0,
+          "rows_removed": null,
+          "self_ms": 0.7460000000000004,
+          "spill": null,
+          "startup_cost": 16980.56,
+          "time_ms": 11.813,
+          "total_cost": 17010.56,
+          "width": 64.0
+        },
+        {
+          "alias": null,
+          "buffers": {
+            "hit": 6598.0,
+            "read": 160.0,
+            "temp_read": 0.0,
+            "temp_written": 0.0,
+            "written": 0.0
+          },
+          "children": [
+            4,
+            8
+          ],
+          "condition": null,
+          "depth": 3,
+          "details": [
+            {
+              "key": "Inner Unique",
+              "value": "false"
+            },
+            {
+              "key": "Parent Relationship",
+              "value": "Outer"
+            }
+          ],
+          "est_examined": null,
+          "est_rows": 3540.0,
+          "filter": null,
+          "id": 3,
+          "index": null,
+          "kind": "nested_loop",
+          "loops": 1.0,
+          "op": "Nested Loop",
+          "parallel": false,
+          "parent": 2,
+          "relation": null,
+          "rows": 3600.0,
+          "rows_removed": null,
+          "self_ms": 0.3260000000000005,
+          "spill": null,
+          "startup_cost": 91.43,
+          "time_ms": 11.067,
+          "total_cost": 16954.01,
+          "width": 43.0
+        },
+        {
+          "alias": null,
+          "buffers": {
+            "hit": 2078.0,
+            "read": 0.0,
+            "temp_read": 0.0,
+            "temp_written": 0.0,
+            "written": 0.0
+          },
+          "children": [
+            5,
+            6
+          ],
+          "condition": "(o.cliente_id = c.id)",
+          "depth": 4,
+          "details": [
+            {
+              "key": "Inner Unique",
+              "value": "true"
+            },
+            {
+              "key": "Parent Relationship",
+              "value": "Outer"
+            }
+          ],
+          "est_examined": null,
+          "est_rows": 354.0,
+          "filter": null,
+          "id": 4,
+          "index": null,
+          "kind": "hash_join",
+          "loops": 1.0,
+          "op": "Hash Join",
+          "parallel": false,
+          "parent": 3,
+          "relation": null,
+          "rows": 360.0,
+          "rows_removed": null,
+          "self_ms": 0.0649999999999995,
+          "spill": null,
+          "startup_cost": 91.0,
+          "time_ms": 5.701,
+          "total_cost": 3632.93,
+          "width": 36.0
+        },
+        {
+          "alias": "o",
+          "buffers": {
+            "hit": 2041.0,
+            "read": 0.0,
+            "temp_read": 0.0,
+            "temp_written": 0.0,
+            "written": 0.0
+          },
+          "children": [],
+          "condition": null,
+          "depth": 5,
+          "details": [
+            {
+              "key": "Parent Relationship",
+              "value": "Outer"
+            }
+          ],
+          "est_examined": null,
+          "est_rows": 354.0,
+          "filter": "(data >= '2026-09-24'::date)",
+          "id": 5,
+          "index": null,
+          "kind": "full_scan",
+          "loops": 1.0,
+          "op": "Seq Scan",
+          "parallel": false,
+          "parent": 4,
+          "relation": "ordini",
+          "rows": 360.0,
+          "rows_removed": 119640.0,
+          "self_ms": 5.362,
+          "spill": null,
+          "startup_cost": 0.0,
+          "time_ms": 5.362,
+          "total_cost": 3541.0,
+          "width": 8.0
+        },
+        {
+          "alias": null,
+          "buffers": {
+            "hit": 37.0,
+            "read": 0.0,
+            "temp_read": 0.0,
+            "temp_written": 0.0,
+            "written": 0.0
+          },
+          "children": [
+            7
+          ],
+          "condition": null,
+          "depth": 5,
+          "details": [
+            {
+              "key": "Hash Batches",
+              "value": "1"
+            },
+            {
+              "key": "Hash Buckets",
+              "value": "4096"
+            },
+            {
+              "key": "Original Hash Batches",
+              "value": "1"
+            },
+            {
+              "key": "Original Hash Buckets",
+              "value": "4096"
+            },
+            {
+              "key": "Parent Relationship",
+              "value": "Inner"
+            },
+            {
+              "key": "Peak Memory Usage",
+              "value": "198"
+            }
+          ],
+          "est_examined": null,
+          "est_rows": 2400.0,
+          "filter": null,
+          "id": 6,
+          "index": null,
+          "kind": "hash",
+          "loops": 1.0,
+          "op": "Hash",
+          "parallel": false,
+          "parent": 4,
+          "relation": null,
+          "rows": 2400.0,
+          "rows_removed": null,
+          "self_ms": 0.139,
+          "spill": null,
+          "startup_cost": 61.0,
+          "time_ms": 0.274,
+          "total_cost": 61.0,
+          "width": 36.0
+        },
+        {
+          "alias": "c",
+          "buffers": {
+            "hit": 37.0,
+            "read": 0.0,
+            "temp_read": 0.0,
+            "temp_written": 0.0,
+            "written": 0.0
+          },
+          "children": [],
+          "condition": null,
+          "depth": 6,
+          "details": [
+            {
+              "key": "Parent Relationship",
+              "value": "Outer"
+            }
+          ],
+          "est_examined": null,
+          "est_rows": 2400.0,
+          "filter": null,
+          "id": 7,
+          "index": null,
+          "kind": "full_scan",
+          "loops": 1.0,
+          "op": "Seq Scan",
+          "parallel": false,
+          "parent": 6,
+          "relation": "clienti",
+          "rows": 2400.0,
+          "rows_removed": null,
+          "self_ms": 0.135,
+          "spill": null,
+          "startup_cost": 0.0,
+          "time_ms": 0.135,
+          "total_cost": 61.0,
+          "width": 36.0
+        },
+        {
+          "alias": "r",
+          "buffers": {
+            "hit": 4520.0,
+            "read": 160.0,
+            "temp_read": 0.0,
+            "temp_written": 0.0,
+            "written": 0.0
+          },
+          "children": [],
+          "condition": "(ordine_id = o.id)",
+          "depth": 4,
+          "details": [
+            {
+              "key": "Parent Relationship",
+              "value": "Inner"
+            },
+            {
+              "key": "Rows Removed by Index Recheck",
+              "value": "0"
+            },
+            {
+              "key": "Scan Direction",
+              "value": "Forward"
+            }
+          ],
+          "est_examined": null,
+          "est_rows": 10.0,
+          "filter": null,
+          "id": 8,
+          "index": "righe_ordine_ordine_id_idx",
+          "kind": "index_scan",
+          "loops": 360.0,
+          "op": "Index Scan",
+          "parallel": false,
+          "parent": 3,
+          "relation": "righe_ordine",
+          "rows": 10.0,
+          "rows_removed": null,
+          "self_ms": 5.04,
+          "spill": null,
+          "startup_cost": 0.43,
+          "time_ms": 5.04,
+          "total_cost": 37.53,
+          "width": 15.0
+        }
+      ],
+      "planning_ms": 0.451,
+      "raw": "[\n  {\n    \"Plan\": {\n      \"Node Type\": \"Limit\",\n      \"Parallel Aware\": false,\n      \"Async Capable\": false,\n      \"Startup Cost\": 17090.29,\n      \"Total Cost\": 17090.41,\n      \"Plan Rows\": 50,\n      \"Plan Width\": 64,\n      \"Actual Startup Time\": 11.825,\n      \"Actual Total Time\": 11.831,\n      \"Actual Rows\": 36,\n      \"Actual Loops\": 1,\n      \"Shared Hit Blocks\": 6598,\n      \"Shared Read Blocks\": 160,\n      \"Shared Dirtied Blocks\": 0,\n      \"Shared Written Blocks\": 0,\n      \"Local Hit Blocks\": 0,\n      \"Local Read Blocks\": 0,\n      \"Local Dirtied Blocks\": 0,\n      \"Local Written Blocks\": 0,\n      \"Temp Read Blocks\": 0,\n      \"Temp Written Blocks\": 0,\n      \"Plans\": [\n        {\n          \"Node Type\": \"Sort\",\n          \"Parent Relationship\": \"Outer\",\n          \"Parallel Aware\": false,\n          \"Async Capable\": false,\n          \"Startup Cost\": 17090.29,\n          \"Total Cost\": 17096.29,\n          \"Plan Rows\": 2400,\n          \"Plan Width\": 64,\n          \"Actual Startup Time\": 11.825,\n          \"Actual Total Time\": 11.828,\n          \"Actual Rows\": 36,\n          \"Actual Loops\": 1,\n          \"Sort Key\": [\"(sum((r.quantita * r.prezzo))) DESC\"],\n          \"Sort Method\": \"quicksort\",\n          \"Sort Space Used\": 27,\n          \"Sort Space Type\": \"Memory\",\n          \"Shared Hit Blocks\": 6598,\n          \"Shared Read Blocks\": 160,\n          \"Shared Dirtied Blocks\": 0,\n          \"Shared Written Blocks\": 0,\n          \"Local Hit Blocks\": 0,\n          \"Local Read Blocks\": 0,\n          \"Local Dirtied Blocks\": 0,\n          \"Local Written Blocks\": 0,\n          \"Temp Read Blocks\": 0,\n          \"Temp Written Blocks\": 0,\n          \"Plans\": [\n            {\n              \"Node Type\": \"Aggregate\",\n              \"Strategy\": \"Hashed\",\n              \"Partial Mode\": \"Simple\",\n              \"Parent Relationship\": \"Outer\",\n              \"Parallel Aware\": false,\n              \"Async Capable\": false,\n              \"Startup Cost\": 16980.56,\n              \"Total Cost\": 17010.56,\n              \"Plan Rows\": 2400,\n              \"Plan Width\": 64,\n              \"Actual Startup Time\": 11.801,\n              \"Actual Total Time\": 11.813,\n              \"Actual Rows\": 36,\n              \"Actual Loops\": 1,\n              \"Group Key\": [\"c.ragione_sociale\"],\n              \"Planned Partitions\": 0,\n              \"HashAgg Batches\": 1,\n              \"Peak Memory Usage\": 129,\n              \"Disk Usage\": 0,\n              \"Shared Hit Blocks\": 6598,\n              \"Shared Read Blocks\": 160,\n              \"Shared Dirtied Blocks\": 0,\n              \"Shared Written Blocks\": 0,\n              \"Local Hit Blocks\": 0,\n              \"Local Read Blocks\": 0,\n              \"Local Dirtied Blocks\": 0,\n              \"Local Written Blocks\": 0,\n              \"Temp Read Blocks\": 0,\n              \"Temp Written Blocks\": 0,\n              \"Plans\": [\n                {\n                  \"Node Type\": \"Nested Loop\",\n                  \"Parent Relationship\": \"Outer\",\n                  \"Parallel Aware\": false,\n                  \"Async Capable\": false,\n                  \"Join Type\": \"Inner\",\n                  \"Startup Cost\": 91.43,\n                  \"Total Cost\": 16954.01,\n                  \"Plan Rows\": 3540,\n                  \"Plan Width\": 43,\n                  \"Actual Startup Time\": 0.944,\n                  \"Actual Total Time\": 11.067,\n                  \"Actual Rows\": 3600,\n                  \"Actual Loops\": 1,\n                  \"Inner Unique\": false,\n                  \"Shared Hit Blocks\": 6598,\n                  \"Shared Read Blocks\": 160,\n                  \"Shared Dirtied Blocks\": 0,\n                  \"Shared Written Blocks\": 0,\n                  \"Local Hit Blocks\": 0,\n                  \"Local Read Blocks\": 0,\n                  \"Local Dirtied Blocks\": 0,\n                  \"Local Written Blocks\": 0,\n                  \"Temp Read Blocks\": 0,\n                  \"Temp Written Blocks\": 0,\n                  \"Plans\": [\n                    {\n                      \"Node Type\": \"Hash Join\",\n                      \"Parent Relationship\": \"Outer\",\n                      \"Parallel Aware\": false,\n                      \"Async Capable\": false,\n                      \"Join Type\": \"Inner\",\n                      \"Startup Cost\": 91.00,\n                      \"Total Cost\": 3632.93,\n                      \"Plan Rows\": 354,\n                      \"Plan Width\": 36,\n                      \"Actual Startup Time\": 0.906,\n                      \"Actual Total Time\": 5.701,\n                      \"Actual Rows\": 360,\n                      \"Actual Loops\": 1,\n                      \"Inner Unique\": true,\n                      \"Hash Cond\": \"(o.cliente_id = c.id)\",\n                      \"Shared Hit Blocks\": 2078,\n                      \"Shared Read Blocks\": 0,\n                      \"Shared Dirtied Blocks\": 0,\n                      \"Shared Written Blocks\": 0,\n                      \"Local Hit Blocks\": 0,\n                      \"Local Read Blocks\": 0,\n                      \"Local Dirtied Blocks\": 0,\n                      \"Local Written Blocks\": 0,\n                      \"Temp Read Blocks\": 0,\n                      \"Temp Written Blocks\": 0,\n                      \"Plans\": [\n                        {\n                          \"Node Type\": \"Seq Scan\",\n                          \"Parent Relationship\": \"Outer\",\n                          \"Parallel Aware\": false,\n                          \"Async Capable\": false,\n                          \"Relation Name\": \"ordini\",\n                          \"Alias\": \"o\",\n                          \"Startup Cost\": 0.00,\n                          \"Total Cost\": 3541.00,\n                          \"Plan Rows\": 354,\n                          \"Plan Width\": 8,\n                          \"Actual Startup Time\": 0.628,\n                          \"Actual Total Time\": 5.362,\n                          \"Actual Rows\": 360,\n                          \"Actual Loops\": 1,\n                          \"Filter\": \"(data >= '2026-09-24'::date)\",\n                          \"Rows Removed by Filter\": 119640,\n                          \"Shared Hit Blocks\": 2041,\n                          \"Shared Read Blocks\": 0,\n                          \"Shared Dirtied Blocks\": 0,\n                          \"Shared Written Blocks\": 0,\n                          \"Local Hit Blocks\": 0,\n                          \"Local Read Blocks\": 0,\n                          \"Local Dirtied Blocks\": 0,\n                          \"Local Written Blocks\": 0,\n                          \"Temp Read Blocks\": 0,\n                          \"Temp Written Blocks\": 0\n                        },\n                        {\n                          \"Node Type\": \"Hash\",\n                          \"Parent Relationship\": \"Inner\",\n                          \"Parallel Aware\": false,\n                          \"Async Capable\": false,\n                          \"Startup Cost\": 61.00,\n                          \"Total Cost\": 61.00,\n                          \"Plan Rows\": 2400,\n                          \"Plan Width\": 36,\n                          \"Actual Startup Time\": 0.273,\n                          \"Actual Total Time\": 0.274,\n                          \"Actual Rows\": 2400,\n                          \"Actual Loops\": 1,\n                          \"Hash Buckets\": 4096,\n                          \"Original Hash Buckets\": 4096,\n                          \"Hash Batches\": 1,\n                          \"Original Hash Batches\": 1,\n                          \"Peak Memory Usage\": 198,\n                          \"Shared Hit Blocks\": 37,\n                          \"Shared Read Blocks\": 0,\n                          \"Shared Dirtied Blocks\": 0,\n                          \"Shared Written Blocks\": 0,\n                          \"Local Hit Blocks\": 0,\n                          \"Local Read Blocks\": 0,\n                          \"Local Dirtied Blocks\": 0,\n                          \"Local Written Blocks\": 0,\n                          \"Temp Read Blocks\": 0,\n                          \"Temp Written Blocks\": 0,\n                          \"Plans\": [\n                            {\n                              \"Node Type\": \"Seq Scan\",\n                              \"Parent Relationship\": \"Outer\",\n                              \"Parallel Aware\": false,\n                              \"Async Capable\": false,\n                              \"Relation Name\": \"clienti\",\n                              \"Alias\": \"c\",\n                              \"Startup Cost\": 0.00,\n                              \"Total Cost\": 61.00,\n                              \"Plan Rows\": 2400,\n                              \"Plan Width\": 36,\n                              \"Actual Startup Time\": 0.002,\n                              \"Actual Total Time\": 0.135,\n                              \"Actual Rows\": 2400,\n                              \"Actual Loops\": 1,\n                              \"Shared Hit Blocks\": 37,\n                              \"Shared Read Blocks\": 0,\n                              \"Shared Dirtied Blocks\": 0,\n                              \"Shared Written Blocks\": 0,\n                              \"Local Hit Blocks\": 0,\n                              \"Local Read Blocks\": 0,\n                              \"Local Dirtied Blocks\": 0,\n                              \"Local Written Blocks\": 0,\n                              \"Temp Read Blocks\": 0,\n                              \"Temp Written Blocks\": 0\n                            }\n                          ]\n                        }\n                      ]\n                    },\n                    {\n                      \"Node Type\": \"Index Scan\",\n                      \"Parent Relationship\": \"Inner\",\n                      \"Parallel Aware\": false,\n                      \"Async Capable\": false,\n                      \"Scan Direction\": \"Forward\",\n                      \"Index Name\": \"righe_ordine_ordine_id_idx\",\n                      \"Relation Name\": \"righe_ordine\",\n                      \"Alias\": \"r\",\n                      \"Startup Cost\": 0.43,\n                      \"Total Cost\": 37.53,\n                      \"Plan Rows\": 10,\n                      \"Plan Width\": 15,\n                      \"Actual Startup Time\": 0.009,\n                      \"Actual Total Time\": 0.014,\n                      \"Actual Rows\": 10,\n                      \"Actual Loops\": 360,\n                      \"Index Cond\": \"(ordine_id = o.id)\",\n                      \"Rows Removed by Index Recheck\": 0,\n                      \"Shared Hit Blocks\": 4520,\n                      \"Shared Read Blocks\": 160,\n                      \"Shared Dirtied Blocks\": 0,\n                      \"Shared Written Blocks\": 0,\n                      \"Local Hit Blocks\": 0,\n                      \"Local Read Blocks\": 0,\n                      \"Local Dirtied Blocks\": 0,\n                      \"Local Written Blocks\": 0,\n                      \"Temp Read Blocks\": 0,\n                      \"Temp Written Blocks\": 0\n                    }\n                  ]\n                }\n              ]\n            }\n          ]\n        }\n      ]\n    },\n    \"Planning\": {\n      \"Shared Hit Blocks\": 239,\n      \"Shared Read Blocks\": 6,\n      \"Shared Dirtied Blocks\": 0,\n      \"Shared Written Blocks\": 0,\n      \"Local Hit Blocks\": 0,\n      \"Local Read Blocks\": 0,\n      \"Local Dirtied Blocks\": 0,\n      \"Local Written Blocks\": 0,\n      \"Temp Read Blocks\": 0,\n      \"Temp Written Blocks\": 0\n    },\n    \"Planning Time\": 0.451,\n    \"Triggers\": [\n    ],\n    \"Execution Time\": 11.858\n  }\n]\n",
+      "slowest": 5,
+      "total_ms": 11.858,
+      "worst_estimate": null
+    },
+    "sql": "SELECT c.ragione_sociale, sum(r.quantita * r.prezzo) AS ordinato FROM clienti c JOIN ordini o ON o.cliente_id = c.id JOIN righe_ordine r ON r.ordine_id = o.id WHERE o.data >= date '2026-09-24' GROUP BY c.ragione_sociale ORDER BY ordinato DESC LIMIT 50",
+    "to": 251,
+    "unreadable": null
+  },
+  "before": {
+    "at": 1793090640000,
+    "dialect": "postgres",
+    "elapsed_ms": 106.0,
+    "execution": {
+      "kind": "measured"
+    },
+    "findings": [
+      {
+        "column": "ordine_id",
+        "factor": null,
+        "kb": null,
+        "kept": 3600.0,
+        "node": 6,
+        "rows": 1200000.0,
+        "rule": "fk_without_index",
+        "severity": "high",
+        "share": 0.9209925278443537,
+        "suggestion": "CREATE INDEX CONCURRENTLY righe_ordine_ordine_id_idx ON righe_ordine (ordine_id);",
+        "table": "righe_ordine",
+        "wrapper": "ordini"
+      },
+      {
+        "column": "data",
+        "factor": null,
+        "kb": null,
+        "kept": 360.0,
+        "node": 8,
+        "rows": 120000.0,
+        "rule": "seq_scan",
+        "severity": "low",
+        "share": 0.04631796606983411,
+        "suggestion": "CREATE INDEX CONCURRENTLY ordini_data_idx ON ordini (data);",
+        "table": "ordini",
+        "wrapper": null
+      }
+    ],
+    "from": 0,
+    "plan": {
+      "analyzed": true,
+      "engine": "postgres",
+      "nodes": [
+        {
+          "alias": null,
+          "buffers": {
+            "hit": 11187.0,
+            "read": 406.0,
+            "temp_read": 0.0,
+            "temp_written": 0.0,
+            "written": 0.0
+          },
+          "children": [
+            1
+          ],
+          "condition": null,
+          "depth": 0,
+          "details": [],
+          "est_examined": null,
+          "est_rows": 50.0,
+          "filter": null,
+          "id": 0,
+          "index": null,
+          "kind": "limit",
+          "loops": 1.0,
+          "op": "Limit",
+          "parallel": false,
+          "parent": null,
+          "relation": null,
+          "rows": 36.0,
+          "rows_removed": null,
+          "self_ms": 0.0030000000000001137,
+          "spill": null,
+          "startup_cost": 28846.21,
+          "time_ms": 106.307,
+          "total_cost": 28846.33,
+          "width": 64.0
+        },
+        {
+          "alias": null,
+          "buffers": {
+            "hit": 11187.0,
+            "read": 406.0,
+            "temp_read": 0.0,
+            "temp_written": 0.0,
+            "written": 0.0
+          },
+          "children": [
+            2
+          ],
+          "condition": null,
+          "depth": 1,
+          "details": [
+            {
+              "key": "Parent Relationship",
+              "value": "Outer"
+            },
+            {
+              "key": "Sort Key",
+              "value": "(sum((r.quantita * r.prezzo))) DESC"
+            },
+            {
+              "key": "Sort Method",
+              "value": "quicksort"
+            },
+            {
+              "key": "Sort Space Type",
+              "value": "Memory"
+            },
+            {
+              "key": "Sort Space Used",
+              "value": "27"
+            }
+          ],
+          "est_examined": null,
+          "est_rows": 2400.0,
+          "filter": null,
+          "id": 1,
+          "index": null,
+          "kind": "sort",
+          "loops": 1.0,
+          "op": "Sort",
+          "parallel": false,
+          "parent": 0,
+          "relation": null,
+          "rows": 36.0,
+          "rows_removed": null,
+          "self_ms": 0.022999999999996135,
+          "spill": null,
+          "startup_cost": 28846.21,
+          "time_ms": 106.304,
+          "total_cost": 28852.21,
+          "width": 64.0
+        },
+        {
+          "alias": null,
+          "buffers": {
+            "hit": 11184.0,
+            "read": 406.0,
+            "temp_read": 0.0,
+            "temp_written": 0.0,
+            "written": 0.0
+          },
+          "children": [
+            3
+          ],
+          "condition": null,
+          "depth": 2,
+          "details": [
+            {
+              "key": "Group Key",
+              "value": "c.ragione_sociale"
+            },
+            {
+              "key": "Parent Relationship",
+              "value": "Outer"
+            }
+          ],
+          "est_examined": null,
+          "est_rows": 2400.0,
+          "filter": null,
+          "id": 2,
+          "index": null,
+          "kind": "aggregate",
+          "loops": 1.0,
+          "op": "GroupAggregate",
+          "parallel": false,
+          "parent": 1,
+          "relation": null,
+          "rows": 36.0,
+          "rows_removed": null,
+          "self_ms": 0.416000000000011,
+          "spill": null,
+          "startup_cost": 28701.08,
+          "time_ms": 106.281,
+          "total_cost": 28766.48,
+          "width": 64.0
+        },
+        {
+          "alias": null,
+          "buffers": {
+            "hit": 11184.0,
+            "read": 406.0,
+            "temp_read": 0.0,
+            "temp_written": 0.0,
+            "written": 0.0
+          },
+          "children": [
+            4
+          ],
+          "condition": null,
+          "depth": 3,
+          "details": [
+            {
+              "key": "Parent Relationship",
+              "value": "Outer"
+            },
+            {
+              "key": "Sort Key",
+              "value": "c.ragione_sociale"
+            },
+            {
+              "key": "Sort Method",
+              "value": "quicksort"
+            },
+            {
+              "key": "Sort Space Type",
+              "value": "Memory"
+            },
+            {
+              "key": "Sort Space Used",
+              "value": "336"
+            }
+          ],
+          "est_examined": null,
+          "est_rows": 3540.0,
+          "filter": null,
+          "id": 3,
+          "index": null,
+          "kind": "sort",
+          "loops": 1.0,
+          "op": "Sort",
+          "parallel": false,
+          "parent": 2,
+          "relation": null,
+          "rows": 3600.0,
+          "rows_removed": null,
+          "self_ms": 2.0919999999999987,
+          "spill": null,
+          "startup_cost": 28701.08,
+          "time_ms": 105.865,
+          "total_cost": 28709.93,
+          "width": 43.0
+        },
+        {
+          "alias": null,
+          "buffers": {
+            "hit": 11181.0,
+            "read": 406.0,
+            "temp_read": 0.0,
+            "temp_written": 0.0,
+            "written": 0.0
+          },
+          "children": [
+            5,
+            9
+          ],
+          "condition": null,
+          "depth": 4,
+          "details": [
+            {
+              "key": "Inner Unique",
+              "value": "true"
+            },
+            {
+              "key": "Parent Relationship",
+              "value": "Outer"
+            }
+          ],
+          "est_examined": null,
+          "est_rows": 3540.0,
+          "filter": null,
+          "id": 4,
+          "index": null,
+          "kind": "nested_loop",
+          "loops": 1.0,
+          "op": "Nested Loop",
+          "parallel": false,
+          "parent": 3,
+          "relation": null,
+          "rows": 3600.0,
+          "rows_removed": null,
+          "self_ms": 0.8109999999999928,
+          "spill": null,
+          "startup_cost": 3545.72,
+          "time_ms": 103.773,
+          "total_cost": 28492.41,
+          "width": 43.0
+        },
+        {
+          "alias": null,
+          "buffers": {
+            "hit": 11073.0,
+            "read": 406.0,
+            "temp_read": 0.0,
+            "temp_written": 0.0,
+            "written": 0.0
+          },
+          "children": [
+            6,
+            7
+          ],
+          "condition": "(r.ordine_id = o.id)",
+          "depth": 5,
+          "details": [
+            {
+              "key": "Inner Unique",
+              "value": "true"
+            },
+            {
+              "key": "Parent Relationship",
+              "value": "Outer"
+            }
+          ],
+          "est_examined": null,
+          "est_rows": 3540.0,
+          "filter": null,
+          "id": 5,
+          "index": null,
+          "kind": "hash_join",
+          "loops": 1.0,
+          "op": "Hash Join",
+          "parallel": false,
+          "parent": 4,
+          "relation": null,
+          "rows": 3600.0,
+          "rows_removed": null,
+          "self_ms": 52.541000000000004,
+          "spill": null,
+          "startup_cost": 3545.43,
+          "time_ms": 102.962,
+          "total_cost": 28133.54,
+          "width": 15.0
+        },
+        {
+          "alias": "r",
+          "buffers": {
+            "hit": 9032.0,
+            "read": 406.0,
+            "temp_read": 0.0,
+            "temp_written": 0.0,
+            "written": 0.0
+          },
+          "children": [],
+          "condition": null,
+          "depth": 6,
+          "details": [
+            {
+              "key": "Parent Relationship",
+              "value": "Outer"
+            }
+          ],
+          "est_examined": null,
+          "est_rows": 1200000.0,
+          "filter": null,
+          "id": 6,
+          "index": null,
+          "kind": "full_scan",
+          "loops": 1.0,
+          "op": "Seq Scan",
+          "parallel": false,
+          "parent": 5,
+          "relation": "righe_ordine",
+          "rows": 1200000.0,
+          "rows_removed": null,
+          "self_ms": 45.448,
+          "spill": null,
+          "startup_cost": 0.0,
+          "time_ms": 45.448,
+          "total_cost": 21438.0,
+          "width": 15.0
+        },
+        {
+          "alias": null,
+          "buffers": {
+            "hit": 2041.0,
+            "read": 0.0,
+            "temp_read": 0.0,
+            "temp_written": 0.0,
+            "written": 0.0
+          },
+          "children": [
+            8
+          ],
+          "condition": null,
+          "depth": 6,
+          "details": [
+            {
+              "key": "Hash Batches",
+              "value": "1"
+            },
+            {
+              "key": "Hash Buckets",
+              "value": "1024"
+            },
+            {
+              "key": "Original Hash Batches",
+              "value": "1"
+            },
+            {
+              "key": "Original Hash Buckets",
+              "value": "1024"
+            },
+            {
+              "key": "Parent Relationship",
+              "value": "Inner"
+            },
+            {
+              "key": "Peak Memory Usage",
+              "value": "23"
+            }
+          ],
+          "est_examined": null,
+          "est_rows": 354.0,
+          "filter": null,
+          "id": 7,
+          "index": null,
+          "kind": "hash",
+          "loops": 1.0,
+          "op": "Hash",
+          "parallel": false,
+          "parent": 5,
+          "relation": null,
+          "rows": 360.0,
+          "rows_removed": null,
+          "self_ms": 0.04499999999999993,
+          "spill": null,
+          "startup_cost": 3541.0,
+          "time_ms": 4.973,
+          "total_cost": 3541.0,
+          "width": 8.0
+        },
+        {
+          "alias": "o",
+          "buffers": {
+            "hit": 2041.0,
+            "read": 0.0,
+            "temp_read": 0.0,
+            "temp_written": 0.0,
+            "written": 0.0
+          },
+          "children": [],
+          "condition": null,
+          "depth": 7,
+          "details": [
+            {
+              "key": "Parent Relationship",
+              "value": "Outer"
+            }
+          ],
+          "est_examined": null,
+          "est_rows": 354.0,
+          "filter": "(data >= '2026-09-24'::date)",
+          "id": 8,
+          "index": null,
+          "kind": "full_scan",
+          "loops": 1.0,
+          "op": "Seq Scan",
+          "parallel": false,
+          "parent": 7,
+          "relation": "ordini",
+          "rows": 360.0,
+          "rows_removed": 119640.0,
+          "self_ms": 4.928,
+          "spill": null,
+          "startup_cost": 0.0,
+          "time_ms": 4.928,
+          "total_cost": 3541.0,
+          "width": 8.0
+        },
+        {
+          "alias": null,
+          "buffers": {
+            "hit": 108.0,
+            "read": 0.0,
+            "temp_read": 0.0,
+            "temp_written": 0.0,
+            "written": 0.0
+          },
+          "children": [
+            10
+          ],
+          "condition": null,
+          "depth": 5,
+          "details": [
+            {
+              "key": "Cache Evictions",
+              "value": "0"
+            },
+            {
+              "key": "Cache Hits",
+              "value": "3564"
+            },
+            {
+              "key": "Cache Key",
+              "value": "o.cliente_id"
+            },
+            {
+              "key": "Cache Misses",
+              "value": "36"
+            },
+            {
+              "key": "Cache Mode",
+              "value": "logical"
+            },
+            {
+              "key": "Cache Overflows",
+              "value": "0"
+            },
+            {
+              "key": "Parent Relationship",
+              "value": "Inner"
+            },
+            {
+              "key": "Peak Memory Usage",
+              "value": "5"
+            }
+          ],
+          "est_examined": null,
+          "est_rows": 1.0,
+          "filter": null,
+          "id": 9,
+          "index": null,
+          "kind": "materialize",
+          "loops": 3600.0,
+          "op": "Memoize",
+          "parallel": false,
+          "parent": 4,
+          "relation": null,
+          "rows": 1.0,
+          "rows_removed": null,
+          "self_ms": 0.0,
+          "spill": null,
+          "startup_cost": 0.29,
+          "time_ms": 0.0,
+          "total_cost": 0.83,
+          "width": 36.0
+        },
+        {
+          "alias": "c",
+          "buffers": {
+            "hit": 108.0,
+            "read": 0.0,
+            "temp_read": 0.0,
+            "temp_written": 0.0,
+            "written": 0.0
+          },
+          "children": [],
+          "condition": "(id = o.cliente_id)",
+          "depth": 6,
+          "details": [
+            {
+              "key": "Parent Relationship",
+              "value": "Outer"
+            },
+            {
+              "key": "Rows Removed by Index Recheck",
+              "value": "0"
+            },
+            {
+              "key": "Scan Direction",
+              "value": "Forward"
+            }
+          ],
+          "est_examined": null,
+          "est_rows": 1.0,
+          "filter": null,
+          "id": 10,
+          "index": "clienti_pkey",
+          "kind": "index_scan",
+          "loops": 36.0,
+          "op": "Index Scan",
+          "parallel": false,
+          "parent": 9,
+          "relation": "clienti",
+          "rows": 1.0,
+          "rows_removed": null,
+          "self_ms": 0.108,
+          "spill": null,
+          "startup_cost": 0.28,
+          "time_ms": 0.108,
+          "total_cost": 0.82,
+          "width": 36.0
+        }
+      ],
+      "planning_ms": 0.599,
+      "raw": "[\n  {\n    \"Plan\": {\n      \"Node Type\": \"Limit\",\n      \"Parallel Aware\": false,\n      \"Async Capable\": false,\n      \"Startup Cost\": 28846.21,\n      \"Total Cost\": 28846.33,\n      \"Plan Rows\": 50,\n      \"Plan Width\": 64,\n      \"Actual Startup Time\": 106.302,\n      \"Actual Total Time\": 106.307,\n      \"Actual Rows\": 36,\n      \"Actual Loops\": 1,\n      \"Shared Hit Blocks\": 11187,\n      \"Shared Read Blocks\": 406,\n      \"Shared Dirtied Blocks\": 0,\n      \"Shared Written Blocks\": 0,\n      \"Local Hit Blocks\": 0,\n      \"Local Read Blocks\": 0,\n      \"Local Dirtied Blocks\": 0,\n      \"Local Written Blocks\": 0,\n      \"Temp Read Blocks\": 0,\n      \"Temp Written Blocks\": 0,\n      \"Plans\": [\n        {\n          \"Node Type\": \"Sort\",\n          \"Parent Relationship\": \"Outer\",\n          \"Parallel Aware\": false,\n          \"Async Capable\": false,\n          \"Startup Cost\": 28846.21,\n          \"Total Cost\": 28852.21,\n          \"Plan Rows\": 2400,\n          \"Plan Width\": 64,\n          \"Actual Startup Time\": 106.301,\n          \"Actual Total Time\": 106.304,\n          \"Actual Rows\": 36,\n          \"Actual Loops\": 1,\n          \"Sort Key\": [\"(sum((r.quantita * r.prezzo))) DESC\"],\n          \"Sort Method\": \"quicksort\",\n          \"Sort Space Used\": 27,\n          \"Sort Space Type\": \"Memory\",\n          \"Shared Hit Blocks\": 11187,\n          \"Shared Read Blocks\": 406,\n          \"Shared Dirtied Blocks\": 0,\n          \"Shared Written Blocks\": 0,\n          \"Local Hit Blocks\": 0,\n          \"Local Read Blocks\": 0,\n          \"Local Dirtied Blocks\": 0,\n          \"Local Written Blocks\": 0,\n          \"Temp Read Blocks\": 0,\n          \"Temp Written Blocks\": 0,\n          \"Plans\": [\n            {\n              \"Node Type\": \"Aggregate\",\n              \"Strategy\": \"Sorted\",\n              \"Partial Mode\": \"Simple\",\n              \"Parent Relationship\": \"Outer\",\n              \"Parallel Aware\": false,\n              \"Async Capable\": false,\n              \"Startup Cost\": 28701.08,\n              \"Total Cost\": 28766.48,\n              \"Plan Rows\": 2400,\n              \"Plan Width\": 64,\n              \"Actual Startup Time\": 105.803,\n              \"Actual Total Time\": 106.281,\n              \"Actual Rows\": 36,\n              \"Actual Loops\": 1,\n              \"Group Key\": [\"c.ragione_sociale\"],\n              \"Shared Hit Blocks\": 11184,\n              \"Shared Read Blocks\": 406,\n              \"Shared Dirtied Blocks\": 0,\n              \"Shared Written Blocks\": 0,\n              \"Local Hit Blocks\": 0,\n              \"Local Read Blocks\": 0,\n              \"Local Dirtied Blocks\": 0,\n              \"Local Written Blocks\": 0,\n              \"Temp Read Blocks\": 0,\n              \"Temp Written Blocks\": 0,\n              \"Plans\": [\n                {\n                  \"Node Type\": \"Sort\",\n                  \"Parent Relationship\": \"Outer\",\n                  \"Parallel Aware\": false,\n                  \"Async Capable\": false,\n                  \"Startup Cost\": 28701.08,\n                  \"Total Cost\": 28709.93,\n                  \"Plan Rows\": 3540,\n                  \"Plan Width\": 43,\n                  \"Actual Startup Time\": 105.781,\n                  \"Actual Total Time\": 105.865,\n                  \"Actual Rows\": 3600,\n                  \"Actual Loops\": 1,\n                  \"Sort Key\": [\"c.ragione_sociale\"],\n                  \"Sort Method\": \"quicksort\",\n                  \"Sort Space Used\": 336,\n                  \"Sort Space Type\": \"Memory\",\n                  \"Shared Hit Blocks\": 11184,\n                  \"Shared Read Blocks\": 406,\n                  \"Shared Dirtied Blocks\": 0,\n                  \"Shared Written Blocks\": 0,\n                  \"Local Hit Blocks\": 0,\n                  \"Local Read Blocks\": 0,\n                  \"Local Dirtied Blocks\": 0,\n                  \"Local Written Blocks\": 0,\n                  \"Temp Read Blocks\": 0,\n                  \"Temp Written Blocks\": 0,\n                  \"Plans\": [\n                    {\n                      \"Node Type\": \"Nested Loop\",\n                      \"Parent Relationship\": \"Outer\",\n                      \"Parallel Aware\": false,\n                      \"Async Capable\": false,\n                      \"Join Type\": \"Inner\",\n                      \"Startup Cost\": 3545.72,\n                      \"Total Cost\": 28492.41,\n                      \"Plan Rows\": 3540,\n                      \"Plan Width\": 43,\n                      \"Actual Startup Time\": 5.212,\n                      \"Actual Total Time\": 103.773,\n                      \"Actual Rows\": 3600,\n                      \"Actual Loops\": 1,\n                      \"Inner Unique\": true,\n                      \"Shared Hit Blocks\": 11181,\n                      \"Shared Read Blocks\": 406,\n                      \"Shared Dirtied Blocks\": 0,\n                      \"Shared Written Blocks\": 0,\n                      \"Local Hit Blocks\": 0,\n                      \"Local Read Blocks\": 0,\n                      \"Local Dirtied Blocks\": 0,\n                      \"Local Written Blocks\": 0,\n                      \"Temp Read Blocks\": 0,\n                      \"Temp Written Blocks\": 0,\n                      \"Plans\": [\n                        {\n                          \"Node Type\": \"Hash Join\",\n                          \"Parent Relationship\": \"Outer\",\n                          \"Parallel Aware\": false,\n                          \"Async Capable\": false,\n                          \"Join Type\": \"Inner\",\n                          \"Startup Cost\": 3545.43,\n                          \"Total Cost\": 28133.54,\n                          \"Plan Rows\": 3540,\n                          \"Plan Width\": 15,\n                          \"Actual Startup Time\": 5.174,\n                          \"Actual Total Time\": 102.962,\n                          \"Actual Rows\": 3600,\n                          \"Actual Loops\": 1,\n                          \"Inner Unique\": true,\n                          \"Hash Cond\": \"(r.ordine_id = o.id)\",\n                          \"Shared Hit Blocks\": 11073,\n                          \"Shared Read Blocks\": 406,\n                          \"Shared Dirtied Blocks\": 0,\n                          \"Shared Written Blocks\": 0,\n                          \"Local Hit Blocks\": 0,\n                          \"Local Read Blocks\": 0,\n                          \"Local Dirtied Blocks\": 0,\n                          \"Local Written Blocks\": 0,\n                          \"Temp Read Blocks\": 0,\n                          \"Temp Written Blocks\": 0,\n                          \"Plans\": [\n                            {\n                              \"Node Type\": \"Seq Scan\",\n                              \"Parent Relationship\": \"Outer\",\n                              \"Parallel Aware\": false,\n                              \"Async Capable\": false,\n                              \"Relation Name\": \"righe_ordine\",\n                              \"Alias\": \"r\",\n                              \"Startup Cost\": 0.00,\n                              \"Total Cost\": 21438.00,\n                              \"Plan Rows\": 1200000,\n                              \"Plan Width\": 15,\n                              \"Actual Startup Time\": 0.030,\n                              \"Actual Total Time\": 45.448,\n                              \"Actual Rows\": 1200000,\n                              \"Actual Loops\": 1,\n                              \"Shared Hit Blocks\": 9032,\n                              \"Shared Read Blocks\": 406,\n                              \"Shared Dirtied Blocks\": 0,\n                              \"Shared Written Blocks\": 0,\n                              \"Local Hit Blocks\": 0,\n                              \"Local Read Blocks\": 0,\n                              \"Local Dirtied Blocks\": 0,\n                              \"Local Written Blocks\": 0,\n                              \"Temp Read Blocks\": 0,\n                              \"Temp Written Blocks\": 0\n                            },\n                            {\n                              \"Node Type\": \"Hash\",\n                              \"Parent Relationship\": \"Inner\",\n                              \"Parallel Aware\": false,\n                              \"Async Capable\": false,\n                              \"Startup Cost\": 3541.00,\n                              \"Total Cost\": 3541.00,\n                              \"Plan Rows\": 354,\n                              \"Plan Width\": 8,\n                              \"Actual Startup Time\": 4.972,\n                              \"Actual Total Time\": 4.973,\n                              \"Actual Rows\": 360,\n                              \"Actual Loops\": 1,\n                              \"Hash Buckets\": 1024,\n                              \"Original Hash Buckets\": 1024,\n                              \"Hash Batches\": 1,\n                              \"Original Hash Batches\": 1,\n                              \"Peak Memory Usage\": 23,\n                              \"Shared Hit Blocks\": 2041,\n                              \"Shared Read Blocks\": 0,\n                              \"Shared Dirtied Blocks\": 0,\n                              \"Shared Written Blocks\": 0,\n                              \"Local Hit Blocks\": 0,\n                              \"Local Read Blocks\": 0,\n                              \"Local Dirtied Blocks\": 0,\n                              \"Local Written Blocks\": 0,\n                              \"Temp Read Blocks\": 0,\n                              \"Temp Written Blocks\": 0,\n                              \"Plans\": [\n                                {\n                                  \"Node Type\": \"Seq Scan\",\n                                  \"Parent Relationship\": \"Outer\",\n                                  \"Parallel Aware\": false,\n                                  \"Async Capable\": false,\n                                  \"Relation Name\": \"ordini\",\n                                  \"Alias\": \"o\",\n                                  \"Startup Cost\": 0.00,\n                                  \"Total Cost\": 3541.00,\n                                  \"Plan Rows\": 354,\n                                  \"Plan Width\": 8,\n                                  \"Actual Startup Time\": 0.670,\n                                  \"Actual Total Time\": 4.928,\n                                  \"Actual Rows\": 360,\n                                  \"Actual Loops\": 1,\n                                  \"Filter\": \"(data >= '2026-09-24'::date)\",\n                                  \"Rows Removed by Filter\": 119640,\n                                  \"Shared Hit Blocks\": 2041,\n                                  \"Shared Read Blocks\": 0,\n                                  \"Shared Dirtied Blocks\": 0,\n                                  \"Shared Written Blocks\": 0,\n                                  \"Local Hit Blocks\": 0,\n                                  \"Local Read Blocks\": 0,\n                                  \"Local Dirtied Blocks\": 0,\n                                  \"Local Written Blocks\": 0,\n                                  \"Temp Read Blocks\": 0,\n                                  \"Temp Written Blocks\": 0\n                                }\n                              ]\n                            }\n                          ]\n                        },\n                        {\n                          \"Node Type\": \"Memoize\",\n                          \"Parent Relationship\": \"Inner\",\n                          \"Parallel Aware\": false,\n                          \"Async Capable\": false,\n                          \"Startup Cost\": 0.29,\n                          \"Total Cost\": 0.83,\n                          \"Plan Rows\": 1,\n                          \"Plan Width\": 36,\n                          \"Actual Startup Time\": 0.000,\n                          \"Actual Total Time\": 0.000,\n                          \"Actual Rows\": 1,\n                          \"Actual Loops\": 3600,\n                          \"Cache Key\": \"o.cliente_id\",\n                          \"Cache Mode\": \"logical\",\n                          \"Cache Hits\": 3564,\n                          \"Cache Misses\": 36,\n                          \"Cache Evictions\": 0,\n                          \"Cache Overflows\": 0,\n                          \"Peak Memory Usage\": 5,\n                          \"Shared Hit Blocks\": 108,\n                          \"Shared Read Blocks\": 0,\n                          \"Shared Dirtied Blocks\": 0,\n                          \"Shared Written Blocks\": 0,\n                          \"Local Hit Blocks\": 0,\n                          \"Local Read Blocks\": 0,\n                          \"Local Dirtied Blocks\": 0,\n                          \"Local Written Blocks\": 0,\n                          \"Temp Read Blocks\": 0,\n                          \"Temp Written Blocks\": 0,\n                          \"Plans\": [\n                            {\n                              \"Node Type\": \"Index Scan\",\n                              \"Parent Relationship\": \"Outer\",\n                              \"Parallel Aware\": false,\n                              \"Async Capable\": false,\n                              \"Scan Direction\": \"Forward\",\n                              \"Index Name\": \"clienti_pkey\",\n                              \"Relation Name\": \"clienti\",\n                              \"Alias\": \"c\",\n                              \"Startup Cost\": 0.28,\n                              \"Total Cost\": 0.82,\n                              \"Plan Rows\": 1,\n                              \"Plan Width\": 36,\n                              \"Actual Startup Time\": 0.003,\n                              \"Actual Total Time\": 0.003,\n                              \"Actual Rows\": 1,\n                              \"Actual Loops\": 36,\n                              \"Index Cond\": \"(id = o.cliente_id)\",\n                              \"Rows Removed by Index Recheck\": 0,\n                              \"Shared Hit Blocks\": 108,\n                              \"Shared Read Blocks\": 0,\n                              \"Shared Dirtied Blocks\": 0,\n                              \"Shared Written Blocks\": 0,\n                              \"Local Hit Blocks\": 0,\n                              \"Local Read Blocks\": 0,\n                              \"Local Dirtied Blocks\": 0,\n                              \"Local Written Blocks\": 0,\n                              \"Temp Read Blocks\": 0,\n                              \"Temp Written Blocks\": 0\n                            }\n                          ]\n                        }\n                      ]\n                    }\n                  ]\n                }\n              ]\n            }\n          ]\n        }\n      ]\n    },\n    \"Planning\": {\n      \"Shared Hit Blocks\": 339,\n      \"Shared Read Blocks\": 0,\n      \"Shared Dirtied Blocks\": 0,\n      \"Shared Written Blocks\": 0,\n      \"Local Hit Blocks\": 0,\n      \"Local Read Blocks\": 0,\n      \"Local Dirtied Blocks\": 0,\n      \"Local Written Blocks\": 0,\n      \"Temp Read Blocks\": 0,\n      \"Temp Written Blocks\": 0\n    },\n    \"Planning Time\": 0.599,\n    \"Triggers\": [\n    ],\n    \"Execution Time\": 106.395\n  }\n]\n",
+      "slowest": 5,
+      "total_ms": 106.395,
+      "worst_estimate": null
+    },
+    "sql": "SELECT c.ragione_sociale, sum(r.quantita * r.prezzo) AS ordinato FROM clienti c JOIN ordini o ON o.cliente_id = c.id JOIN righe_ordine r ON r.ordine_id = o.id WHERE o.data >= date '2026-09-24' GROUP BY c.ragione_sociale ORDER BY ordinato DESC LIMIT 50",
+    "to": 251,
+    "unreadable": null
+  }
+}

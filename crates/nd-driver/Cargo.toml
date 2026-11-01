@@ -1,0 +1,24 @@
+[package]
+name = "nd-driver"
+edition.workspace = true
+version.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+rust-version.workspace = true
+publish = false
+
+[dependencies]
+nd-sql = { path = "../nd-sql" }
+async-trait.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+specta.workspace = true
+thiserror.workspace = true
+pkcs8 = { version = "0.11", default-features = false, features = ["encryption", "pem", "std"] }
+rustls-pki-types = { version = "1.15", features = ["std"] }
+tokio.workspace = true
+zeroize = "=1.9.1"
+
+[lints]
+workspace = true

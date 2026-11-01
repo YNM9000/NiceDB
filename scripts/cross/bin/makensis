@@ -1,0 +1,3 @@
+#!/bin/sh
+nsis="${ND_NSIS:-$HOME/.local/share/mingw-nsis/usr}"
+NSISDIR="$nsis/share/nsis" exec "$nsis/bin/makensis" "$@"

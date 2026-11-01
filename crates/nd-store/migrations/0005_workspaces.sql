@@ -1,0 +1,6 @@
+CREATE TABLE workspaces (
+    id TEXT PRIMARY KEY NOT NULL,
+    name TEXT NOT NULL,
+    position INTEGER NOT NULL DEFAULT 0,
+    body TEXT NOT NULL
+) STRICT;

@@ -1,0 +1,309 @@
+[data-style="registro"] {
+  --grain: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .5  0 0 0 0 .45  0 0 0 0 .38  0 0 0 .55 -.18'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  --inkmask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.55' numOctaves='3' seed='11' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  5 0 0 0 -.85'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+
+  --sans: 'Plex Sans', system-ui, sans-serif;
+  --serif: 'Source Serif', Georgia, serif;
+  --mono: 'Plex Mono', ui-monospace, monospace;
+  --brass-ink: #261b03;
+  --r: 3px;
+  --r-lg: 5px;
+}
+
+[data-style="registro"],
+[data-style="registro"][data-theme="light"] {
+  color-scheme: light;
+  --cloth: #bfc1ad;
+  --cloth-hi: #cdcfbc;
+  --cloth-lo: #a9ab96;
+  --cloth-ink: #2b3227;
+  --cloth-ink-2: #444b3b;
+  --cloth-groove: rgba(40,46,34,.28);
+  --cloth-catch: rgba(255,255,245,.45);
+  --weave: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='w'><feTurbulence type='fractalNoise' baseFrequency='.9 .2' numOctaves='2' seed='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .8 -.3'/></filter><filter id='v'><feTurbulence type='fractalNoise' baseFrequency='.2 .9' numOctaves='2' seed='8' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .6 -.22'/></filter><rect width='100%' height='100%' filter='url(%23w)'/><rect width='100%' height='100%' filter='url(%23v)'/></svg>");
+
+  --paper: #f7f2e5;
+  --paper-2: #f1ead9;
+  --paper-3: #e9e1cc;
+  --paper-edge: #d8ceb6;
+  --card: #fbf7ec;
+  --ink: #1c2638;
+  --ink-2: #4f5867;
+  --ink-3: #626875;
+  --rule: #b9cadb;
+  --rule-soft: rgba(126,160,196,.32);
+  --rule-red: #cf7a6e;
+  --rule-red-soft: rgba(196,90,76,.45);
+  --green: #2d5e4c;
+  --green-wash: rgba(76,128,94,.12);
+  --red: #b2382c;
+  --red-wash: rgba(178,56,44,.08);
+  --graphite: #686762;
+  --violet: #57488c;
+  --violet-soft: rgba(87,72,140,.12);
+  --brass: #a8862f;
+  --brass-hi: #e3c77e;
+  --brass-lo: #7c5f1c;
+  --sepia: #8a5a2b;
+  --sel: rgba(46,94,76,.09);
+  --hover: rgba(28,38,56,.04);
+  --shadow: 28,22,10;
+  --grain-o: .55;
+
+  --lth-rel: #355f4c; --lth-rel-2: #1f3d30;
+  --lth-doc: #7b5333; --lth-doc-2: #4f3219;
+  --lth-kv: #36466a; --lth-kv-2: #1f2a45;
+  --lth-ana: #3f3f3c; --lth-ana-2: #232321;
+  --gilt: #e2c67d;
+
+  --wash-ana: rgba(96,150,104,.13);
+  --wash-ven: rgba(206,150,58,.14);
+  --wash-mag: rgba(84,130,186,.13);
+  --act-hi: #3f6e59; --act: #2d5544; --act-lo: #264a3b; --act-ink: #f3e6bd; --act-gilt: #e2c67d; --act-ts: 0 -1px 0 rgba(0,0,0,.3);
+  --kw: #24365e; --fn: #5a3d7a;
+  --raised-hi: #fbf7ec; --raised: #fbf7ec; --raised-2: #f1ead9;
+}
+
+[data-style="registro"][data-theme="dark"] {
+  color-scheme: dark;
+  --cloth: #1a2420;
+  --cloth-hi: #223029;
+  --cloth-lo: #121a16;
+  --cloth-ink: #d9d6c6;
+  --cloth-ink-2: #8f9a8f;
+  --cloth-groove: rgba(0,0,0,.5);
+  --cloth-catch: rgba(220,235,220,.07);
+  --weave: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='w'><feTurbulence type='fractalNoise' baseFrequency='.9 .2' numOctaves='2' seed='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .5 -.2'/></filter><filter id='v'><feTurbulence type='fractalNoise' baseFrequency='.2 .9' numOctaves='2' seed='8' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .3 -.12'/></filter><rect width='100%' height='100%' filter='url(%23w)'/><rect width='100%' height='100%' filter='url(%23v)'/></svg>");
+
+  --paper: #1e2227;
+  --paper-2: #23282e;
+  --paper-3: #2a3037;
+  --paper-edge: #0f1215;
+  --card: #262b31;
+  --ink: #e7e0cd;
+  --ink-2: #aea996;
+  --ink-3: #9b988c;
+  --rule: #34465b;
+  --rule-soft: rgba(80,110,150,.24);
+  --rule-red: #7a3f37;
+  --rule-red-soft: rgba(160,80,68,.45);
+  --green: #86b8a0;
+  --green-wash: rgba(110,170,140,.12);
+  --red: #e47a68;
+  --red-wash: rgba(228,122,104,.1);
+  --graphite: #9c9b94;
+  --violet: #a698d8;
+  --violet-soft: rgba(166,152,216,.12);
+  --brass: #c9a855;
+  --brass-hi: #ecd48f;
+  --brass-lo: #876b27;
+  --sepia: #d1a172;
+  --sel: rgba(134,184,160,.1);
+  --hover: rgba(231,224,205,.04);
+  --shadow: 0,0,0;
+  --grain-o: .5;
+
+  --lth-rel: #3c6a55; --lth-rel-2: #213f32;
+  --lth-doc: #87603d; --lth-doc-2: #553a20;
+  --lth-kv: #45567d; --lth-kv-2: #26314f;
+  --lth-ana: #4d4d49; --lth-ana-2: #2a2a28;
+  --gilt: #e6cc86;
+
+  --wash-ana: rgba(110,170,120,.1);
+  --wash-ven: rgba(214,160,70,.1);
+  --wash-mag: rgba(100,150,210,.11);
+  --act-hi: #3f6e59; --act: #2d5544; --act-lo: #264a3b; --act-ink: #f3e6bd; --act-gilt: #e2c67d; --act-ts: 0 -1px 0 rgba(0,0,0,.3);
+  --kw: #9fb8e6; --fn: #c8b3e3;
+  --raised-hi: #31373e; --raised: #2b3036; --raised-2: #2a2f35;
+}
+
+[data-style="registro"][data-theme="light"][data-palette="2"] {
+  --cloth: #d3c5a3; --cloth-hi: #e0d4b5; --cloth-lo: #c0af8a;
+  --cloth-ink: #36291b; --cloth-ink-2: #5b4b35;
+  --cloth-groove: rgba(70,50,20,.3); --cloth-catch: rgba(255,250,235,.5);
+  --weave: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><filter id='m'><feTurbulence type='fractalNoise' baseFrequency='.012' numOctaves='4' seed='5' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .7 -.27'/></filter><filter id='f'><feTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='2' seed='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .45 -.18'/></filter><rect width='100%' height='100%' filter='url(%23m)'/><rect width='100%' height='100%' filter='url(%23f)'/></svg>");
+  --paper: #fcf9f1; --paper-2: #f5f0e3; --paper-3: #ebe3cf; --paper-edge: #d6c8aa; --card: #fffdf7;
+  --ink: #2a1f17; --ink-2: #5b4b3d; --ink-3: #77695b;
+  --rule: #c3d2bb; --rule-soft: rgba(110,150,100,.3);
+  --rule-red: #8ea3c2; --rule-red-soft: rgba(45,80,135,.38);
+  --green: #46662c; --green-wash: rgba(90,125,55,.12);
+  --red: #a8352a; --red-wash: rgba(168,53,42,.08);
+  --graphite: #6d6962;
+  --violet: #5d4688; --violet-soft: rgba(93,70,136,.12);
+  --brass: #a8862f; --brass-hi: #e3c77e; --brass-lo: #7c5f1c;
+  --sepia: #9a5420;
+  --sel: rgba(35,74,115,.08); --hover: rgba(42,31,23,.04);
+  --shadow: 44,30,12; --grain-o: .5;
+  --lth-rel: #355f4c; --lth-rel-2: #1f3d30;
+  --lth-doc: #7b5333; --lth-doc-2: #4f3219;
+  --lth-kv: #36466a; --lth-kv-2: #1f2a45;
+  --lth-ana: #3f3f3c; --lth-ana-2: #232321;
+  --gilt: #e2c67d;
+  --wash-ana: rgba(96,150,104,.13);
+  --wash-ven: rgba(206,150,58,.14);
+  --wash-mag: rgba(84,130,186,.13);
+  --act-hi: #3b6190; --act: #2a4b74; --act-lo: #223e61; --act-ink: #f3ead2; --act-gilt: #e6cf8e; --act-ts: 0 -1px 0 rgba(0,0,0,.3);
+  --kw: #22426c; --fn: #74385a;
+  --raised-hi: #fffdf7; --raised: #fffdf7; --raised-2: #f5f0e3;
+}
+
+[data-style="registro"][data-theme="dark"][data-palette="2"] {
+  --cloth: #261c16; --cloth-hi: #31251d; --cloth-lo: #1b140f;
+  --cloth-ink: #e8dcc3; --cloth-ink-2: #a49279;
+  --cloth-groove: rgba(0,0,0,.55); --cloth-catch: rgba(255,225,190,.06);
+  --weave: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='g'><feTurbulence type='turbulence' baseFrequency='.35' numOctaves='2' seed='4' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.1 .5'/></filter><filter id='h'><feTurbulence type='fractalNoise' baseFrequency='.02' numOctaves='3' seed='9' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 .9  0 0 0 0 .8  0 0 0 .35 -.12'/></filter><rect width='100%' height='100%' filter='url(%23g)'/><rect width='100%' height='100%' filter='url(%23h)'/></svg>");
+  --paper: #231e1a; --paper-2: #29231e; --paper-3: #312923; --paper-edge: #100c09; --card: #2c2620;
+  --ink: #eee4d0; --ink-2: #b9aa91; --ink-3: #a09281;
+  --rule: #3e4838; --rule-soft: rgba(130,160,110,.17);
+  --rule-red: #3a5276; --rule-red-soft: rgba(100,135,190,.38);
+  --green: #a9c48b; --green-wash: rgba(150,190,120,.1);
+  --red: #ec8470; --red-wash: rgba(236,132,112,.1);
+  --graphite: #a0978a;
+  --violet: #b6a3de; --violet-soft: rgba(182,163,222,.12);
+  --brass: #c9a855; --brass-hi: #ecd48f; --brass-lo: #876b27;
+  --sepia: #dca46c;
+  --sel: rgba(140,176,220,.1); --hover: rgba(238,228,208,.04);
+  --shadow: 0,0,0; --grain-o: .5;
+  --lth-rel: #3c6a55; --lth-rel-2: #213f32;
+  --lth-doc: #87603d; --lth-doc-2: #553a20;
+  --lth-kv: #45567d; --lth-kv-2: #26314f;
+  --lth-ana: #4d4d49; --lth-ana-2: #2a2a28;
+  --gilt: #e6cc86;
+  --wash-ana: rgba(110,170,120,.1);
+  --wash-ven: rgba(214,160,70,.1);
+  --wash-mag: rgba(100,150,210,.11);
+  --act-hi: #44689a; --act: #31527e; --act-lo: #284568; --act-ink: #f3ead2; --act-gilt: #e6cf8e; --act-ts: 0 -1px 0 rgba(0,0,0,.35);
+  --kw: #a5bde0; --fn: #dcabc6;
+  --raised-hi: #3a3029; --raised: #322a23; --raised-2: #2e2620;
+}
+
+[data-style="registro"][data-theme="light"][data-palette="3"] {
+  --grain: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .42  0 0 0 0 .45  0 0 0 0 .48  0 0 0 .55 -.18'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  --cloth: #a7b4ba; --cloth-hi: #b7c3c8; --cloth-lo: #94a1a8;
+  --cloth-ink: #1d282f; --cloth-ink-2: #344249;
+  --cloth-groove: rgba(20,35,45,.3); --cloth-catch: rgba(245,250,252,.45);
+  --weave: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='f'><feTurbulence type='fractalNoise' baseFrequency='.06 .5' numOctaves='3' seed='7' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .7 -.26'/></filter><filter id='k'><feTurbulence type='fractalNoise' baseFrequency='.5 .06' numOctaves='3' seed='12' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .55 -.2'/></filter><rect width='100%' height='100%' filter='url(%23f)'/><rect width='100%' height='100%' filter='url(%23k)'/></svg>");
+  --paper: #f8f7f3; --paper-2: #f0efea; --paper-3: #e5e4de; --paper-edge: #cdcdc6; --card: #fcfcf9;
+  --ink: #1a1c1f; --ink-2: #484d53; --ink-3: #656a70;
+  --rule: #c4ccd3; --rule-soft: rgba(105,122,140,.28);
+  --rule-red: #d3a26a; --rule-red-soft: rgba(190,125,45,.42);
+  --green: #2a6a53; --green-wash: rgba(42,106,83,.1);
+  --red: #b0312a; --red-wash: rgba(176,49,42,.08);
+  --graphite: #686b6f;
+  --violet: #54479a; --violet-soft: rgba(84,71,154,.12);
+  --brass: #a8862f; --brass-hi: #e3c77e; --brass-lo: #7c5f1c;
+  --sepia: #8f5a1d;
+  --sel: rgba(26,28,31,.06); --hover: rgba(26,28,31,.04);
+  --shadow: 15,22,28; --grain-o: .4;
+  --lth-rel: #355f4c; --lth-rel-2: #1f3d30;
+  --lth-doc: #7b5333; --lth-doc-2: #4f3219;
+  --lth-kv: #36466a; --lth-kv-2: #1f2a45;
+  --lth-ana: #3f3f3c; --lth-ana-2: #232321;
+  --gilt: #e2c67d;
+  --wash-ana: rgba(96,150,104,.13);
+  --wash-ven: rgba(206,150,58,.14);
+  --wash-mag: rgba(84,130,186,.13);
+  --act-hi: #40454c; --act: #2b2f34; --act-lo: #212428; --act-ink: #f2f0e8; --act-gilt: #f2f0e8; --act-ts: 0 -1px 0 rgba(0,0,0,.4);
+  --kw: #253f69; --fn: #6c3866;
+  --raised-hi: #fcfcf9; --raised: #fcfcf9; --raised-2: #f0efea;
+}
+
+[data-style="registro"][data-theme="dark"][data-palette="3"] {
+  --grain: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .42  0 0 0 0 .45  0 0 0 0 .48  0 0 0 .55 -.18'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  --cloth: #141a21; --cloth-hi: #1b232c; --cloth-lo: #0e1318;
+  --cloth-ink: #dde3e7; --cloth-ink-2: #86939d;
+  --cloth-groove: rgba(0,0,0,.55); --cloth-catch: rgba(210,230,245,.06);
+  --weave: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='w'><feTurbulence type='fractalNoise' baseFrequency='.9 .2' numOctaves='2' seed='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .5 -.2'/></filter><filter id='v'><feTurbulence type='fractalNoise' baseFrequency='.2 .9' numOctaves='2' seed='8' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .8  0 0 0 0 .9  0 0 0 0 1  0 0 0 .3 -.12'/></filter><rect width='100%' height='100%' filter='url(%23w)'/><rect width='100%' height='100%' filter='url(%23v)'/></svg>");
+  --paper: #1b222b; --paper-2: #202833; --paper-3: #27303b; --paper-edge: #0a0e12; --card: #232c37;
+  --ink: #e7eae8; --ink-2: #a8b0b6; --ink-3: #8f99a1;
+  --rule: #2e3b4a; --rule-soft: rgba(110,140,170,.2);
+  --rule-red: #6c5435; --rule-red-soft: rgba(205,150,80,.34);
+  --green: #80c3a5; --green-wash: rgba(128,195,165,.1);
+  --red: #f08672; --red-wash: rgba(240,134,114,.1);
+  --graphite: #979ca1;
+  --violet: #ae9fe8; --violet-soft: rgba(174,159,232,.12);
+  --brass: #c9a855; --brass-hi: #ecd48f; --brass-lo: #876b27;
+  --sepia: #dba86b;
+  --sel: rgba(200,220,240,.07); --hover: rgba(231,234,232,.04);
+  --shadow: 0,0,0; --grain-o: .45;
+  --lth-rel: #3c6a55; --lth-rel-2: #213f32;
+  --lth-doc: #87603d; --lth-doc-2: #553a20;
+  --lth-kv: #45567d; --lth-kv-2: #26314f;
+  --lth-ana: #4d4d49; --lth-ana-2: #2a2a28;
+  --gilt: #e6cc86;
+  --wash-ana: rgba(110,170,120,.1);
+  --wash-ven: rgba(214,160,70,.1);
+  --wash-mag: rgba(100,150,210,.11);
+  --act-hi: #f1ecdf; --act: #e2dccb; --act-lo: #cfc8b4; --act-ink: #18202a; --act-gilt: #2a3542; --act-ts: 0 1px 0 rgba(255,255,255,.45);
+  --kw: #a9c1e2; --fn: #d3b2d9;
+  --raised-hi: #2c3642; --raised: #27303b; --raised-2: #252e39;
+}
+
+[data-style="registro"] {
+  --nd-chart-1: #2f6a55;
+  --nd-chart-2: #2f5288;
+  --nd-chart-3: #a8692a;
+  --nd-chart-4: #6b58a3;
+  --nd-chart-5: #4c8790;
+  --nd-chart-6: #a44a3e;
+}
+[data-style="registro"][data-theme="dark"] {
+  --nd-chart-1: #86b8a0;
+  --nd-chart-2: #94b0e0;
+  --nd-chart-3: #d9a86a;
+  --nd-chart-4: #b3a3e0;
+  --nd-chart-5: #84c0c6;
+  --nd-chart-6: #e2897a;
+}
+[data-style="registro"][data-palette="2"] {
+  --nd-chart-1: #2a4b74;
+  --nd-chart-2: #5b7a2f;
+  --nd-chart-3: #a65d22;
+  --nd-chart-4: #7a3e68;
+  --nd-chart-5: #2f7a78;
+  --nd-chart-6: #9c3f33;
+}
+[data-style="registro"][data-palette="2"][data-theme="dark"] {
+  --nd-chart-1: #9db8e0;
+  --nd-chart-2: #b0cb8f;
+  --nd-chart-3: #e0a870;
+  --nd-chart-4: #d6a7c6;
+  --nd-chart-5: #8ccac4;
+  --nd-chart-6: #ec8f7c;
+}
+[data-style="registro"][data-palette="3"] {
+  --nd-chart-1: #2b4f73;
+  --nd-chart-2: #2a6a53;
+  --nd-chart-3: #9a6222;
+  --nd-chart-4: #5a4b9a;
+  --nd-chart-5: #4f7a8a;
+  --nd-chart-6: #a8442f;
+}
+[data-style="registro"][data-palette="3"][data-theme="dark"] {
+  --nd-chart-1: #a0bde2;
+  --nd-chart-2: #80c3a5;
+  --nd-chart-3: #dba86b;
+  --nd-chart-4: #ae9fe8;
+  --nd-chart-5: #8fbccc;
+  --nd-chart-6: #f08672;
+}
+
+[data-style="registro"],
+[data-style="registro"] ::backdrop {
+  --nd-shade: 0 0 0;
+  --nd-light: 255 255 255;
+  --nd-glint: rgb(255 255 255);
+  --nd-dusk: rgb(0 0 0);
+  --nd-shade-accent: 20 40 30;
+  --nd-shade-danger: 60 10 5;
+  --nd-scrim: rgb(0 0 0 / 0.35);
+  --glint-paper: 255 253 245;
+  --glint-sheet: 255 250 235;
+  --glint-brass: 255 250 220;
+  --glint-brass-text: 255 245 200;
+  --shade-brass: 60 40 0;
+  --shade-ghost: 40 30 10;
+  --brass-day-hi: #f2e4b8;
+  --brass-day: #d8bd72;
+  --brass-day-lo: #a9893a;
+}

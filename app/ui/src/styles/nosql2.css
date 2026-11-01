@@ -1,0 +1,84 @@
+.cluster .cl-ok {
+  color: var(--nd-ok);
+}
+.cluster .cl-warn {
+  color: var(--nd-warn);
+}
+.cluster .cl-bad {
+  color: var(--nd-error);
+}
+.cluster .mon-big.cl-ok,
+.cluster .mon-big.cl-warn,
+.cluster .mon-big.cl-bad {
+  text-transform: lowercase;
+}
+.ddb-builder .dialog-body {
+  gap: 14px;
+}
+.ddb-attr {
+  margin-inline-start: 6px;
+  font-family: var(--nd-font-mono);
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--nd-ink-3);
+}
+.ddb-line {
+  display: grid;
+  grid-template-columns: 170px 1fr;
+  gap: 8px;
+  align-items: center;
+}
+.ddb-line.between {
+  grid-template-columns: 170px 1fr 1fr;
+}
+.ddb-line.filter {
+  grid-template-columns: 1fr 150px 1fr 32px;
+}
+.ddb-call {
+  margin: 0;
+  max-block-size: 220px;
+  overflow: auto;
+  resize: none;
+  white-space: pre;
+}
+.cluster-table td {
+  white-space: nowrap;
+}
+.cluster-table td:not(.srv-name) {
+  max-inline-size: 420px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+[data-style='registro'] .cluster .mon-big.cl-ok,
+[data-style='registro'] .cluster .mon-big.cl-warn,
+[data-style='registro'] .cluster .mon-big.cl-bad {
+  font-style: italic;
+}
+
+[data-style='tavola'] .cluster .mon-big.cl-ok,
+[data-style='tavola'] .cluster .mon-big.cl-warn,
+[data-style='tavola'] .cluster .mon-big.cl-bad {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+[data-style='banco'] .cluster .mon-big.cl-ok::before,
+[data-style='banco'] .cluster .mon-big.cl-warn::before,
+[data-style='banco'] .cluster .mon-big.cl-bad::before {
+  content: '';
+  display: inline-block;
+  inline-size: 0.5em;
+  block-size: 0.5em;
+  margin-inline-end: 0.35em;
+  vertical-align: middle;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 0 2px var(--nd-ink);
+}
+
+[data-style='listino'] .cluster .mon-big.cl-ok,
+[data-style='listino'] .cluster .mon-big.cl-warn,
+[data-style='listino'] .cluster .mon-big.cl-bad {
+  text-transform: uppercase;
+}

@@ -1,0 +1,21 @@
+[package]
+name = "nd-net"
+edition.workspace = true
+version.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+rust-version.workspace = true
+publish = false
+
+[dependencies]
+nd-driver = { path = "../nd-driver" }
+russh = "0.65"
+tokio.workspace = true
+tracing.workspace = true
+serde.workspace = true
+specta.workspace = true
+thiserror.workspace = true
+
+[lints]
+workspace = true

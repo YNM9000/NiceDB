@@ -1,0 +1,12 @@
+.tmp*/
+node_modules/
+*.log
+target/
+node_modules/
+app/ui/dist/
+app/ui/src/paraglide/
+app/src-tauri/gen/
+target-*/
+dist/
+target-cross/
+.cache/

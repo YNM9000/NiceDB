@@ -1,0 +1,25 @@
+[package]
+name = "nd-drv-dynamo"
+edition.workspace = true
+version.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+rust-version.workspace = true
+publish = false
+
+[dependencies]
+nd-driver = { path = "../nd-driver" }
+nd-http = { path = "../nd-http" }
+async-trait.workspace = true
+bytes = "1"
+hex = "0.4"
+hmac = "0.12"
+serde_json.workspace = true
+sha2 = "0.10"
+tokio.workspace = true
+tracing.workspace = true
+zeroize = "1"
+
+[lints]
+workspace = true

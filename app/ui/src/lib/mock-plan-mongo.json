@@ -1,0 +1,139 @@
+{
+  "at": 1793091000000,
+  "dialect": null,
+  "elapsed_ms": 19.0,
+  "execution": {
+    "kind": "measured"
+  },
+  "findings": [
+    {
+      "column": "data",
+      "factor": null,
+      "kb": 13181.005859375,
+      "kept": null,
+      "node": 0,
+      "rows": 17931.0,
+      "rule": "in_memory_sort",
+      "severity": "medium",
+      "share": 0.42105263157894735,
+      "suggestion": "{ \"createIndexes\": \"ordini\", \"indexes\": [{ \"key\": { \"data\": -1, \"totale\": 1 }, \"name\": \"data_-1_totale_1\" }] }",
+      "table": "ordini",
+      "wrapper": null
+    },
+    {
+      "column": "totale",
+      "factor": null,
+      "kb": null,
+      "kept": 17931.0,
+      "node": 1,
+      "rows": 20000.0,
+      "rule": "seq_scan",
+      "severity": "low",
+      "share": 0.05263157894736842,
+      "suggestion": "{ \"createIndexes\": \"ordini\", \"indexes\": [{ \"key\": { \"data\": -1, \"totale\": 1 }, \"name\": \"data_-1_totale_1\" }] }",
+      "table": "ordini",
+      "wrapper": null
+    }
+  ],
+  "from": 0,
+  "plan": {
+    "analyzed": true,
+    "engine": "mongodb",
+    "nodes": [
+      {
+        "alias": null,
+        "buffers": null,
+        "children": [
+          1
+        ],
+        "condition": null,
+        "depth": 0,
+        "details": [
+          {
+            "key": "totalDataSizeSorted",
+            "value": "13497350"
+          },
+          {
+            "key": "sortPattern",
+            "value": "{\"data\":-1}"
+          },
+          {
+            "key": "nReturned",
+            "value": "17931"
+          },
+          {
+            "key": "totalKeysExamined",
+            "value": "0"
+          },
+          {
+            "key": "totalDocsExamined",
+            "value": "20000"
+          }
+        ],
+        "est_examined": null,
+        "est_rows": null,
+        "filter": null,
+        "id": 0,
+        "index": null,
+        "kind": "sort",
+        "loops": null,
+        "op": "SORT",
+        "parallel": false,
+        "parent": null,
+        "relation": null,
+        "rows": 17931.0,
+        "rows_removed": null,
+        "self_ms": 7.0,
+        "spill": null,
+        "startup_cost": null,
+        "time_ms": 8.0,
+        "total_cost": null,
+        "width": null
+      },
+      {
+        "alias": null,
+        "buffers": null,
+        "children": [],
+        "condition": null,
+        "depth": 1,
+        "details": [
+          {
+            "key": "docsExamined",
+            "value": "20000"
+          },
+          {
+            "key": "direction",
+            "value": "forward"
+          }
+        ],
+        "est_examined": null,
+        "est_rows": null,
+        "filter": "{\"totale\":{\"$gt\":{\"$numberDecimal\":\"500\"}}}",
+        "id": 1,
+        "index": null,
+        "kind": "full_scan",
+        "loops": null,
+        "op": "COLLSCAN",
+        "parallel": false,
+        "parent": 0,
+        "relation": "ordini",
+        "rows": 17931.0,
+        "rows_removed": 2069.0,
+        "self_ms": 1.0,
+        "spill": null,
+        "startup_cost": null,
+        "time_ms": 1.0,
+        "total_cost": null,
+        "width": null
+      }
+    ],
+    "planning_ms": null,
+    "raw": "{\n \"explainVersion\": \"1\",\n \"queryPlanner\": {\n  \"namespace\": \"gestionale.ordini\",\n  \"indexFilterSet\": false,\n  \"parsedQuery\": {\n   \"totale\": {\n    \"$gt\": {\n     \"$numberDecimal\": \"500\"\n    }\n   }\n  },\n  \"queryHash\": \"99F018B8\",\n  \"planCacheKey\": \"99F018B8\",\n  \"optimizationTimeMillis\": 0,\n  \"maxIndexedOrSolutionsReached\": false,\n  \"maxIndexedAndSolutionsReached\": false,\n  \"maxScansToExplodeReached\": false,\n  \"winningPlan\": {\n   \"stage\": \"SORT\",\n   \"sortPattern\": {\n    \"data\": -1\n   },\n   \"memLimit\": 104857600,\n   \"type\": \"simple\",\n   \"inputStage\": {\n    \"stage\": \"COLLSCAN\",\n    \"filter\": {\n     \"totale\": {\n      \"$gt\": {\n       \"$numberDecimal\": \"500\"\n      }\n     }\n    },\n    \"direction\": \"forward\"\n   }\n  },\n  \"rejectedPlans\": []\n },\n \"executionStats\": {\n  \"executionSuccess\": true,\n  \"nReturned\": 17931,\n  \"executionTimeMillis\": 19,\n  \"totalKeysExamined\": 0,\n  \"totalDocsExamined\": 20000,\n  \"executionStages\": {\n   \"stage\": \"SORT\",\n   \"nReturned\": 17931,\n   \"executionTimeMillisEstimate\": 8,\n   \"works\": 37933,\n   \"advanced\": 17931,\n   \"needTime\": 20001,\n   \"needYield\": 0,\n   \"saveState\": 37,\n   \"restoreState\": 37,\n   \"isEOF\": 1,\n   \"sortPattern\": {\n    \"data\": -1\n   },\n   \"memLimit\": 104857600,\n   \"type\": \"simple\",\n   \"totalDataSizeSorted\": 13497350,\n   \"usedDisk\": false,\n   \"spills\": 0,\n   \"spilledDataStorageSize\": 0,\n   \"inputStage\": {\n    \"stage\": \"COLLSCAN\",\n    \"filter\": {\n     \"totale\": {\n      \"$gt\": {\n       \"$numberDecimal\": \"500\"\n      }\n     }\n    },\n    \"nReturned\": 17931,\n    \"executionTimeMillisEstimate\": 1,\n    \"works\": 20001,\n    \"advanced\": 17931,\n    \"needTime\": 2069,\n    \"needYield\": 0,\n    \"saveState\": 37,\n    \"restoreState\": 37,\n    \"isEOF\": 1,\n    \"direction\": \"forward\",\n    \"docsExamined\": 20000\n   }\n  }\n },\n \"command\": {\n  \"find\": \"ordini\",\n  \"filter\": {\n   \"totale\": {\n    \"$gt\": {\n     \"$numberDecimal\": \"500\"\n    }\n   }\n  },\n  \"sort\": {\n   \"data\": -1\n  },\n  \"$db\": \"gestionale\"\n },\n \"ok\": 1\n}\n",
+    "slowest": 0,
+    "total_ms": 19.0,
+    "worst_estimate": null
+  },
+  "sql": "{ \"find\": \"ordini\", \"filter\": { \"totale\": { \"$gt\": { \"$numberDecimal\": \"500\" } } }, \"sort\": { \"data\": -1 } }",
+  "to": 108,
+  "unreadable": null
+}

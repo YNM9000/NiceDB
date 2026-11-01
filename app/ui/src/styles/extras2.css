@@ -1,0 +1,155 @@
+:is(.kv-type, .kv-badge, .vp-badge, .vj-type, .model-tag, .own-tag, .gen-badge, .tool-tag, .wlock-stamp, .cw-stamp, .dry-kind) {
+  flex: none;
+  white-space: nowrap;
+}
+
+.float.nd-tip {
+  z-index: 1100;
+  max-width: min(360px, calc(100vw - 12px));
+  padding: 4px 8px;
+  overflow: hidden;
+  font: 400 12px/1.35 var(--nd-font-ui);
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+  pointer-events: none;
+  animation: nd-tip-in 120ms ease-out;
+}
+@keyframes nd-tip-in {
+  from {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .float.nd-tip {
+    animation: none;
+  }
+}
+
+[data-style='registro'] .float.nd-tip {
+  padding: 4px 9px 5px;
+  border-radius: 2px;
+  color: var(--nd-ink-2);
+  font: italic 400 12.5px/1.35 var(--nd-font-display);
+}
+
+[data-style='tavola'] .float.nd-tip {
+  padding: 3px 7px;
+  box-shadow: 0 0 0 1px var(--nd-ink), 2px 2px 0 color-mix(in srgb, var(--nd-ink) 12%, transparent);
+  font: 400 11.5px/1.35 var(--nd-font-ui);
+  letter-spacing: 0.01em;
+}
+
+[data-style='banco'] .float.nd-tip {
+  padding: 4px 9px;
+  border-radius: 4px;
+  font: 500 12px/1.35 var(--nd-font-ui);
+}
+
+[data-style='listino'] .float.nd-tip {
+  padding: 2px 6px;
+  border-radius: 0;
+  font: 400 11.5px/16px var(--nd-font-ui);
+}
+
+.dz-idx .dz-row {
+  grid-template-columns: minmax(150px, 0.7fr) minmax(240px, 2fr) minmax(120px, 0.9fr) 56px 30px;
+}
+.dz-chip.expr .dz-part {
+  font-style: italic;
+}
+.dz-chip.expr {
+  box-shadow: inset 0 0 0 1px var(--nd-rule), inset 3px 0 0 var(--nd-syn-function);
+}
+.dz-dir {
+  height: 18px;
+  margin-left: 4px;
+  padding: 0 4px;
+  border: 0;
+  border-radius: 2px;
+  background: transparent;
+  color: var(--nd-ink-3);
+  font: 600 9.5px/18px var(--nd-font-mono);
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  box-shadow: inset 0 0 0 1px var(--nd-rule);
+}
+.dz-dir:hover {
+  color: var(--nd-ink);
+}
+.dz-dir[aria-pressed='true'] {
+  color: var(--nd-accent-text);
+  box-shadow: inset 0 0 0 1px var(--nd-accent);
+}
+.dz-dir:focus-visible {
+  outline: 2px solid var(--nd-focus);
+  outline-offset: 1px;
+}
+.dz-expr-in.dz-in {
+  width: 150px;
+  height: 24px;
+}
+.dz-off {
+  color: var(--nd-ink-3);
+}
+
+[data-style='tavola'] .dz-dir {
+  border-radius: 0;
+  font-family: var(--nd-font-display);
+}
+[data-style='tavola'] .dz-dir[aria-pressed='true'] {
+  background: var(--nd-ink);
+  color: var(--nd-surface);
+}
+[data-style='banco'] .dz-dir {
+  border-radius: 3px;
+  background: var(--nd-surface);
+  box-shadow: inset 0 0 0 1px var(--nd-rule), 0 1px 0 var(--nd-rule);
+}
+[data-style='banco'] .dz-dir[aria-pressed='true'] {
+  transform: translateY(1px);
+  box-shadow: inset 0 0 0 1px var(--nd-accent);
+}
+[data-style='registro'] .dz-dir {
+  font-family: var(--nd-font-ui);
+  font-variant: small-caps;
+  letter-spacing: 0.06em;
+  text-transform: lowercase;
+}
+[data-style='listino'] .dz-dir {
+  height: 16px;
+  border-radius: 0;
+  line-height: 16px;
+}
+[data-style='listino'] .dz-dir[aria-pressed='true'] {
+  box-shadow: inset 2px 0 0 var(--nd-accent);
+}
+
+.chart-axis {
+  display: grid;
+  gap: 2px;
+  margin-top: 4px;
+  padding-top: 4px;
+  border-top: 1px solid var(--nd-rule);
+}
+.chart-axis label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 3px 4px;
+  border-radius: 3px;
+  font-size: 12.5px;
+  color: var(--nd-ink);
+}
+.chart-axis label:hover:not(.off) {
+  background: var(--nd-sel);
+}
+.chart-axis label.off {
+  color: var(--nd-ink-3);
+}
+[data-style='tavola'] .chart-axis label,
+[data-style='listino'] .chart-axis label {
+  border-radius: 0;
+}
+[data-style='listino'] .chart-axis label {
+  font: 400 12px/1.2 var(--nd-font-ui);
+}

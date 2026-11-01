@@ -1,0 +1,137 @@
+{
+  "snapshot": "2026-11-01",
+  "note": "Snapshot built into the app: it does not update itself and does not replace the vendor's advisories.",
+  "products": {
+    "postgresql": {
+      "label": "PostgreSQL",
+      "verified": true,
+      "sources": ["https://www.postgresql.org/support/security/", "https://www.postgresql.org/support/versioning/"],
+      "series": {
+        "12": { "eol": "2024-11-14", "advisories": [] },
+        "13": { "eol": "2025-11-13", "advisories": [] },
+        "14": { "eol": "2026-11-12", "advisories": [
+          { "cve": "CVE-2026-19385", "fixed": "14.24", "severity": "high", "summary": "pg_dump: buffer overflow, code execution on the client" },
+          { "cve": "CVE-2026-18408", "fixed": "14.24", "severity": "high", "summary": "psql: a superuser of the origin server runs code on the client" },
+          { "cve": "CVE-2026-16239", "fixed": "14.24", "severity": "high", "summary": "Type confusion with CLOSE and DECLARE on cursors, code execution on the server" },
+          { "cve": "CVE-2026-15742", "fixed": "14.24", "severity": "high", "summary": "fuzzystrmatch: write to arbitrary addresses through integer overflow" },
+          { "cve": "CVE-2026-15741", "fixed": "14.24", "severity": "high", "summary": "SQL injection in the reconstruction of the EXTRACT argument" },
+          { "cve": "CVE-2026-14680", "fixed": "14.24", "severity": "high", "summary": "Type confusion with internal arguments" },
+          { "cve": "CVE-2026-18024", "fixed": "14.24", "severity": "medium", "summary": "ascii() reads past the end of the buffer" },
+          { "cve": "CVE-2026-16241", "fixed": "14.24", "severity": "low", "summary": "ECPG: integer underflow that can crash the client" }
+        ] },
+        "15": { "eol": "2027-11-11", "advisories": [
+          { "cve": "CVE-2026-19385", "fixed": "15.19", "severity": "high", "summary": "pg_dump: buffer overflow, code execution on the client" },
+          { "cve": "CVE-2026-18408", "fixed": "15.19", "severity": "high", "summary": "psql: a superuser of the origin server runs code on the client" },
+          { "cve": "CVE-2026-16239", "fixed": "15.19", "severity": "high", "summary": "Type confusion with CLOSE and DECLARE on cursors, code execution on the server" },
+          { "cve": "CVE-2026-15742", "fixed": "15.19", "severity": "high", "summary": "fuzzystrmatch: write to arbitrary addresses through integer overflow" },
+          { "cve": "CVE-2026-15741", "fixed": "15.19", "severity": "high", "summary": "SQL injection in the reconstruction of the EXTRACT argument" },
+          { "cve": "CVE-2026-14680", "fixed": "15.19", "severity": "high", "summary": "Type confusion with internal arguments" },
+          { "cve": "CVE-2026-18024", "fixed": "15.19", "severity": "medium", "summary": "ascii() reads past the end of the buffer" },
+          { "cve": "CVE-2026-16241", "fixed": "15.19", "severity": "low", "summary": "ECPG: integer underflow that can crash the client" }
+        ] },
+        "16": { "eol": "2028-11-09", "advisories": [
+          { "cve": "CVE-2026-19385", "fixed": "16.15", "severity": "high", "summary": "pg_dump: buffer overflow, code execution on the client" },
+          { "cve": "CVE-2026-18408", "fixed": "16.15", "severity": "high", "summary": "psql: a superuser of the origin server runs code on the client" },
+          { "cve": "CVE-2026-16239", "fixed": "16.15", "severity": "high", "summary": "Type confusion with CLOSE and DECLARE on cursors, code execution on the server" },
+          { "cve": "CVE-2026-15742", "fixed": "16.15", "severity": "high", "summary": "fuzzystrmatch: write to arbitrary addresses through integer overflow" },
+          { "cve": "CVE-2026-15741", "fixed": "16.15", "severity": "high", "summary": "SQL injection in the reconstruction of the EXTRACT argument" },
+          { "cve": "CVE-2026-14680", "fixed": "16.15", "severity": "high", "summary": "Type confusion with internal arguments" },
+          { "cve": "CVE-2026-18024", "fixed": "16.15", "severity": "medium", "summary": "ascii() reads past the end of the buffer" },
+          { "cve": "CVE-2026-16241", "fixed": "16.15", "severity": "low", "summary": "ECPG: integer underflow that can crash the client" }
+        ] },
+        "17": { "eol": "2029-11-08", "advisories": [
+          { "cve": "CVE-2026-19385", "fixed": "17.11", "severity": "high", "summary": "pg_dump: buffer overflow, code execution on the client" },
+          { "cve": "CVE-2026-18408", "fixed": "17.11", "severity": "high", "summary": "psql: a superuser of the origin server runs code on the client" },
+          { "cve": "CVE-2026-16239", "fixed": "17.11", "severity": "high", "summary": "Type confusion with CLOSE and DECLARE on cursors, code execution on the server" },
+          { "cve": "CVE-2026-15742", "fixed": "17.11", "severity": "high", "summary": "fuzzystrmatch: write to arbitrary addresses through integer overflow" },
+          { "cve": "CVE-2026-15741", "fixed": "17.11", "severity": "high", "summary": "SQL injection in the reconstruction of the EXTRACT argument" },
+          { "cve": "CVE-2026-14680", "fixed": "17.11", "severity": "high", "summary": "Type confusion with internal arguments" },
+          { "cve": "CVE-2026-18024", "fixed": "17.11", "severity": "medium", "summary": "ascii() reads past the end of the buffer" },
+          { "cve": "CVE-2026-14681", "fixed": "17.11", "severity": "medium", "summary": "GSSAPI encryption not enforced when combined with SSL" },
+          { "cve": "CVE-2026-16241", "fixed": "17.11", "severity": "low", "summary": "ECPG: integer underflow that can crash the client" }
+        ] },
+        "18": { "eol": "2030-11-14", "advisories": [
+          { "cve": "CVE-2026-19385", "fixed": "18.6", "severity": "high", "summary": "pg_dump: buffer overflow, code execution on the client" },
+          { "cve": "CVE-2026-18408", "fixed": "18.6", "severity": "high", "summary": "psql: a superuser of the origin server runs code on the client" },
+          { "cve": "CVE-2026-16239", "fixed": "18.6", "severity": "high", "summary": "Type confusion with CLOSE and DECLARE on cursors, code execution on the server" },
+          { "cve": "CVE-2026-16238", "fixed": "18.6", "severity": "high", "summary": "Type confusion in pg_restore_attribute_stats()" },
+          { "cve": "CVE-2026-15742", "fixed": "18.6", "severity": "high", "summary": "fuzzystrmatch: write to arbitrary addresses through integer overflow" },
+          { "cve": "CVE-2026-15741", "fixed": "18.6", "severity": "high", "summary": "SQL injection in the reconstruction of the EXTRACT argument" },
+          { "cve": "CVE-2026-14680", "fixed": "18.6", "severity": "high", "summary": "Type confusion with internal arguments" },
+          { "cve": "CVE-2026-18024", "fixed": "18.6", "severity": "medium", "summary": "ascii() reads past the end of the buffer" },
+          { "cve": "CVE-2026-14681", "fixed": "18.6", "severity": "medium", "summary": "GSSAPI encryption not enforced when combined with SSL" },
+          { "cve": "CVE-2026-16241", "fixed": "18.6", "severity": "low", "summary": "ECPG: integer underflow that can crash the client" }
+        ] }
+      }
+    },
+    "mysql": {
+      "label": "MySQL",
+      "verified": true,
+      "checked": "2026-11-01: end of extended support from Oracle's Lifetime Support Policy (month, here its last day); 8.0 moved to Sustaining Support on 2026-04-21 per the EOL notice; 9.7 LTS with 5 years of premier and 3 of extended support. No CVEs listed: MySQL advisories come only in Oracle's quarterly Critical Patch Updates.",
+      "sources": [
+        "https://www.mysql.com/support/eol-notice.html",
+        "https://www.oracle.com/us/support/library/lifetime-support-technology-069183.pdf",
+        "https://blogs.oracle.com/mysql/post/introducing-mysql-innovation-and-longterm-support-lts-versions",
+        "https://www.oracle.com/security-alerts/"
+      ],
+      "series": {
+        "5.7": { "eol": "2023-10-31", "advisories": [] },
+        "8.0": { "eol": "2026-04-30", "advisories": [] },
+        "8.4": { "eol": "2032-04-30", "advisories": [] },
+        "9.7": { "eol": "2034-04-30", "advisories": [] }
+      }
+    },
+    "mariadb": {
+      "label": "MariaDB",
+      "verified": true,
+      "sources": ["https://mariadb.org/about/#maintenance-policy"],
+      "series": {
+        "10.4": { "eol": "2024-06-18", "advisories": [] },
+        "10.5": { "eol": "2025-06-24", "advisories": [] },
+        "10.6": { "eol": "2026-07-06", "advisories": [] },
+        "10.11": { "eol": "2028-02-16", "advisories": [] },
+        "11.4": { "eol": "2029-05-29", "advisories": [] },
+        "11.8": { "eol": "2028-06-04", "advisories": [] },
+        "12.3": { "eol": "2029-06-12", "advisories": [] }
+      }
+    },
+    "sqlserver": {
+      "label": "SQL Server",
+      "verified": true,
+      "checked": "2026-11-01: last day of extended support from each version's Microsoft Lifecycle page (the end is at 6:59:59 PT the following day). The paid Extended Security Updates for 2014 and 2016 do not count as support.",
+      "sources": [
+        "https://learn.microsoft.com/lifecycle/products/sql-server-2012",
+        "https://learn.microsoft.com/lifecycle/products/sql-server-2014",
+        "https://learn.microsoft.com/lifecycle/products/sql-server-2016",
+        "https://learn.microsoft.com/lifecycle/products/sql-server-2017",
+        "https://learn.microsoft.com/lifecycle/products/sql-server-2019",
+        "https://learn.microsoft.com/lifecycle/products/sql-server-2022",
+        "https://learn.microsoft.com/lifecycle/products/sql-server-2025",
+        "https://msrc.microsoft.com/update-guide"
+      ],
+      "series": {
+        "11": { "eol": "2022-07-12", "advisories": [] },
+        "12": { "eol": "2024-07-09", "advisories": [] },
+        "13": { "eol": "2026-07-14", "advisories": [] },
+        "14": { "eol": "2027-10-12", "advisories": [] },
+        "15": { "eol": "2030-01-08", "advisories": [] },
+        "16": { "eol": "2033-01-11", "advisories": [] },
+        "17": { "eol": "2036-01-06", "advisories": [] }
+      }
+    },
+    "sqlite": {
+      "label": "SQLite",
+      "verified": true,
+      "sources": ["https://www.sqlite.org/cves.html"],
+      "series": {
+        "3": { "eol": null, "advisories": [
+          { "cve": "CVE-2026-11822", "fixed": "3.53.2", "severity": "high", "summary": "FTS5: out-of-bounds write when the user can run arbitrary SQL and defensive mode is off" },
+          { "cve": "CVE-2025-7709", "fixed": "3.50.3", "severity": "medium", "summary": "FTS5: a corrupt index causes out-of-bounds memory access; needs control of the file's content" },
+          { "cve": "CVE-2025-6965", "fixed": "3.50.2", "severity": "high", "summary": "Integer overflow with out-of-bounds read, reachable through injected SQL" },
+          { "cve": "CVE-2025-3277", "fixed": "3.49.1", "severity": "medium", "summary": "concat_ws(): write past the end of the buffer with very large separators" },
+          { "cve": "CVE-2024-0232", "fixed": "3.43.2", "severity": "low", "summary": "Use-after-free in the JSON parser, possible crash" }
+        ] }
+      }
+    }
+  }
+}

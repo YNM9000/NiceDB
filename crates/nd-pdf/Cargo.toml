@@ -1,0 +1,19 @@
+[package]
+name = "nd-pdf"
+edition.workspace = true
+version.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+rust-version.workspace = true
+publish = false
+
+[dependencies]
+krilla = { version = "0.8", default-features = false, features = ["simple-text"] }
+rustybuzz = "0.20"
+serde.workspace = true
+specta.workspace = true
+thiserror.workspace = true
+
+[lints]
+workspace = true

@@ -1,0 +1,18 @@
+[package]
+name = "nd-drv-sqlite"
+edition.workspace = true
+version.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+rust-version.workspace = true
+publish = false
+
+[dependencies]
+nd-driver = { path = "../nd-driver" }
+async-trait.workspace = true
+rusqlite.workspace = true
+tokio.workspace = true
+
+[lints]
+workspace = true

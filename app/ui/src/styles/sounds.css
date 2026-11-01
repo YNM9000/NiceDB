@@ -1,0 +1,33 @@
+.setting-rows > .setting.row + .sound-hint {
+  grid-column: 2;
+  margin-top: -6px;
+}
+.sound-board {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+}
+.sound-keys {
+  flex-wrap: wrap;
+}
+.seg .sound-key.quiet {
+  color: var(--nd-ink-3);
+}
+
+[data-style='registro'] .seg .sound-key.quiet {
+  font-style: italic;
+}
+[data-style='banco'] .seg .sound-key.quiet {
+  color: color-mix(in srgb, var(--nd-ink-3) 60%, transparent);
+}
+[data-style='tavola'] .seg .sound-key.quiet {
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+}
+
+@container app (max-width: 860px) {
+  .setting-rows > .setting.row + .sound-hint {
+    grid-column: 1;
+    margin-top: 0;
+  }
+}

@@ -1,0 +1,1 @@
+ALTER TABLE connections ADD COLUMN session TEXT NOT NULL DEFAULT '{}';

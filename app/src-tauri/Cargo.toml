@@ -1,0 +1,54 @@
+[package]
+name = "nicedb-app"
+edition.workspace = true
+version.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+rust-version.workspace = true
+publish = false
+
+[lib]
+name = "nicedb_app"
+path = "src/lib.rs"
+
+[[bin]]
+name = "nicedb"
+path = "src/main.rs"
+
+[features]
+default = ["custom-protocol"]
+custom-protocol = ["tauri/custom-protocol"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+nd-store = { path = "../../crates/nd-store" }
+nd-core = { path = "../../crates/nd-core" }
+nd-pdf = { path = "../../crates/nd-pdf" }
+nd-driver = { path = "../../crates/nd-driver" }
+nd-net = { path = "../../crates/nd-net" }
+nd-secrets = { path = "../../crates/nd-secrets" }
+nd-sql = { path = "../../crates/nd-sql" }
+tauri-plugin-dialog = "2"
+tauri-plugin-opener = "2"
+dirs = "7"
+minisign-verify = "0.3"
+semver = "1"
+serde_json.workspace = true
+ureq = { version = "3.5", default-features = false, features = ["rustls"] }
+zip = { version = "9", default-features = false, features = ["deflate"] }
+base64 = "0.22"
+tokio.workspace = true
+tauri = { version = "2", features = [] }
+serde.workspace = true
+specta.workspace = true
+specta-typescript.workspace = true
+tauri-specta.workspace = true
+thiserror.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+
+[lints]
+workspace = true

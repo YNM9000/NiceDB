@@ -1,0 +1,21 @@
+[package]
+name = "nd-drv-libsql"
+edition.workspace = true
+version.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+rust-version.workspace = true
+publish = false
+
+[dependencies]
+nd-driver = { path = "../nd-driver" }
+nd-drv-sqlite = { path = "../nd-drv-sqlite" }
+async-trait.workspace = true
+hyper = { version = "=0.14.32", default-features = false, features = ["client", "runtime"] }
+hyper-rustls = { version = "=0.25.0", default-features = false, features = ["native-tokio", "http1"] }
+libsql = { version = "0.10", default-features = false, features = ["remote", "tls"] }
+tokio.workspace = true
+
+[lints]
+workspace = true

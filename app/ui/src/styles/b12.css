@@ -1,0 +1,429 @@
+.ndsel.mon-every {
+  min-width: 112px;
+}
+.mon {
+  padding-top: 2px;
+}
+.mon-flush {
+  margin-inline: 0;
+}
+.mon-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+}
+.mon-tile {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  min-width: 0;
+  padding: 12px 14px 13px;
+  border-radius: 6px;
+  background: var(--nd-raised);
+  box-shadow: inset 0 0 0 1px var(--nd-rule);
+}
+.mon-tile p {
+  margin: 0;
+}
+.mon-value {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  min-width: 0;
+}
+.mon-big {
+  font: 500 24px/1.1 var(--nd-font-display);
+  font-variant-numeric: tabular-nums;
+  color: var(--nd-ink);
+  white-space: nowrap;
+}
+.mon-big.warn {
+  color: var(--nd-warn);
+}
+.mon-big.bad {
+  color: var(--nd-error);
+}
+.mon-big.quiet {
+  color: var(--nd-ink-3);
+}
+.mon-of {
+  font-size: 12px;
+  color: var(--nd-ink-3);
+}
+.mon-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 12px;
+  font-size: 11.5px;
+  color: var(--nd-ink-2);
+}
+.mon-facts .warn {
+  color: var(--nd-warn);
+}
+.mon-facts .bad {
+  color: var(--nd-error);
+}
+.mon-gap,
+.mon-calm {
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--nd-ink-3);
+}
+.mon-gap.err {
+  color: var(--nd-error);
+}
+.mon-tile .mon-gap {
+  font-size: 12px;
+}
+.mon-off {
+  display: grid;
+  gap: 4px;
+  max-width: 82ch;
+  margin-bottom: 8px;
+  padding: 10px 12px;
+  border-radius: 5px;
+  background: color-mix(in srgb, var(--nd-warn) 8%, transparent);
+  box-shadow: inset 2px 0 0 var(--nd-warn);
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--nd-ink);
+}
+.mon-off.soft {
+  background: none;
+  box-shadow: inset 2px 0 0 var(--nd-rule);
+}
+.mon-off p {
+  margin: 0;
+}
+.mon-off .hint {
+  font-size: 12px;
+  color: var(--nd-ink-2);
+}
+.tool-table:is(.mon-tx, .mon-slow) .query {
+  max-width: 0;
+  width: 55%;
+}
+.tool-table:is(.mon-tx, .mon-slow) .query code {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font: 11.5px/1.5 var(--nd-font-mono);
+  color: var(--nd-ink);
+}
+.mon-tx tr.warn .mon-age {
+  color: var(--nd-warn);
+  font-weight: 600;
+}
+.mon-tx tr.bad .mon-age {
+  color: var(--nd-error);
+  font-weight: 600;
+}
+.mon-dbs {
+  max-width: 640px;
+}
+.mon-dbs tr.current td:first-child {
+  font-weight: 600;
+}
+.mon-explain {
+  height: 24px;
+  padding: 0 8px;
+  gap: 5px;
+  font-size: 12px;
+}
+
+.lock-tree {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid color-mix(in srgb, var(--nd-rule) 70%, transparent);
+}
+.lock-row {
+  display: grid;
+  grid-template-columns: auto minmax(120px, 190px) minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  min-height: 40px;
+  padding: 4px 8px 4px 10px;
+  border-bottom: 1px solid color-mix(in srgb, var(--nd-rule) 70%, transparent);
+  font-size: 12.5px;
+}
+.lock-row.head {
+  background: color-mix(in srgb, var(--nd-error) 6%, transparent);
+  box-shadow: inset 3px 0 0 var(--nd-error);
+}
+.lock-guides {
+  display: flex;
+  align-self: stretch;
+  margin-block: -4px;
+}
+.lock-guides i {
+  position: relative;
+  width: 18px;
+}
+.lock-guides .rail.on::before,
+.lock-guides .elbow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 8px;
+  border-left: 1px solid var(--nd-ink-3);
+}
+.lock-guides .elbow.last::before {
+  bottom: 50%;
+}
+.lock-guides .elbow::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 8px;
+  width: 9px;
+  border-top: 1px solid var(--nd-ink-3);
+}
+.lock-who {
+  display: grid;
+  gap: 1px;
+  min-width: 0;
+}
+.lock-id {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--nd-ink);
+}
+.lock-user {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--nd-ink-2);
+}
+.lock-user .sub {
+  color: var(--nd-ink-3);
+}
+.lock-what {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+.lock-what code {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font: 11.5px/1.5 var(--nd-font-mono);
+  color: var(--nd-ink);
+}
+.lock-what .sub {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 11px;
+  color: var(--nd-ink-3);
+}
+.lock-row.head .lock-what .sub {
+  color: var(--nd-error);
+}
+.lock-act .icon-btn {
+  display: inline-grid;
+  width: 26px;
+  height: 26px;
+}
+.btn.lock-kill {
+  height: 26px;
+  padding: 0 10px;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--nd-error);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--nd-error) 45%, transparent);
+}
+.btn.lock-kill:not(:disabled):hover {
+  background: color-mix(in srgb, var(--nd-error) 10%, transparent);
+  color: var(--nd-error);
+}
+.tool-table + .lock-tree,
+.lock-tree + .tool-locks {
+  margin-top: 8px;
+}
+
+[data-style='registro'] .mon-tile {
+  background: var(--card);
+  box-shadow: 0 0 0 0.5px rgba(var(--shadow), 0.35), 0 1px 2px rgba(var(--shadow), 0.16);
+}
+[data-style='registro'] .mon-big {
+  font: 500 27px/1.1 var(--serif);
+}
+[data-style='registro'] .mon-tile .caps {
+  font: italic 500 14px/1.2 var(--serif);
+  letter-spacing: 0;
+  text-transform: none;
+}
+[data-style='registro'] .lock-row.head {
+  background: color-mix(in srgb, var(--red) 5%, var(--card));
+}
+[data-style='registro'] .lock-what .sub {
+  font: italic 12px/1.4 var(--serif);
+}
+[data-style='registro'] .mon-off {
+  font-family: var(--serif);
+  font-size: 13.5px;
+}
+
+[data-style='tavola'] .mon-tile,
+[data-style='tavola'] .mon-off,
+[data-style='tavola'] .btn.lock-kill,
+[data-style='tavola'] .mon-explain {
+  border-radius: 0;
+}
+[data-style='tavola'] .mon-tile {
+  background: none;
+  box-shadow: inset 0 0 0 1px var(--rule-2);
+}
+[data-style='tavola'] .mon-big {
+  font: 600 24px/1.1 var(--cond);
+  letter-spacing: 0.02em;
+}
+[data-style='tavola'] .lock-row.head {
+  background: repeating-linear-gradient(135deg, color-mix(in srgb, var(--nd-error) 9%, transparent) 0 1px, transparent 1px 6px);
+}
+[data-style='tavola'] .lock-guides .rail.on::before,
+[data-style='tavola'] .lock-guides .elbow::before,
+[data-style='tavola'] .lock-guides .elbow::after {
+  border-color: var(--ink-2);
+}
+[data-style='tavola'] .mon-off {
+  background: none;
+  box-shadow: inset 0 0 0 1px var(--rule-2), inset 3px 0 0 var(--nd-warn);
+}
+
+[data-style='banco'] .mon-tile {
+  background: linear-gradient(180deg, var(--face), var(--tile));
+  box-shadow: inset 0 1px 0 var(--hi), 0 0 0 1px var(--seam), 0 2px 0 0 var(--seam-dk);
+}
+[data-style='banco'] .mon-big {
+  font: 600 22px/1.1 var(--mono);
+}
+[data-style='banco'] .lock-row.head {
+  background: color-mix(in srgb, var(--nd-error) 8%, var(--tile));
+}
+[data-style='banco'] .btn.lock-kill {
+  border-radius: 13px;
+  background: linear-gradient(var(--tile), var(--tile-2));
+  box-shadow: inset 0 1px 0 var(--hi), 0 0 0 1px var(--seam);
+}
+[data-style='banco'] .mon-off {
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--yellow-edge) 18%, var(--tile));
+  box-shadow: inset 0 1px 0 var(--hi), 0 0 0 1px var(--seam);
+}
+[data-style='banco'] .mon-off.soft {
+  background: var(--tile);
+}
+
+[data-style='listino'] .mon-tiles {
+  gap: 0;
+  border: 1px solid var(--l-line-2);
+  border-right: 0;
+  border-bottom: 0;
+}
+[data-style='listino'] .mon-tile {
+  gap: 4px;
+  padding: 7px 10px 8px;
+  border-radius: 0;
+  border-right: 1px solid var(--l-line-2);
+  border-bottom: 1px solid var(--l-line-2);
+  background: var(--l-panel-2);
+  box-shadow: none;
+}
+[data-style='listino'] .mon-tile .caps {
+  font: 600 9.5px/1.2 var(--l-cond);
+  letter-spacing: 0.12em;
+  color: var(--l-ink-2);
+}
+[data-style='listino'] .mon-big {
+  font: 500 20px/1.1 var(--l-mono);
+  color: var(--l-ink);
+}
+[data-style='listino'] .mon-big.warn {
+  color: var(--l-amber);
+}
+[data-style='listino'] .mon-big.bad {
+  color: var(--l-red);
+}
+[data-style='listino'] .mon-facts {
+  gap: 0 10px;
+  font: 400 10.5px var(--l-mono);
+}
+[data-style='listino'] .mon-gap,
+[data-style='listino'] .mon-calm {
+  font-size: 11.5px;
+}
+[data-style='listino'] .mon-off {
+  padding: 6px 10px;
+  border-radius: 0;
+  background: var(--l-amber-w);
+  box-shadow: inset 2px 0 0 var(--l-amber);
+  font-size: 11.5px;
+}
+[data-style='listino'] .mon-off.soft {
+  background: none;
+  box-shadow: inset 2px 0 0 var(--l-line-2);
+}
+[data-style='listino'] .lock-tree {
+  border-top-color: var(--l-line-2);
+}
+[data-style='listino'] .lock-row {
+  min-height: 30px;
+  padding: 2px 8px;
+  border-bottom-color: var(--l-line);
+  font-size: 12px;
+}
+[data-style='listino'] .lock-row.head {
+  background: var(--l-red-w);
+  box-shadow: inset 2px 0 0 var(--l-red);
+}
+[data-style='listino'] .lock-row.head .lock-what .sub {
+  color: var(--l-red);
+}
+[data-style='listino'] .lock-guides {
+  margin-block: -2px;
+}
+[data-style='listino'] .lock-id,
+[data-style='listino'] .lock-what .sub {
+  font-family: var(--l-mono);
+  font-size: 10.5px;
+}
+[data-style='listino'] .btn.lock-kill,
+[data-style='listino'] .mon-explain {
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 0;
+  font: 600 10px/1 var(--l-cond);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+[data-style='listino'] .btn.lock-kill {
+  color: var(--l-red);
+  box-shadow: inset 0 0 0 1px var(--l-red);
+}
+[data-style='listino'] .lock-act .icon-btn {
+  width: 22px;
+  height: 20px;
+}
+.mon-file {
+  grid-column: span 2;
+  align-self: start;
+  margin: 0;
+}
+.tool-table .btn.mon-explain {
+  height: 24px;
+  padding: 0 8px;
+  font-size: 12px;
+}
+[data-style='listino'] .mon-tiles:has(.mon-file) {
+  border: 0;
+  gap: 10px;
+}
+[data-style='listino'] .mon-tiles:has(.mon-file) .mon-tile {
+  border: 1px solid var(--l-line-2);
+}

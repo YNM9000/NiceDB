@@ -1,0 +1,13 @@
+@font-face { font-family: 'Plex Sans'; src: url(./fonts/ibm-plex-sans-400.woff2) format('woff2'); font-weight: 400; font-display: block; }
+@font-face { font-family: 'Plex Sans'; src: url(./fonts/ibm-plex-sans-400i.woff2) format('woff2'); font-weight: 400; font-style: italic; font-display: block; }
+@font-face { font-family: 'Plex Sans'; src: url(./fonts/ibm-plex-sans-500.woff2) format('woff2'); font-weight: 500; font-display: block; }
+@font-face { font-family: 'Plex Sans'; src: url(./fonts/ibm-plex-sans-600.woff2) format('woff2'); font-weight: 600 700; font-display: block; }
+@font-face { font-family: 'Plex Cond'; src: url(./fonts/ibm-plex-sans-condensed-400.woff2) format('woff2'); font-weight: 400; font-display: block; }
+@font-face { font-family: 'Plex Cond'; src: url(./fonts/ibm-plex-sans-condensed-500.woff2) format('woff2'); font-weight: 500; font-display: block; }
+@font-face { font-family: 'Plex Cond'; src: url(./fonts/ibm-plex-sans-condensed-600.woff2) format('woff2'); font-weight: 600 700; font-display: block; }
+@font-face { font-family: 'Plex Mono'; src: url(./fonts/ibm-plex-mono-400.woff2) format('woff2'); font-weight: 400; font-display: block; }
+@font-face { font-family: 'Plex Mono'; src: url(./fonts/ibm-plex-mono-400i.woff2) format('woff2'); font-weight: 400; font-style: italic; font-display: block; }
+@font-face { font-family: 'Plex Mono'; src: url(./fonts/ibm-plex-mono-500.woff2) format('woff2'); font-weight: 500; font-display: block; }
+@font-face { font-family: 'Plex Mono'; src: url(./fonts/ibm-plex-mono-600.woff2) format('woff2'); font-weight: 600 700; font-display: block; }
+@font-face { font-family: 'Source Serif'; src: url(./fonts/source-serif-4.woff2) format('woff2'); font-weight: 200 900; font-display: block; }
+@font-face { font-family: 'Source Serif'; src: url(./fonts/source-serif-4-italic.woff2) format('woff2'); font-weight: 200 900; font-style: italic; font-display: block; }

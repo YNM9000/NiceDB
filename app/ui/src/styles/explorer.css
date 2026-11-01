@@ -1,0 +1,210 @@
+.sidebar .conn-list {
+  flex: 1 1 auto;
+  max-height: none;
+  min-height: 0;
+}
+.conn-chev {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: 14px;
+  margin-right: -2px;
+  color: var(--nd-chrome-ink-2);
+  transition: transform 120ms ease;
+}
+.conn-chev.open {
+  transform: rotate(90deg);
+}
+.conn-chev.none {
+  visibility: hidden;
+}
+.ex-wrap {
+  padding: 0 0 6px calc(var(--depth, 0) * 16px + 8px);
+}
+.ex {
+  position: relative;
+  font-size: 12.5px;
+  color: var(--nd-chrome-ink);
+}
+.ex-row {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  height: 24px;
+  padding: 0 6px 0 calc(var(--depth, 0) * 12px);
+  border-radius: 4px;
+  white-space: nowrap;
+  cursor: default;
+  user-select: none;
+}
+.ex-row:hover {
+  background: color-mix(in srgb, var(--nd-chrome-ink) 7%, transparent);
+}
+.ex-row:focus-visible {
+  outline: 2px solid var(--nd-focus);
+  outline-offset: -2px;
+}
+.ex:focus-within .ex-row.focus:not(:focus-visible) {
+  background: color-mix(in srgb, var(--nd-chrome-ink) 5%, transparent);
+}
+.ex-chev {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: 16px;
+  height: 22px;
+  border-radius: 3px;
+  color: var(--nd-chrome-ink-2);
+  transition: transform 120ms ease;
+}
+.ex-chev:hover {
+  color: var(--nd-chrome-ink);
+  background: color-mix(in srgb, var(--nd-chrome-ink) 9%, transparent);
+}
+.ex-chev.open {
+  transform: rotate(90deg);
+}
+.ex-chev.none {
+  visibility: hidden;
+}
+.ex-icon {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: 14px;
+  color: var(--nd-chrome-ink-2);
+}
+.ex-label {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  padding: 0 2px;
+}
+.ex-label .tree-name {
+  flex: 1;
+}
+.ex-detail {
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 55%;
+  margin-left: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ex-row.holder .tree-name {
+  font: 600 10px/1 var(--nd-font-ui);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--nd-chrome-ink-2);
+}
+.ex-row.holder .tree-count {
+  margin-left: 2px;
+}
+.ex-row.ex-database .tree-name,
+.ex-row.ex-server .tree-name {
+  font-weight: 600;
+}
+.ex-row.ex-column,
+.ex-row.ex-index {
+  font: 400 11.5px var(--nd-font-mono);
+}
+.ex-row.ex-column .ex-icon svg {
+  color: var(--nd-warn);
+}
+.ex-row.ex-index {
+  color: var(--nd-chrome-ink-2);
+}
+.ex-row.ex-note {
+  height: 22px;
+  font-size: 11.5px;
+  color: var(--nd-chrome-ink-2);
+  font-style: italic;
+}
+.ex-row.ex-note.failed {
+  color: var(--nd-error);
+  font-style: normal;
+}
+.ex-row.ex-note .tree-name {
+  white-space: normal;
+}
+.ex-row.dim {
+  opacity: 0.55;
+  font-style: italic;
+}
+.ex-row.active,
+.ex-row.on {
+  background: color-mix(in srgb, var(--nd-chrome-ink) 11%, transparent);
+}
+.ex-row.active .tree-name {
+  font-weight: 700;
+}
+.ex-row.on .tree-name {
+  font-weight: 600;
+}
+.ex-live {
+  flex: none;
+  width: 7px;
+  height: 7px;
+  margin-left: 2px;
+  border-radius: 50%;
+  background: var(--nd-accent);
+}
+.ex-row.busy .tree-name {
+  animation: ex-pulse 1.2s ease-in-out infinite;
+}
+@keyframes ex-pulse {
+  50% {
+    opacity: 0.45;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ex-row.busy .tree-name {
+    animation: none;
+  }
+  .conn-chev,
+  .ex-chev {
+    transition: none;
+  }
+}
+[data-style='registro'] .ex-row.active {
+  position: relative;
+  background: none;
+  border-radius: 0;
+}
+[data-style='registro'] .ex-row.active::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  left: 1px;
+  width: 2px;
+  border-radius: 1px;
+  background: var(--nd-accent);
+  opacity: 0.85;
+}
+[data-style='tavola'] .ex-row {
+  border-radius: 2px;
+}
+[data-style='tavola'] .ex-row.active {
+  box-shadow: inset 2px 0 0 var(--nd-accent);
+}
+[data-style='banco'] .ex-row.active {
+  background: color-mix(in srgb, var(--nd-chrome-ink) 14%, transparent);
+  box-shadow: inset 3px 0 0 var(--nd-accent);
+  border-radius: 3px;
+}
+.ex-row .tree-count,
+.ex-row .col-type,
+.ex-row.holder .tree-name,
+.ex-row.ex-index,
+.ex-row.ex-note {
+  color: var(--nd-chrome-ink);
+}
+.ex-row .tree-count,
+.ex-row .col-type,
+.ex-row.ex-index {
+  opacity: 0.86;
+}
+.conn-list .env-staging {
+  color: color-mix(in srgb, var(--nd-env-warn) 65%, var(--nd-chrome-ink));
+}

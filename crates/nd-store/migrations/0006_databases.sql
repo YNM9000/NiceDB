@@ -1,0 +1,6 @@
+ALTER TABLE audit ADD COLUMN database TEXT NOT NULL DEFAULT '';
+
+CREATE TABLE visibility (
+    connection_id TEXT PRIMARY KEY NOT NULL REFERENCES connections(id) ON DELETE CASCADE,
+    body TEXT NOT NULL
+) STRICT;

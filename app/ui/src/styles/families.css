@@ -1,0 +1,210 @@
+.docs {
+  --nd-doc-row: 26px;
+  display: grid;
+  grid-template-columns: minmax(260px, 0.9fr) minmax(320px, 1.1fr);
+  height: 100%;
+  min-height: 0;
+  color: var(--nd-ink);
+}
+.docs-list-wrap,
+.docs-detail {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+}
+.docs-detail {
+  border-left: 1px solid var(--nd-rule);
+  background: var(--nd-surface-2);
+}
+.docs-head {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 6px;
+  min-height: 34px;
+  padding: 0 8px 0 12px;
+  border-bottom: 1px solid var(--nd-rule);
+}
+.docs-head .btn {
+  height: 26px;
+}
+.docs-head .icon-btn {
+  color: var(--nd-ink-2);
+}
+.docs-head .icon-btn.danger:hover {
+  color: var(--nd-error);
+}
+.docs-title {
+  overflow: hidden;
+  font: 600 12.5px var(--nd-font-mono);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.docs-find {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: min(220px, 40%);
+  height: 26px;
+  padding: 0 8px;
+  border-radius: 4px;
+  color: var(--nd-ink-3);
+  box-shadow: inset 0 0 0 1px var(--nd-rule);
+}
+.docs-find input {
+  min-width: 0;
+  flex: 1;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: var(--nd-ink);
+  font: inherit;
+  font-size: 12px;
+}
+.docs-find:focus-within {
+  box-shadow: inset 0 0 0 2px var(--nd-focus);
+}
+.docs-list {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  outline: none;
+}
+.docs-spacer {
+  position: relative;
+  min-width: 100%;
+}
+.docs-row {
+  position: absolute;
+  inset-inline: 0;
+  display: grid;
+  grid-template-columns: minmax(3ch, max-content) minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+  height: var(--nd-doc-row);
+  padding: 0 12px 0 8px;
+  border-bottom: 1px solid color-mix(in srgb, var(--nd-rule) 55%, transparent);
+  cursor: default;
+  font: 400 12px var(--nd-font-mono);
+  white-space: nowrap;
+}
+.docs-row:hover {
+  background: color-mix(in srgb, var(--nd-sel) 45%, transparent);
+}
+.docs-row[aria-selected='true'] {
+  background: var(--nd-sel);
+  box-shadow: inset 2px 0 0 var(--nd-accent);
+}
+.docs-row:focus-visible {
+  outline: 1.5px solid var(--nd-focus);
+  outline-offset: -1.5px;
+}
+.docs-k {
+  color: var(--nd-ink-3);
+}
+.docs-sep {
+  margin: 0 7px;
+  color: color-mix(in srgb, var(--nd-ink-3) 60%, transparent);
+}
+.docs-id {
+  max-width: 26ch;
+  text-align: right;
+  overflow: hidden;
+  color: var(--nd-syn-number);
+  text-overflow: ellipsis;
+}
+.docs-sum {
+  overflow: hidden;
+  color: var(--nd-ink-2);
+  text-overflow: ellipsis;
+}
+.docs-editor {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding: 6px 0;
+}
+.docs-editor .cm-editor {
+  min-height: 100%;
+}
+.docs-error {
+  margin: 0;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--nd-rule);
+  color: var(--nd-error);
+  font-size: 12.5px;
+}
+.vj-type {
+  flex: none;
+  margin-left: auto;
+  padding: 0 5px;
+  border-radius: 3px;
+  font: 500 10px/15px var(--nd-font-mono);
+  letter-spacing: 0.03em;
+  color: var(--nd-ink-3);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--nd-rule) 80%, transparent);
+}
+.vj-type + .vj-copy {
+  margin-left: 4px;
+}
+.vj-bson {
+  color: var(--nd-syn-function);
+}
+.results-bar .seg.doc-mode {
+  flex: none;
+  border-radius: 4px;
+  box-shadow: inset 0 0 0 1px var(--nd-rule);
+}
+.results-bar .seg.doc-mode button {
+  height: 24px;
+  padding: 0 9px;
+  font-size: 12px;
+}
+
+[data-style='registro'] .docs-title {
+  font-family: var(--nd-font-display);
+  font-size: 14px;
+  font-weight: 600;
+}
+[data-style='registro'] .docs-row {
+  font-family: var(--nd-font-ui);
+}
+[data-style='tavola'] .docs-head {
+  background: color-mix(in srgb, var(--nd-surface-2) 60%, transparent);
+}
+[data-style='tavola'] .docs-row {
+  border-bottom-style: dashed;
+}
+[data-style='banco'] .docs-row[aria-selected='true'] {
+  box-shadow: inset 3px 0 0 var(--nd-accent);
+}
+[data-style='banco'] .docs-id {
+  font-weight: 600;
+}
+[data-style='listino'] .docs-head {
+  min-height: 26px;
+  padding: 0 4px 0 8px;
+  border-bottom: 1px solid var(--l-line);
+  background: var(--l-panel-2);
+}
+[data-style='listino'] .docs-head .btn {
+  height: 22px;
+}
+[data-style='listino'] .docs {
+  --nd-doc-row: 21px;
+}
+[data-style='listino'] .docs-row {
+  font: 400 11.5px var(--l-mono);
+  border-bottom-color: var(--l-line);
+}
+[data-style='listino'] .docs-row[aria-selected='true'] {
+  background: var(--l-sel);
+  box-shadow: inset 2px 0 0 var(--l-acc);
+}
+[data-style='listino'] .docs-id {
+  color: var(--l-amber, var(--nd-syn-number));
+}
+[data-style='listino'] .docs-find {
+  height: 22px;
+}

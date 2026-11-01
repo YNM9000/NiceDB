@@ -1,0 +1,218 @@
+[data-style='tavola'] .shell {
+  grid-template-columns: min(var(--nd-w-sidebar, 280px), max(200px, 100% - 626px)) minmax(0, 1fr);
+  grid-template-rows: 36px minmax(0, 1fr) 30px;
+  column-gap: 6px;
+  padding: 0 6px 0 6px;
+  background: var(--board) var(--board-grain);
+}
+
+[data-style='tavola'] .titlebar {
+  margin: 0 -6px;
+  padding: 0 12px 0 14px;
+  color: var(--board-ink);
+  border-bottom: 1px solid color-mix(in srgb, var(--board-ink) 18%, transparent);
+  box-shadow: 0 1px 0 rgb(var(--nd-light) / 0.25);
+}
+[data-style='tavola'][data-theme='dark'] .titlebar {
+  box-shadow: 0 1px 0 rgb(var(--nd-light) / 0.03);
+}
+[data-style='tavola'] .wordmark {
+  color: var(--board-strong);
+}
+[data-style='tavola'] .titlebar-sep {
+  background: color-mix(in srgb, var(--board-ink) 35%, transparent);
+}
+[data-style='tavola'] .titlebar-title {
+  font: 600 11px/1 var(--cond);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--board-strong);
+}
+[data-style='tavola'] .icon-btn {
+  border-radius: 2px;
+  color: var(--board-ink);
+}
+[data-style='tavola'] .icon-btn:hover {
+  color: var(--board-strong);
+  background: color-mix(in srgb, var(--board-hi) 80%, transparent);
+}
+[data-style='tavola'] .icon-btn[aria-pressed='true'] {
+  color: var(--board);
+  background: var(--board-strong);
+}
+
+[data-style='tavola'] .sidebar,
+[data-style='tavola'] .sheet {
+  margin-top: 6px;
+  border-radius: 1px;
+  background: var(--sheet) var(--grain);
+  box-shadow: var(--shadow);
+  color: var(--ink);
+}
+[data-style='tavola'] .sidebar {
+  gap: 0;
+  padding: 0;
+}
+[data-style='tavola'] .sidebar-head {
+  padding: 10px 12px 9px;
+  border-bottom: 1px solid var(--ink);
+}
+[data-style='tavola'] .sidebar .caps {
+  font: 600 10px/1 var(--cond);
+  letter-spacing: 0.14em;
+  color: var(--ink-2);
+}
+[data-style='tavola'] .sidebar > .field {
+  margin: 9px 10px 4px;
+  height: 26px;
+  border: 1px solid var(--rule);
+  border-bottom-color: var(--ink-3);
+  border-radius: 0;
+  background: var(--sheet);
+}
+[data-style='tavola'] .field:focus-within {
+  border-color: var(--sel-line);
+  box-shadow: 0 0 0 2px var(--sel);
+}
+[data-style='tavola'] .sidebar-empty {
+  margin: 14px 12px;
+  color: var(--ink-3);
+  font-size: 12px;
+}
+
+[data-style='tavola'] .screen {
+  position: relative;
+  min-height: 100%;
+  padding: 40px 56px 56px;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px),
+    linear-gradient(var(--grid-2) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-2) 1px, transparent 1px);
+  background-size: 8px 8px, 8px 8px, 40px 40px, 40px 40px;
+  background-position: -1px -1px;
+  outline: 1px solid var(--ink);
+  outline-offset: -14px;
+}
+
+[data-style='tavola'] .statusbar {
+  margin: 6px 0 6px;
+  padding: 0;
+  gap: 0;
+  border: 1px solid var(--board-ink);
+  background: var(--sheet);
+  color: var(--ink-2);
+  font: 400 11px/1 var(--mono);
+}
+[data-style='tavola'] .statusbar > span {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 12px;
+}
+[data-style='tavola'] .statusbar > span:not(.spacer) + span {
+  border-left: 1px solid var(--rule);
+}
+[data-style='tavola'] .statusbar > span:first-child {
+  font: 600 10px/1 var(--cond);
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+[data-style='tavola'] .display {
+  font: 600 22px/1.1 var(--cond);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+[data-style='tavola'] .caps {
+  font: 600 10.5px/1 var(--cond);
+  letter-spacing: 0.13em;
+}
+[data-style='tavola'] .driver-meta,
+[data-style='tavola'] .hint {
+  font-family: var(--mono);
+  font-size: 11px;
+}
+
+[data-style='tavola'] .btn {
+  height: 28px;
+  padding: 0 12px;
+  border: 1px solid var(--ink);
+  border-radius: 1px;
+  background: var(--sheet);
+  font: 600 11px/1 var(--cond);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+[data-style='tavola'] .btn.primary {
+  background: var(--ink);
+  color: var(--sheet);
+}
+[data-style='tavola'] .btn:not(:disabled):hover {
+  box-shadow: 2px 2px 0 color-mix(in srgb, var(--ink) 25%, transparent);
+}
+[data-style='tavola'] .btn:not(:disabled):active {
+  box-shadow: none;
+  transform: translate(1px, 1px);
+}
+
+[data-style='tavola'] .seg {
+  border: 1px solid color-mix(in srgb, var(--ink) 45%, transparent);
+  border-radius: 2px;
+  overflow: hidden;
+}
+[data-style='tavola'] .seg button {
+  height: 24px;
+  padding: 0 11px;
+  font: 600 10.5px/1 var(--cond);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+[data-style='tavola'] .seg button + button {
+  border-left: 1px solid color-mix(in srgb, var(--ink) 30%, transparent);
+}
+[data-style='tavola'] .seg button[aria-checked='true'] {
+  background: var(--ink);
+  color: var(--sheet);
+}
+
+[data-style='tavola'] .driver {
+  border-bottom: 1px solid var(--rule);
+  color: var(--ink);
+  background: var(--sheet);
+}
+[data-style='tavola'] .drivers ul {
+  border-top: 1px solid var(--ink);
+}
+
+[data-style='tavola'] .style-card,
+[data-style='tavola'] .palette {
+  border: 1px solid var(--rule);
+  border-radius: 1px;
+  background: var(--sheet);
+}
+[data-style='tavola'] .style-card[aria-checked='true'],
+[data-style='tavola'] .palette[aria-checked='true'] {
+  border-color: var(--ink);
+  box-shadow: 0 0 0 1px var(--ink);
+}
+[data-style='tavola'] .style-name {
+  font: 600 12px/1 var(--cond);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+[data-style='tavola'] .titlebar .env {
+  background: var(--sheet);
+}
+
+[data-style='tavola'] .editor-pane .cm-editor .cm-gutters {
+  min-width: 36px;
+  margin-right: 10px;
+  box-shadow: inset -1px 0 0 color-mix(in srgb, var(--nd-ink-3) 45%, transparent);
+}
+[data-style='tavola'] .editor-pane .cm-editor .cm-lineNumbers .cm-gutterElement {
+  padding: 0 9px 0 4px;
+  font-size: 11px;
+}

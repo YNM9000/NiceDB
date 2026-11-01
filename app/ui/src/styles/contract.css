@@ -1,0 +1,174 @@
+[data-style='registro'] {
+  --nd-syn-keyword: var(--kw);
+  --nd-syn-keyword-weight: 500;
+  --nd-syn-function: var(--fn);
+  --nd-syn-string: var(--green);
+  --nd-syn-number: var(--sepia);
+  --nd-syn-comment: var(--ink-3);
+  --nd-warn: var(--brass-lo);
+  --nd-font-ui: var(--sans);
+  --nd-font-display: var(--serif);
+  --nd-font-mono: var(--mono);
+  --nd-chrome: var(--cloth);
+  --nd-chrome-ink: var(--cloth-ink);
+  --nd-chrome-ink-2: var(--cloth-ink-2);
+  --nd-surface: var(--paper);
+  --nd-surface-2: var(--paper-2);
+  --nd-raised: var(--card);
+  --nd-ink: var(--ink);
+  --nd-ink-2: var(--ink-2);
+  --nd-ink-3: var(--ink-3);
+  --nd-rule: var(--rule);
+  --nd-accent: var(--act);
+  --nd-accent-ink: var(--act-ink);
+  --nd-ok: var(--green);
+  --nd-error: var(--red);
+  --nd-pending: var(--graphite);
+  --nd-prod: var(--violet);
+  --nd-focus: var(--green);
+  --nd-sel: var(--sel);
+  --nd-brand-rule: var(--brass);
+}
+
+[data-style='tavola'] {
+  --nd-syn-keyword: var(--ink);
+  --nd-syn-keyword-weight: 600;
+  --nd-syn-function: var(--ink);
+  --nd-syn-string: var(--umber);
+  --nd-syn-number: var(--umber);
+  --nd-syn-comment: var(--ink-3);
+  --nd-warn: var(--prod);
+  --nd-font-ui: var(--sans);
+  --nd-font-display: var(--cond);
+  --nd-font-mono: var(--mono);
+  --nd-chrome: var(--board);
+  --nd-chrome-ink: var(--board-ink);
+  --nd-chrome-ink-2: var(--board-ink-2);
+  --nd-surface: var(--sheet);
+  --nd-surface-2: var(--sheet-2);
+  --nd-raised: var(--sheet);
+  --nd-ink: var(--ink);
+  --nd-ink-2: var(--ink-2);
+  --nd-ink-3: var(--ink-3);
+  --nd-rule: var(--rule);
+  --nd-accent: var(--ink);
+  --nd-accent-ink: var(--sheet);
+  --nd-ok: var(--green);
+  --nd-error: var(--red);
+  --nd-pending: var(--pend);
+  --nd-prod: var(--prod);
+  --nd-focus: var(--sel-line);
+  --nd-sel: var(--sel);
+  --nd-brand-rule: currentColor;
+}
+
+[data-style='banco'] {
+  --nd-syn-keyword: var(--syn-k);
+  --nd-syn-keyword-weight: 600;
+  --nd-syn-function: var(--syn-f);
+  --nd-syn-string: var(--syn-s);
+  --nd-syn-number: var(--syn-n);
+  --nd-syn-comment: var(--syn-c);
+  --nd-warn: var(--warn-ink);
+  --nd-font-ui: var(--font);
+  --nd-font-display: var(--sc);
+  --nd-font-mono: var(--mono);
+  --nd-chrome: var(--frame);
+  --nd-chrome-ink: var(--ink);
+  --nd-chrome-ink-2: var(--ink-2);
+  --nd-surface: var(--face);
+  --nd-surface-2: var(--tile);
+  --nd-raised: var(--face);
+  --nd-ink: var(--ink);
+  --nd-ink-2: var(--ink-2);
+  --nd-ink-3: var(--ink-3);
+  --nd-rule: var(--rule-2);
+  --nd-accent: var(--chestnut);
+  --nd-accent-ink: var(--pri-ink);
+  --nd-ok: var(--green-ink);
+  --nd-error: var(--red-ink);
+  --nd-pending: var(--warn-ink);
+  --nd-prod: var(--red-ink);
+  --nd-focus: var(--focus);
+  --nd-sel: var(--sel);
+  --nd-brand-rule: var(--chestnut);
+}
+
+[data-style='registro'] {
+  --nd-env-warn: color-mix(in srgb, var(--nd-warn) 55%, var(--nd-chrome-ink));
+  --nd-env-prod: color-mix(in srgb, var(--nd-prod) 50%, var(--nd-chrome-ink));
+}
+[data-style='registro'][data-theme='dark'] {
+  --nd-warn: var(--brass);
+  --nd-env-warn: var(--nd-warn);
+  --nd-env-prod: color-mix(in srgb, var(--nd-prod) 80%, var(--nd-chrome-ink));
+}
+
+[data-style='tavola'] {
+  --nd-env-warn: color-mix(in srgb, var(--nd-warn) 85%, var(--ink));
+  --nd-env-prod: color-mix(in srgb, var(--nd-prod) 80%, var(--ink));
+}
+[data-style='tavola'] .sidebar {
+  --nd-chrome-ink: var(--ink);
+  --nd-chrome-ink-2: var(--ink-3);
+}
+
+[data-style='banco'] {
+  --nd-env-warn: var(--ink);
+  --nd-env-prod: color-mix(in srgb, var(--red-ink) 90%, var(--ink));
+}
+[data-style='banco'][data-theme='dark'] {
+  --nd-env-prod: color-mix(in srgb, var(--red-ink) 75%, var(--ink));
+}
+
+[data-style='listino'] {
+  --nd-syn-keyword: var(--l-syn-k);
+  --nd-syn-keyword-weight: 500;
+  --nd-syn-function: var(--l-syn-f);
+  --nd-syn-string: var(--l-syn-s);
+  --nd-syn-number: var(--l-syn-n);
+  --nd-syn-comment: var(--l-syn-c);
+  --nd-warn: var(--l-amber);
+  --nd-font-ui: var(--l-cond);
+  --nd-font-display: var(--l-cond);
+  --nd-font-mono: var(--l-mono);
+  --nd-chrome: var(--l-frame);
+  --nd-chrome-ink: var(--l-cink);
+  --nd-chrome-ink-2: var(--l-cink-2);
+  --nd-surface: var(--l-panel);
+  --nd-surface-2: var(--l-panel-2);
+  --nd-raised: var(--l-raise);
+  --nd-ink: var(--l-ink);
+  --nd-ink-2: var(--l-ink-2);
+  --nd-ink-3: var(--l-ink-3);
+  --nd-rule: var(--l-line);
+  --nd-accent: var(--l-acc);
+  --nd-accent-ink: var(--l-acc-ink);
+  --nd-ok: var(--l-green);
+  --nd-error: var(--l-red);
+  --nd-pending: var(--l-amber);
+  --nd-prod: var(--l-red);
+  --nd-focus: var(--l-acc);
+  --nd-sel: var(--l-sel);
+  --nd-brand-rule: var(--l-acc);
+  --nd-env-warn: var(--l-amber);
+  --nd-env-prod: var(--l-red);
+}
+
+[data-style='registro'],
+[data-style='tavola'],
+[data-style='banco'],
+[data-style='listino'] {
+  --nd-accent-text: var(--nd-accent);
+  --nd-focus-chrome: var(--nd-focus);
+}
+[data-style='registro'][data-theme='dark'][data-palette='1'],
+[data-style='registro'][data-theme='dark'][data-palette='2'] {
+  --nd-accent-text: var(--act-gilt);
+}
+[data-style='tavola'][data-palette='3'][data-theme='light'] {
+  --nd-focus-chrome: var(--board-ink);
+}
+[data-style='banco'][data-theme='dark'][data-palette='1'] {
+  --nd-accent-text: var(--chestnut-hi);
+}

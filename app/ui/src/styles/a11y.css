@@ -1,0 +1,38 @@
+.titlebar,
+.statusbar {
+  --nd-focus: var(--nd-focus-chrome);
+}
+
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.skip-link {
+  position: fixed;
+  top: 6px;
+  left: 6px;
+  z-index: 2000;
+  padding: 6px 12px;
+  border: 1px solid var(--nd-rule);
+  border-radius: var(--nd-radius);
+  background: var(--nd-raised);
+  color: var(--nd-ink);
+  font: 500 12.5px/1.2 var(--nd-font-ui);
+  box-shadow: var(--nd-float-shadow);
+  transform: translateY(-200%);
+}
+.skip-link:focus-visible {
+  transform: none;
+}
+[data-kbd]:not([data-style='listino']) .editor-pane .cm-editor:has(.cm-content:focus-visible) {
+  outline: 1px solid var(--nd-focus);
+  outline-offset: -1px;
+}

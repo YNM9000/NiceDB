@@ -1,0 +1,179 @@
+[data-style='registro'] .shell {
+  grid-template-columns: min(var(--nd-w-sidebar, 304px), max(200px, 100% - 620px)) minmax(0, 1fr);
+  background-color: var(--cloth);
+  background-image: var(--weave), linear-gradient(160deg, var(--cloth-hi), var(--cloth) 45%, var(--cloth-lo));
+  background-blend-mode: soft-light, normal;
+}
+[data-style='registro'][data-theme='dark'] .shell {
+  background-blend-mode: overlay, normal;
+}
+
+[data-style='registro'] .titlebar {
+  box-shadow: inset 0 -1px 0 var(--cloth-groove), 0 1px 0 var(--cloth-catch);
+}
+[data-style='registro'] .titlebar-sep {
+  background: var(--cloth-groove);
+  box-shadow: 1px 0 0 var(--cloth-catch);
+}
+[data-style='registro'] .titlebar-title {
+  font: 500 15px/1 var(--serif);
+  color: var(--cloth-ink);
+}
+[data-style='registro'] .icon-btn:hover {
+  background: rgb(var(--nd-shade) / 0.07);
+  box-shadow: inset 0 1px 1px rgba(var(--shadow), 0.15);
+}
+[data-style='registro'] .icon-btn[aria-pressed='true'] {
+  background: rgb(var(--nd-shade) / 0.12);
+  box-shadow: inset 0 1px 2px rgba(var(--shadow), 0.3);
+}
+
+[data-style='registro'] .sidebar {
+  box-shadow: inset -1px 0 0 var(--cloth-groove), inset -2px 0 0 var(--cloth-catch);
+}
+[data-style='registro'] .sidebar .caps {
+  font: 600 11px/1 var(--sans);
+  letter-spacing: 0.14em;
+}
+[data-style='registro'] .sidebar-empty {
+  font: italic 400 13px/1.45 var(--serif);
+}
+[data-style='registro'] .field {
+  border-radius: 5px;
+  background: var(--paper);
+  box-shadow: inset 0 1px 2px rgba(var(--shadow), 0.28), inset 0 0 0 0.5px rgba(var(--shadow), 0.3), 0 1px 0 var(--cloth-catch);
+  color: var(--ink-2);
+}
+[data-style='registro'] .field:has(input:disabled) {
+  opacity: 0.7;
+}
+
+[data-style='registro'] .sheet {
+  margin: 12px 16px 12px 14px;
+  border-radius: 3px 4px 4px 4px;
+  background-color: var(--paper);
+  background-image: var(--grain), radial-gradient(130% 110% at 12% -10%, rgb(var(--glint-paper) / 0.5), transparent 58%), linear-gradient(170deg, transparent 62%, rgba(var(--shadow), 0.03));
+  background-blend-mode: multiply, normal, normal;
+  box-shadow:
+    0 0 0 0.5px rgba(var(--shadow), 0.25),
+    0 1px 0 rgb(var(--nd-light) / 0.5) inset,
+    1px 1px 0 var(--paper-3),
+    2px 2px 0 var(--paper-edge),
+    3px 3px 0 var(--paper-3),
+    4px 4px 0 var(--paper-edge),
+    5px 6px 10px rgba(var(--shadow), 0.28),
+    2px 14px 28px rgba(var(--shadow), 0.16);
+}
+[data-style='registro'][data-theme='dark'] .sheet {
+  background-image: var(--grain), radial-gradient(130% 110% at 12% -10%, rgb(var(--glint-sheet) / 0.035), transparent 58%), linear-gradient(170deg, transparent 55%, rgb(var(--nd-shade) / 0.12));
+  background-blend-mode: soft-light, normal, normal;
+  box-shadow:
+    0 0 0 0.5px rgb(var(--nd-shade) / 0.7),
+    0 1px 0 rgb(var(--nd-light) / 0.05) inset,
+    1px 1px 0 var(--raised),
+    2px 2px 0 var(--paper-edge),
+    3px 3px 0 var(--raised-2),
+    4px 4px 0 var(--paper-edge),
+    5px 7px 14px rgb(var(--nd-shade) / 0.5),
+    2px 16px 34px rgb(var(--nd-shade) / 0.35);
+}
+[data-style='registro'] .screen {
+  min-height: 100%;
+  padding-left: 72px;
+  background-image:
+    linear-gradient(90deg, transparent 47px, var(--rule-red-soft) 47px 48px, transparent 48px 51px, var(--rule-red-soft) 51px 52px, transparent 52px),
+    repeating-linear-gradient(180deg, transparent 0 27px, var(--rule-soft) 27px 28px);
+  background-position: 0 0, 0 14px;
+}
+
+[data-style='registro'] .statusbar {
+  color: var(--cloth-ink);
+  box-shadow: inset 0 1px 0 var(--cloth-groove), inset 0 2px 0 var(--cloth-catch);
+}
+
+[data-style='registro'] .display {
+  font: 500 26px/1.1 var(--serif);
+  letter-spacing: -0.005em;
+}
+[data-style='registro'] .caps {
+  font: 600 11px/1 var(--sans);
+  letter-spacing: 0.14em;
+}
+[data-style='registro'] .hint {
+  font: italic 400 13px/1.4 var(--serif);
+}
+
+[data-style='registro'] .btn {
+  height: 30px;
+  padding: 0 14px;
+  border-radius: var(--r);
+  font: 500 13px var(--sans);
+  background: linear-gradient(180deg, var(--card), var(--paper-2));
+  box-shadow: inset 0 1px 0 rgb(var(--nd-light) / 0.55), 0 0 0 0.5px rgba(var(--shadow), 0.35), 0 1px 1.5px rgba(var(--shadow), 0.2);
+  transition: transform 0.08s, box-shadow 0.08s;
+}
+[data-style='registro'] .btn.primary {
+  color: var(--act-ink);
+  background: linear-gradient(180deg, var(--act-hi), var(--act) 60%, var(--act-lo));
+  box-shadow: inset 0 1px 0 rgb(var(--nd-light) / 0.18), inset 0 0 0 1px rgb(var(--nd-shade) / 0.18), 0 1px 2px rgb(var(--nd-shade-accent) / 0.4), 0 0 0 0.5px rgb(var(--nd-shade-accent) / 0.6);
+  text-shadow: var(--act-ts);
+}
+[data-style='registro'] .btn.primary svg {
+  color: var(--act-gilt);
+}
+[data-style='registro'] .btn:not(:disabled):hover {
+  transform: translateY(-0.5px);
+}
+[data-style='registro'] .btn:not(:disabled):active {
+  transform: translateY(0.5px);
+  box-shadow: inset 0 1px 3px rgb(var(--nd-shade) / 0.3), 0 0 0 0.5px rgb(var(--nd-shade-accent) / 0.6);
+}
+
+[data-style='registro'] .seg {
+  padding: 2px;
+  border-radius: 6px;
+  background: rgb(var(--nd-shade) / 0.06);
+  box-shadow: inset 0 1px 2px rgba(var(--shadow), 0.22), 0 1px 0 rgb(var(--nd-light) / 0.4);
+}
+[data-style='registro'] .seg button {
+  height: 24px;
+  border-radius: 4px;
+  font-size: 12.5px;
+}
+[data-style='registro'] .seg button[aria-checked='true'] {
+  background: linear-gradient(180deg, var(--card), var(--paper-2));
+  box-shadow: 0 1px 0 rgb(var(--nd-light) / 0.35) inset, 0 1px 2px rgba(var(--shadow), 0.3), 0 0 0 0.5px rgba(var(--shadow), 0.25);
+}
+
+[data-style='registro'] .driver {
+  border-bottom-color: var(--rule);
+  color: var(--green);
+}
+[data-style='registro'] .driver-name {
+  font: 500 15px/1.2 var(--serif);
+}
+[data-style='registro'] .driver-meta {
+  font: italic 400 12.5px var(--serif);
+}
+
+[data-style='registro'] .style-card,
+[data-style='registro'] .palette {
+  background: var(--card);
+  box-shadow: 0 0 0 0.5px rgba(var(--shadow), 0.3), 0 1px 2px rgba(var(--shadow), 0.15);
+}
+[data-style='registro'] .style-card[aria-checked='true'],
+[data-style='registro'] .palette[aria-checked='true'] {
+  box-shadow: 0 0 0 1.5px var(--green), 0 1px 3px rgba(var(--shadow), 0.25);
+}
+[data-style='registro'] .style-name {
+  font: 500 16px/1.1 var(--serif);
+}
+
+[data-style='registro'] .editor-pane .cm-editor .cm-gutters {
+  min-width: 38px;
+  margin-right: 12px;
+  background: linear-gradient(90deg, transparent calc(100% - 5px), var(--rule-red-soft) calc(100% - 5px) calc(100% - 4px), transparent calc(100% - 4px) calc(100% - 1px), var(--rule-red-soft) calc(100% - 1px));
+}
+[data-style='registro'] .editor-pane .cm-editor .cm-lineNumbers .cm-gutterElement {
+  padding: 0 10px 0 6px;
+}

@@ -1,0 +1,19 @@
+[package]
+name = "nd-drv-duckdb"
+edition.workspace = true
+version.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+rust-version.workspace = true
+publish = false
+
+[dependencies]
+nd-driver = { path = "../nd-driver" }
+async-trait.workspace = true
+duckdb = { version = "1.20000", features = ["bundled", "parquet", "json"] }
+serde_json.workspace = true
+tokio.workspace = true
+
+[lints]
+workspace = true
