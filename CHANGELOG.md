@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.1 (2026-11-05)
+
+- The status bar shows the right version.
+
 ## 0.2.0 (2026-11-05)
 
 - Production is harder to miss: remote hosts suggest the production flag, production tabs and the title bar are marked, and an unlocked session shows its countdown on every tab that shares it.

@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { shortVersion } from '../lib/version';
   import { Check, Plus } from '@lucide/svelte';
   import { onMount, tick } from 'svelte';
   import { appearance, LOCALES, SCALES, THEMES, updateAppearance } from '../lib/appearance.svelte';
@@ -301,7 +302,7 @@
     <span>{m.wizard_step_of({ n: index + 1, total: STEPS.length })} · {STEP_NAME[step]()}</span>
     <span class="spacer"></span>
     <span>{m.wizard_keys()}</span>
-    <span>NiceDB 0.1</span>
+    <span>NiceDB {shortVersion}</span>
   </footer>
 
   <p class="wz-live" aria-live="polite">{announce}</p>

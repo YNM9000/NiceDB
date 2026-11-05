@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { shortVersion } from '../lib/version';
   import type { Snippet } from 'svelte';
   import { CircleHelp, Settings, ShieldAlert } from '@lucide/svelte';
   import { m } from '../paraglide/messages';
@@ -80,7 +81,7 @@
       </span>
     {/if}
     <span>{statusRight}</span>
-    <span>NiceDB 0.1</span>
+    <span>NiceDB {shortVersion}</span>
   </footer>
   <span class="sr-only" role="status">{statusTone ? status : ''}</span>
 </div>
