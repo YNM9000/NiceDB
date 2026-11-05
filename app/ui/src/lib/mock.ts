@@ -2,52 +2,52 @@ import type { Api, Appearance, ConnectionProfile, HistoryEntry, RunEvent, RunReq
 import { erApi, erSchema } from './mock-er';
 import { withObjects } from './mock-explorer';
 import { dataMock } from './mock-data';
-import { stressTables } from './mock-fix';
+import { stressTables } from './mock-stress';
 import { planMock } from './mock-plan';
-import { ENGINE_CONNECTIONS, enginePlan } from './mock-extras';
+import { ENGINE_CONNECTIONS, enginePlan } from './mock-engines';
 import { previewScale, sortingRun } from './mock-ux';
 import { orgMock } from './mock-org';
 import { dialectOf } from './drivers';
 import { REDIS_DEMO, redisRead, redisReport, redisRun, redisScan, redisSchema, redisWrite } from './mock-redis';
-import { capsOf, MONGO_DEMO, mongoCancel, mongoDdl, mongoRun, mongoSchema, mongoWrite } from './mock-families';
+import { capsOf, MONGO_DEMO, mongoCancel, mongoDdl, mongoRun, mongoSchema, mongoWrite } from './mock-mongo';
 import { mockServer } from './mock-drivers';
 import { CLICKHOUSE_DEMO, clickhouseMock } from './mock-clickhouse';
-import { NOSQL2_DEMO, nosql2Mock } from './mock-nosql2';
-import { CLUSTER_DEMO, extras3Mock } from './mock-extras3';
+import { NOSQL_DEMO, nosqlMock } from './mock-nosql-engines';
+import { CLUSTER_DEMO, clusterMock } from './mock-cluster';
 import { mockDdl } from './mock-ddl';
 import { libraryMock } from './mock-notes';
 import { seclabMock } from './mock-seclab';
 import { toolsMock } from './mock-tools';
 import { sessionMock } from './mock-session';
-import { fkMock, fkTables, withForeignKeys } from './mock-b5';
-import { txMock } from './mock-b3';
-import { marksMock } from './mock-b11';
-import { monitorMock } from './mock-b12';
-import { valueTables } from './mock-b7';
-import { chartTables } from './mock-b8';
-import { paramsMock } from './mock-b4';
-import { searchMock } from './mock-b14';
-import { generateMock } from './mock-b13';
-import { genProfilesMock } from './mock-polish';
-import { b6Schema } from './mock-b6';
-import { b2Mock } from './mock-b2';
-import { b10gMock } from './mock-b10g';
-import { b15Mock } from './mock-b15';
+import { fkMock, fkTables, withForeignKeys } from './mock-foreign-keys';
+import { txMock } from './mock-transactions';
+import { marksMock } from './mock-marks';
+import { monitorMock } from './mock-monitor';
+import { valueTables } from './mock-value-panel';
+import { chartTables } from './mock-chart';
+import { paramsMock } from './mock-params';
+import { searchMock } from './mock-search';
+import { generateMock } from './mock-generate';
+import { genProfilesMock } from './mock-gen-profiles';
+import { warehouseSchema } from './mock-warehouse-schema';
+import { connectionVarsMock } from './mock-connection-vars';
+import { dependenciesMock } from './mock-dependencies';
+import { designerMock } from './mock-designer';
 import { DEFAULT_SESSION } from './session';
 import { bigSchema, overIpc } from './mock-performance';
 import { mssqlMock } from './mock-mssql';
 import { chaosCalls, chaosNet, monkeyTables } from './mock-monkey';
-import { clickhouseGenMock, lazyMock } from './mock-extras7';
+import { clickhouseGenMock, lazyMock } from './mock-lazy-schema';
 import { SHOWCASE_CONNECTIONS, SHOWCASE_DB, SHOWCASE_TABLES, showcasePlan, showcaseSchema, showcaseValue } from './mock-showcase';
 import { aboutMockFromUrl } from './mock-about';
-import { OTHER_DEMO, otherdbMock } from './mock-otherdb';
-import { extras6Mock } from './mock-extras6';
+import { OTHER_DEMO, otherDatabasesMock } from './mock-other-databases';
+import { summaryMock } from './mock-summary';
 import { ORACLE_DEMO, oracleMock } from './mock-oracle';
-import { ENTERPRISE_DEMO, enterpriseMock } from './mock-enterprise';
-import { EXTRAS8_DEMO, extras8Mock } from './mock-extras8';
-import { EXTRAS4_DEMO, extras4Mock, extras4Tables } from './mock-extras4';
-import { extras5Mock } from './mock-extras5';
-import { acceptanceMock } from './mock-acceptance';
+import { ENTERPRISE_DEMO, enterpriseMock } from './mock-enterprise-engines';
+import { HANA_READER_DEMO, hanaReaderMock } from './mock-hana-reader';
+import { SERVER_ADMIN_DEMO, serverAdminMock, serverAdminTables } from './mock-server-admin';
+import { pickerSearchMock } from './mock-picker-search';
+import { prodGateMock } from './mock-prod-gate';
 import { englishMock } from './mock-en';
 
 const KEY = 'nicedb.appearance';
@@ -97,7 +97,7 @@ const DEMO: ConnectionProfile[] = [
 
 const trashed = new Map<string, ConnectionProfile>();
 if (typeof window !== 'undefined') (window as unknown as { __ndTrashed?: () => string[] }).__ndTrashed = () => [...trashed.keys()];
-let connections: ConnectionProfile[] = [...(params().has('demo') ? structuredClone([...(SHOWCASE ? SHOWCASE_CONNECTIONS : DEMO), ...(params().has('engines') ? ENGINE_CONNECTIONS : [])]) : []), ...structuredClone(MONGO_DEMO), ...structuredClone(REDIS_DEMO), ...structuredClone(CLICKHOUSE_DEMO), ...structuredClone(ORACLE_DEMO), ...structuredClone(ENTERPRISE_DEMO), ...structuredClone(EXTRAS8_DEMO), ...structuredClone(CLUSTER_DEMO), ...structuredClone(NOSQL2_DEMO), ...(params().has('other') ? structuredClone(OTHER_DEMO) : []), ...structuredClone(EXTRAS4_DEMO)];
+let connections: ConnectionProfile[] = [...(params().has('demo') ? structuredClone([...(SHOWCASE ? SHOWCASE_CONNECTIONS : DEMO), ...(params().has('engines') ? ENGINE_CONNECTIONS : [])]) : []), ...structuredClone(MONGO_DEMO), ...structuredClone(REDIS_DEMO), ...structuredClone(CLICKHOUSE_DEMO), ...structuredClone(ORACLE_DEMO), ...structuredClone(ENTERPRISE_DEMO), ...structuredClone(HANA_READER_DEMO), ...structuredClone(CLUSTER_DEMO), ...structuredClone(NOSQL_DEMO), ...(params().has('other') ? structuredClone(OTHER_DEMO) : []), ...structuredClone(SERVER_ADMIN_DEMO)];
 const history: HistoryEntry[] = [];
 const running = new Map<string, () => void>();
 
@@ -136,7 +136,7 @@ const TABLES: Record<string, Gen> = SHOWCASE ? SHOWCASE_TABLES : {
   ...valueTables(params()),
   ...chartTables(params()),
   ...monkeyTables(params()),
-  ...extras4Tables(params()),
+  ...serverAdminTables(params()),
 };
 
 const sessions = sessionMock((sid) => connections.find((c) => `mock-${c.id}` === sid.split('@')[0]));
@@ -367,7 +367,7 @@ export const mock: Api = {
     const base = structuredClone(SCHEMA);
     if (database === 'gestionale_archivio') return { ...base, current_database: database, namespaces: structuredClone(ARCHIVE) };
     if (database !== MAIN_DB) return { ...base, current_database: database, namespaces: [{ name: 'public', tables: [], views: [], functions: [], sequences: [], types: [], triggers: [] }] };
-    const build = () => bigSchema(b6Schema(withForeignKeys(withObjects(erSchema(base, params().get('er')), params().get('objects')), params()), params()), params());
+    const build = () => bigSchema(warehouseSchema(withForeignKeys(withObjects(erSchema(base, params().get('er')), params().get('objects')), params()), params()), params());
     return params().has('big') ? overIpc(location.search, build) : build();
   },
   schemaOpen: async (sid) => ({ schema: await mock.schemaLoad(sid), pending: [] }),
@@ -384,8 +384,8 @@ export const mock: Api = {
     if (isMongo(sid)) return mongoDdl(object);
     return mockDdl(dialectOf(p?.target.driver ?? 'postgres') ?? 'postgres', await mock.schemaLoad(sid), object);
   },
-  ...b10gMock((sid) => mock.schemaLoad(sid)),
-  ...b15Mock((sid) => mock.schemaLoad(sid)),
+  ...dependenciesMock((sid) => mock.schemaLoad(sid)),
+  ...designerMock((sid) => mock.schemaLoad(sid)),
   run: (req, emit) => (isRedis(req.session_id) ? redisRun(sessionDb.get(req.session_id), req, emit) : isMongo(req.session_id) ? mongoRun(req, emit) : sqlRun(req, emit)),
   keysScan: (sid, scan) => redisScan(sessionDb.get(sid), scan),
   keyRead: (sid, read) => redisRead(sessionDb.get(sid), read),
@@ -423,19 +423,19 @@ export const mock: Api = {
   ...monitorMock({ profile: (sid) => connections.find((c) => `mock-${c.id}` === sid), access: data.writeAccess }),
   ...generateMock((sid) => mock.schemaLoad(sid), searchMock(TABLES, tools.jobCancel)),
   ...aboutMockFromUrl(),
-  ...extras6Mock(TABLES, params()),
+  ...summaryMock(TABLES, params()),
 };
 Object.assign(mock, clickhouseMock({ ...mock }, (sid) => connections.find((c) => `mock-${c.id}` === sid), (sid) => sessionDb.get(sid) ?? 'gestionale'));
-Object.assign(mock, nosql2Mock({ ...mock }, (sid) => connections.find((c) => `mock-${c.id}` === sid), (sid) => sessionDb.get(sid) ?? 'gestionale'));
-Object.assign(mock, extras3Mock({ ...mock }, (sid) => connections.find((c) => `mock-${c.id}` === sid)?.target));
-Object.assign(mock, b2Mock(params().has('b2'), () => connections, (next) => (connections = next), { ...mock }));
-Object.assign(mock, otherdbMock({ ...mock }, (sid) => connections.find((c) => `mock-${c.id}` === sid)));
+Object.assign(mock, nosqlMock({ ...mock }, (sid) => connections.find((c) => `mock-${c.id}` === sid), (sid) => sessionDb.get(sid) ?? 'gestionale'));
+Object.assign(mock, clusterMock({ ...mock }, (sid) => connections.find((c) => `mock-${c.id}` === sid)?.target));
+Object.assign(mock, connectionVarsMock(params().has('b2'), () => connections, (next) => (connections = next), { ...mock }));
+Object.assign(mock, otherDatabasesMock({ ...mock }, (sid) => connections.find((c) => `mock-${c.id}` === sid)));
 Object.assign(mock, oracleMock({ ...mock }, (sid) => connections.find((c) => `mock-${c.id}` === sid)));
 Object.assign(mock, enterpriseMock({ ...mock }, (sid) => connections.find((c) => `mock-${c.id}` === sid)));
-Object.assign(mock, extras8Mock({ ...mock }, (sid) => connections.find((c) => `mock-${c.id}` === sid)));
-Object.assign(mock, extras4Mock({ ...mock }, (sid) => connections.find((c) => `mock-${c.id}` === sid.split('@')[0])?.target.driver));
-Object.assign(mock, extras5Mock({ ...mock }));
-Object.assign(mock, acceptanceMock({ ...mock }));
+Object.assign(mock, hanaReaderMock({ ...mock }, (sid) => connections.find((c) => `mock-${c.id}` === sid)));
+Object.assign(mock, serverAdminMock({ ...mock }, (sid) => connections.find((c) => `mock-${c.id}` === sid.split('@')[0])?.target.driver));
+Object.assign(mock, pickerSearchMock({ ...mock }));
+Object.assign(mock, prodGateMock({ ...mock }));
 Object.assign(mock, chaosNet({ ...mock }, params().get('rete')));
 Object.assign(mock, chaosCalls({ ...mock }, params().get('caos')));
 Object.assign(mock, lazyMock({ ...mock }, params().has('lazy')));

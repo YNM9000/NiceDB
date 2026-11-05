@@ -10,7 +10,7 @@
   import type { Describe } from '../lib/colinfo';
   import type { Dialect, RunScope } from '../lib/bindings';
   import { completion, completionOf, extensions, formatSql, inspection, keyboard, keysOf, language, languageFor, look, lookOf, setMarks, setParamSpots, snippetSource, snippetsOf, type NativeLanguage } from '../lib/editor';
-  import { formatConsole } from '../lib/nosql2-lang';
+  import { formatConsole } from '../lib/nosql-lang';
   import { formatCommands } from '../lib/mql';
   import { formatRedis, type KeyLookup } from '../lib/redis';
   import { canRenameAlias, inspections, renameAlias } from '../lib/complete/cm';

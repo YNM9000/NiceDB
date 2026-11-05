@@ -53,7 +53,7 @@ const DEMO: ConnectionProfile[] = [
 
 type B2 = Pick<Api, 'varsPreview' | 'connectionSave' | 'connectionDelete' | 'connectionTest' | 'workspacesGet'>;
 
-export function b2Mock(demo: boolean, list: () => ConnectionProfile[], set: (next: ConnectionProfile[]) => void, base: Pick<Api, 'connectionTest' | 'workspacesGet' | 'workspaceSave'>): B2 {
+export function connectionVarsMock(demo: boolean, list: () => ConnectionProfile[], set: (next: ConnectionProfile[]) => void, base: Pick<Api, 'connectionTest' | 'workspacesGet' | 'workspaceSave'>): B2 {
   if (demo) set([...list(), ...structuredClone(DEMO)]);
   let seeded = !demo;
 

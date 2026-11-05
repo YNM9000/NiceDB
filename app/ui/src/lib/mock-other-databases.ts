@@ -145,7 +145,7 @@ function timescaleSizes(): Sizes {
   };
 }
 
-export function otherdbMock(base: Api, profile: (sessionId: string) => ConnectionProfile | undefined): Partial<Api> {
+export function otherDatabasesMock(base: Api, profile: (sessionId: string) => ConnectionProfile | undefined): Partial<Api> {
   const flavor = (sid: string) => flavorOfTarget(profile(sid.split('@')[0] ?? sid)?.target);
   return {
     connectionTest: async (p, secrets) => {

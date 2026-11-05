@@ -1,4 +1,4 @@
-import type { KeyedRelation } from './nosql2-lang';
+import type { KeyedRelation } from './nosql-lang';
 
 export interface DynamoAsk {
   connectionId: string;

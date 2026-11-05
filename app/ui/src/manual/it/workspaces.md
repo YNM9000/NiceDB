@@ -65,7 +65,7 @@ Tasto destro su una cartella o una connessione › **Esporta…**, oppure **Altr
 
 | Formato | Contenuto |
 |---|---|
-| **Pacchetto cifrato** | un file `.nicedb` protetto da una **Frase segreta** di almeno 8 caratteri; a scelta spazi di lavoro, cronologia, impostazioni di aspetto, script, snippet e note, password |
+| **Pacchetto cifrato** | un file `.nicedb` protetto da una **Frase segreta** di almeno 8 caratteri; a scelta spazi di lavoro, cronologia, impostazioni di aspetto, script, snippet e note, password dei database |
 | **Definizioni JSON** | solo cartelle e connessioni, in chiaro, senza password né segreti SSH |
 
 Per caricarle: **Altre azioni** › **Importa…**. Per ogni voce che esiste già si sceglie cosa fare, per esempio **Tieni entrambe**, **Sostituisci** o **Salta**: nulla viene sovrascritto senza una scelta. La frase segreta non si recupera; mandala per un'altra strada. Altri formati in [Importare ed esportare](import-export).

@@ -65,7 +65,7 @@ Right-click a folder or connection › **Export…**, or **More actions** (the t
 
 | Format | Content |
 |---|---|
-| **Encrypted package** | a `.nicedb` file protected by a **Passphrase** of at least 8 characters; optionally workspaces, history, appearance settings, scripts, snippets and notes, passwords |
+| **Encrypted package** | a `.nicedb` file protected by a **Passphrase** of at least 8 characters; optionally workspaces, history, appearance settings, scripts, snippets and notes, database passwords |
 | **JSON definitions** | folders and connections only, in plain text, without passwords or SSH secrets |
 
 To load them: **More actions** › **Import…**. For each item that already exists you choose what to do, such as **Keep both**, **Replace** or **Skip**: nothing is overwritten without a choice. The passphrase cannot be recovered; send it some other way. Other formats in [Import and export](import-export).

@@ -1,6 +1,6 @@
 import type { Api } from './api';
 
-export function extras5Mock(base: Api): Partial<Api> {
+export function pickerSearchMock(base: Api): Partial<Api> {
   const stopped = new Set<string>();
   return {
     dataPick: async (sid, browse, jobId) => {

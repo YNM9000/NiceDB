@@ -286,6 +286,8 @@ export function describe(e: CoreError): string {
       return varFault(e.detail);
     case 'model':
       return m.err_model();
+    case 'no_keyring':
+      return m.err_no_keyring();
     case 'io':
     case 'secrets':
     case 'store':

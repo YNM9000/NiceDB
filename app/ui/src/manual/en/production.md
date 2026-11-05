@@ -7,8 +7,11 @@ A connection whose environment is **production** opens read-only. To write you u
 2. In **Environment** choose **production**.
 3. **Save**.
 
+If the host is not on this computer (not `localhost`, `127.0.0.1` or `::1`), “This server is not on your computer” appears under **Environment** with a **Mark as production** button. With an SSH tunnel the bastion is what counts: a database on `localhost` reached through a remote server is remote. The environment changes only with the button, never by itself; file connections (SQLite, DuckDB) and local hosts show no hint.
+
 From then on:
-- the **production** stamp appears in the title bar next to the connection name;
+- when the active tab is on that connection, the title bar shows a strip with the **production** stamp and the connection name;
+- its tabs get an edge and a tint in the production colour, even when they are not the active one;
 - the **Read** / **Write** switch appears in the row below the tabs;
 - the production time limit applies (see below).
 
@@ -34,7 +37,8 @@ While writes are closed the switch reads **Read-only**.
 
 - With timed unlocking the time left runs next to the switch: “9:42 left”. At zero writes lock again by themselves.
 - If time runs out while a statement is running, the statement finishes (“time is up: locks when the statement ends”) and then writes lock.
-- Clicking the open switch locks at once (**Lock now**).
+- Unlocking holds for the session: every tab on the same connection and database can write. Each one shows it on its tab, with the open lock and the time left, even when it is not the active tab.
+- Clicking the open switch locks at once (**Lock now**), in every tab of the session.
 - [[Esc]] or a click outside closes the popup without unlocking.
 - After a reconnect the session starts read-only again: unlock again.
 - **Import data** on a production connection shows the switch in its own dialog too.
@@ -91,7 +95,9 @@ On production they follow the chosen confirmation mode: with **None** they run w
 Choices: No limit, 15 s, 30 s, 1 min, 5 min, 15 min, 1 h.
 
 ## Write log
-Every write, on any connection, is recorded: when, system user, database, rows touched, the text sent and any error. It covers the editor, Data view (a filter that writes too), documents, keys, the `COMMIT` of a transaction that wrote, cancelled server sessions and restores. On production, unlocking and locking writes, changing the environment and loosening the safety settings are recorded as well.
+NiceDB keeps this log on your computer: it holds only the writes NiceDB sent. Writes made with other tools (psql, another client, an application) do not appear here. To see everything that reaches the database, use the database's own audit, for example pgaudit on PostgreSQL.
+
+Every write NiceDB makes, on any connection, is recorded: when, system user, database, rows touched, the text sent and any error. It covers the editor, Data view (a filter that writes too), documents, keys, the `COMMIT` of a transaction that wrote, cancelled server sessions and restores. On production, unlocking and locking writes, changing the environment and loosening the safety settings are recorded as well.
 
 Passwords written in SQL (`PASSWORD '…'`, `IDENTIFIED BY …`, Redis `AUTH`, MongoDB `pwd` and the like) become `***` in both the log and the history.
 
@@ -103,5 +109,5 @@ The panel shows the connection's last 200 writes; the export holds all of them.
 
 ## Limitations
 - With manual commit, unlocking writes closes an open transaction that has not written yet: it was started read-only.
-- The log lives on this computer, in NiceDB's local database: it is not a server audit trail.
+- The log lives on this computer, in NiceDB's local database: it is not a server audit trail and does not see writes made by other tools.
 - The recorded user is the operating system user, not the database user.

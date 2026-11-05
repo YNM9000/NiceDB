@@ -123,20 +123,12 @@ impl Core {
             package.secrets = blocking(move || {
                 let mut out = Vec::new();
                 for id in ids {
-                    let password = store.get(&secret_key(&id, "password"))?;
-                    let ssh = store.get(&secret_key(&id, "ssh"))?;
-                    let mut extra = std::collections::BTreeMap::new();
-                    for what in secret_names().into_iter().skip(2) {
-                        if let Some(v) = store.get(&secret_key(&id, &what))? {
-                            extra.insert(what, v);
-                        }
-                    }
-                    if password.is_some() || ssh.is_some() || !extra.is_empty() {
+                    if let Some(password) = store.get(&secret_key(&id, "password"))? {
                         out.push(PackedSecret {
                             connection_id: id,
-                            password,
-                            ssh,
-                            extra,
+                            password: Some(password),
+                            ssh: None,
+                            extra: std::collections::BTreeMap::new(),
                         });
                     }
                 }

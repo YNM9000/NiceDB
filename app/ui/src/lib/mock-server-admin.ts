@@ -14,7 +14,7 @@ function pathSet(text: string): string[] | null {
     .filter((s) => s && !/^'?\$user'?$/i.test(s));
 }
 
-export const EXTRAS4_DEMO: ConnectionProfile[] =
+export const SERVER_ADMIN_DEMO: ConnectionProfile[] =
   typeof location !== 'undefined' && new URLSearchParams(location.search).has('extras4')
     ? [
         {
@@ -94,7 +94,7 @@ export function sampleTiff(w = 160, h = 96, shift = 0): Uint8Array {
 const SVG = (i: number) =>
   `<?xml version="1.0" encoding="UTF-8"?>\n<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 80" width="240" height="160"><rect x="10" y="${10 + (i % 4) * 3}" width="100" height="14" fill="#5b7fa6"/><rect x="10" y="10" width="14" height="60" fill="#5b7fa6"/><circle cx="${70 + (i % 5) * 4}" cy="50" r="12" fill="none" stroke="#c9813a" stroke-width="3"/><script>document.title='x'</script></svg>`;
 
-export function extras4Tables(p: URLSearchParams): Record<string, Gen> {
+export function serverAdminTables(p: URLSearchParams): Record<string, Gen> {
   if (!p.has('extras4')) return {};
   const enc = new TextEncoder();
   return {
@@ -152,7 +152,7 @@ const CH_ACCESS: ClickhouseAccess = {
   ],
 };
 
-export function extras4Mock(base: Api, driverOf: (sid: string) => DriverId | undefined): Partial<Api> {
+export function serverAdminMock(base: Api, driverOf: (sid: string) => DriverId | undefined): Partial<Api> {
   const paths = new Map<string, string[]>();
   const pgLike = (sid: string) => ['postgres', 'cockroach', 'timescale', 'neon', 'supabase', 'yugabyte'].includes(driverOf(sid) ?? '');
   const startPath = () => params().get('searchpath')?.split(',').filter(Boolean) ?? ['public'];

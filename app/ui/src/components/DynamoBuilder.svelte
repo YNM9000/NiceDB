@@ -3,7 +3,7 @@
   import { type DynamoAsk } from '../lib/dynamo-builder.svelte';
   import { queryOn } from '../lib/explorer.svelte';
   import { ICON } from '../lib/icons';
-  import { dynamoCall, dynamoKeys, dynamoType, type DynamoSpec, type FilterOp, type KeyOp } from '../lib/nosql2-lang';
+  import { dynamoCall, dynamoKeys, dynamoType, type DynamoSpec, type FilterOp, type KeyOp } from '../lib/nosql-lang';
   import { m } from '../paraglide/messages';
   import Segmented from './Segmented.svelte';
   import Select from './Select.svelte';

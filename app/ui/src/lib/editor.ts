@@ -17,7 +17,7 @@ import type { Preferences } from './api';
 import type { ReadySnippet } from './snippets';
 import { mqlLanguage } from './mql';
 import { redisLanguage, type KeyLookup } from './redis';
-import { CqlDialect, cqlLanguage, PartiqlDialect, partiqlLanguage, searchLanguage } from './nosql2-lang';
+import { CqlDialect, cqlLanguage, PartiqlDialect, partiqlLanguage, searchLanguage } from './nosql-lang';
 import type { Language } from './bindings';
 
 export type NativeLanguage = Exclude<Language['kind'], 'sql'>;

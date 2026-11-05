@@ -4555,7 +4555,7 @@ dependencies = [
 
 [[package]]
 name = "nd-core"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "nd-diff",
  "nd-driver",
@@ -4596,7 +4596,7 @@ dependencies = [
 
 [[package]]
 name = "nd-diff"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "nd-driver",
  "nd-sql",
@@ -4606,7 +4606,7 @@ dependencies = [
 
 [[package]]
 name = "nd-driver"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "async-trait",
  "nd-sql",
@@ -4622,7 +4622,7 @@ dependencies = [
 
 [[package]]
 name = "nd-drv-cassandra"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "async-trait",
  "hex",
@@ -4639,7 +4639,7 @@ dependencies = [
 
 [[package]]
 name = "nd-drv-clickhouse"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "async-trait",
  "bytes",
@@ -4660,7 +4660,7 @@ dependencies = [
 
 [[package]]
 name = "nd-drv-duckdb"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "async-trait",
  "duckdb",
@@ -4671,7 +4671,7 @@ dependencies = [
 
 [[package]]
 name = "nd-drv-dynamo"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "async-trait",
  "bytes",
@@ -4688,7 +4688,7 @@ dependencies = [
 
 [[package]]
 name = "nd-drv-elastic"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "async-trait",
  "base64 0.22.1",
@@ -4703,7 +4703,7 @@ dependencies = [
 
 [[package]]
 name = "nd-drv-firebird"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "async-trait",
  "nd-driver",
@@ -4716,7 +4716,7 @@ dependencies = [
 
 [[package]]
 name = "nd-drv-hana"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "async-trait",
  "hdbconnect",
@@ -4729,7 +4729,7 @@ dependencies = [
 
 [[package]]
 name = "nd-drv-libsql"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "async-trait",
  "hyper 0.14.32",
@@ -4742,7 +4742,7 @@ dependencies = [
 
 [[package]]
 name = "nd-drv-mongo"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "async-trait",
  "futures-util",
@@ -4755,7 +4755,7 @@ dependencies = [
 
 [[package]]
 name = "nd-drv-mssql"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "async-trait",
  "futures-util",
@@ -4768,7 +4768,7 @@ dependencies = [
 
 [[package]]
 name = "nd-drv-mysql"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "async-trait",
  "mysql_async",
@@ -4781,7 +4781,7 @@ dependencies = [
 
 [[package]]
 name = "nd-drv-odbc"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "async-trait",
  "libloading",
@@ -4794,7 +4794,7 @@ dependencies = [
 
 [[package]]
 name = "nd-drv-oracle"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "async-trait",
  "nd-driver",
@@ -4806,7 +4806,7 @@ dependencies = [
 
 [[package]]
 name = "nd-drv-postgres"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "async-trait",
  "bytes",
@@ -4823,7 +4823,7 @@ dependencies = [
 
 [[package]]
 name = "nd-drv-redis"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "async-trait",
  "nd-driver",
@@ -4836,7 +4836,7 @@ dependencies = [
 
 [[package]]
 name = "nd-drv-sqlite"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "async-trait",
  "nd-driver",
@@ -4846,7 +4846,7 @@ dependencies = [
 
 [[package]]
 name = "nd-gen"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "serde",
  "specta",
@@ -4854,7 +4854,7 @@ dependencies = [
 
 [[package]]
 name = "nd-http"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "bytes",
  "http-body-util",
@@ -4869,7 +4869,7 @@ dependencies = [
 
 [[package]]
 name = "nd-net"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "nd-driver",
  "russh",
@@ -4882,7 +4882,7 @@ dependencies = [
 
 [[package]]
 name = "nd-pack"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "argon2",
  "base64 0.22.1",
@@ -4896,7 +4896,7 @@ dependencies = [
 
 [[package]]
 name = "nd-pdf"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "krilla",
  "rustybuzz",
@@ -4907,7 +4907,7 @@ dependencies = [
 
 [[package]]
 name = "nd-plan"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "nd-driver",
  "nd-sql",
@@ -4920,7 +4920,7 @@ dependencies = [
 
 [[package]]
 name = "nd-release"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "base64 0.22.1",
  "minisign",
@@ -4929,15 +4929,16 @@ dependencies = [
 
 [[package]]
 name = "nd-secrets"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
+ "dbus-secret-service",
  "keyring",
  "thiserror 2.0.21",
 ]
 
 [[package]]
 name = "nd-sql"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "serde",
  "specta",
@@ -4945,7 +4946,7 @@ dependencies = [
 
 [[package]]
 name = "nd-store"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "nd-driver",
  "nd-gen",
@@ -4961,7 +4962,7 @@ dependencies = [
 
 [[package]]
 name = "nd-transfer"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "calamine",
  "csv",
@@ -5012,7 +5013,7 @@ checksum = "650eef8c711430f1a879fdd01d4745a7deea475becfb90269c06775983bbf086"
 
 [[package]]
 name = "nicedb-app"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "base64 0.22.1",
  "dirs",

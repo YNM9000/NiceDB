@@ -4,7 +4,7 @@
   import { ApiError, api, inTauri, type ConnectionProfile, type Secrets } from '../lib/api';
   import type { Consistency, TlsMode, TunnelError } from '../lib/bindings';
   import { connections, saveConnection } from '../lib/connections.svelte';
-  import { DRIVERS, PRESETS, defaultPort, defaultTls, dialectOf, hasTls, isFlavor, isNetwork, isNetworkDriver, needsTls, splitChoice, takesClientCert, type ChoiceId, type DriverId } from '../lib/drivers';
+  import { DRIVERS, PRESETS, defaultPort, defaultTls, dialectOf, hasTls, isFlavor, isLocalHost, isNetwork, isNetworkDriver, needsTls, splitChoice, takesClientCert, type ChoiceId, type DriverId } from '../lib/drivers';
   import { parseConnectionUrl } from '../lib/connurl';
   import { num } from '../lib/format';
   import { prefs } from '../lib/prefs.svelte';
@@ -128,6 +128,20 @@
   });
 
   const networkShape = $derived(shape !== 'file');
+  const hostOf = (url: string) => {
+    try {
+      return new URL(url.trim()).hostname;
+    } catch {
+      return '';
+    }
+  };
+  const away = (host: string) => !!host.trim() && !hasVars(host) && !isLocalHost(host);
+  const remote = $derived.by(() => {
+    if (shape === 'network' && !oracleString) return [f.host, ...(f.useSsh ? [f.ssh.host, ...f.jumps.map((j) => j.host)] : [])].some(away);
+    if (shape === 'remote') return away(hostOf(f.url));
+    if (shape === 'aws') return !f.endpoint.trim() || away(hostOf(f.endpoint));
+    return false;
+  });
   const session = $derived(sessionOf(f, networkShape));
 
   function build(): ConnectionProfile {
@@ -464,7 +478,8 @@
           <div class="form-field">
             <span class="caps">{m.form_environment()}</span>
             <Segmented label={m.form_environment()} value={f.environment} options={envOptions} onchange={(v) => (f.environment = v)} />
-            {#if f.environment === 'production'}<p class="hint prod-note"><ShieldAlert size={13} strokeWidth={1.8} aria-hidden="true" /> {m.form_prod_note()}</p>{/if}
+            {#if f.environment === 'production'}<p class="hint prod-note"><ShieldAlert size={13} strokeWidth={1.8} aria-hidden="true" /> {m.form_prod_note()}</p>
+            {:else if remote}<p class="hint prod-suggest"><ShieldAlert size={13} strokeWidth={1.8} aria-hidden="true" /><span>{m.form_prod_suggest()}</span><button class="btn small" type="button" onclick={() => (f.environment = 'production')}>{m.form_prod_mark()}</button></p>{/if}
           </div>
         </div>
 

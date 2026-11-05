@@ -204,7 +204,7 @@ export function mockDesignScript(e: DesignEngine, before: TableDesign | null, af
   return { statements: out, notes, rebuild: false };
 }
 
-export function b15Mock(schemaOf: (sid: string) => Promise<Schema>) {
+export function designerMock(schemaOf: (sid: string) => Promise<Schema>) {
   return {
     tableDesign: async (sid: string, namespace: string, name: string) => {
       await sleep(80);

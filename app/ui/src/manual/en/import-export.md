@@ -55,12 +55,12 @@ An **Encrypted package** (`.nicedb`) carries folders, connections and, optionall
 1. In the sidebar, **More actions** (the three dots) › **Export…** for the whole current workspace; or right-click a folder or a connection › **Export…**.
 2. In **Format** choose **Encrypted package** or **JSON definitions**.
 3. In **What to export** tick folders and connections.
-4. For the encrypted package only, in **Along with**: the workspaces, **Query history**, **Scripts, snippets and notes**, **Appearance settings**, **Passwords**.
+4. For the encrypted package only, in **Along with**: the workspaces, **Query history**, **Scripts, snippets and notes**, **Appearance settings**, **Database passwords**.
 5. Type the **Passphrase** (at least 8 characters) and **Repeat the passphrase**.
 6. **Export…** and choose the file.
 
 - Send the passphrase some other way. Without it the package does not open, and there is no way to recover it.
-- **Passwords** stay inside the encrypted package only: whoever knows the passphrase can read them.
+- **Database passwords** stay inside the encrypted package only: whoever knows the passphrase can read them. SSH, proxy and certificate passphrases never leave: whoever imports uses their own.
 - **JSON definitions** carry folders and connections only, in plain text, without passwords or SSH secrets.
 
 ## Import a package

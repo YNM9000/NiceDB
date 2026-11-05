@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
-  import { CircleHelp, Settings } from '@lucide/svelte';
+  import { CircleHelp, Settings, ShieldAlert } from '@lucide/svelte';
   import { m } from '../paraglide/messages';
   import Wordmark from './Wordmark.svelte';
   import WindowControls from './WindowControls.svelte';
@@ -42,8 +42,14 @@
     <Wordmark />
     <span class="titlebar-sep" aria-hidden="true"></span>
     {@render switcher?.()}
-    <h1 class="titlebar-title"><span class="titlebar-name" data-tip={title}>{title}</span></h1>
-    {#if production}<span class="env env-production">{m.env_production()}</span>{/if}
+    {#if production}
+      <div class="prod-strip" role="group" aria-label={m.prod_strip({ name: title })}>
+        <span class="env env-production"><ShieldAlert size={12} strokeWidth={2} aria-hidden="true" /><span class="prod-strip-word">{m.env_production()}</span></span>
+        <h1 class="titlebar-title"><span class="titlebar-name" data-tip={title}>{title}</span></h1>
+      </div>
+    {:else}
+      <h1 class="titlebar-title"><span class="titlebar-name" data-tip={title}>{title}</span></h1>
+    {/if}
     <span class="spacer"></span>
     {@render actions?.()}
     {#if ontogglehelp}<button class="icon-btn titlebar-help" type="button" aria-label={m.help_button()} data-tip="{m.help_button()} (F1)" aria-pressed={helpOpen} onclick={ontogglehelp}>

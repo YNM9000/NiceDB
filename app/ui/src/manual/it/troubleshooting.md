@@ -43,7 +43,7 @@ Per non riconnettere in automatico togli **Riconnetti da sola se la connessione 
 
 ## Password e portachiavi
 NiceDB non salva le password nei suoi file: le tiene nel portachiavi del sistema, con il nome di servizio `app.nicedb.desktop`.
-- **Linux**: serve un servizio Secret Service attivo e sbloccato (GNOME Portachiavi, KWallet o simili).
+- **Linux**: serve un servizio Secret Service attivo e sbloccato (GNOME Portachiavi, KWallet o simili). Le password vanno nel portachiavi predefinito; se manca, NiceDB usa quello `login`. Se non c'è nessuno dei due, il salvataggio dice «Manca un portachiavi predefinito»: creane uno con Seahorse (GNOME Keyring) o KWallet, rendilo predefinito e salva di nuovo.
 - **macOS**: il Portachiavi di sistema.
 - **Windows**: Gestione credenziali.
 

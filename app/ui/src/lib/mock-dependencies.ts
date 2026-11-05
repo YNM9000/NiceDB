@@ -115,7 +115,7 @@ export function mockDependencies(schema: Schema, o: ObjectRef): Dependency[] {
   return out;
 }
 
-export function b10gMock(schemaOf: (sid: string) => Promise<Schema>) {
+export function dependenciesMock(schemaOf: (sid: string) => Promise<Schema>) {
   return {
     objectDependencies: async (sid: string, object: ObjectRef) => {
       await sleep(120);

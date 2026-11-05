@@ -1,7 +1,7 @@
 import type { Schema } from './api';
 import { rel } from './complete/fixture';
 
-export function b6Schema(schema: Schema, params: URLSearchParams): Schema {
+export function warehouseSchema(schema: Schema, params: URLSearchParams): Schema {
   if (!params.has('b6')) return schema;
   schema.namespaces.push({
     name: 'magazzino',

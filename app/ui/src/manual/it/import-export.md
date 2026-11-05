@@ -55,12 +55,12 @@ Un **Pacchetto cifrato** (`.nicedb`) porta cartelle, connessioni e, a scelta, al
 1. Nella barra laterale, **Altre azioni** (i tre puntini) › **Esporta…** per tutto lo spazio di lavoro attuale; oppure tasto destro su una cartella o una connessione › **Esporta…**.
 2. In **Formato** scegli **Pacchetto cifrato** o **Definizioni JSON**.
 3. In **Cosa esportare** spunta cartelle e connessioni.
-4. Solo per il pacchetto cifrato, in **Insieme**: gli spazi di lavoro, **La cronologia delle query**, **Gli script, gli snippet e le note**, **Le impostazioni di aspetto**, **Le password**.
+4. Solo per il pacchetto cifrato, in **Insieme**: gli spazi di lavoro, **La cronologia delle query**, **Gli script, gli snippet e le note**, **Le impostazioni di aspetto**, **Le password dei database**.
 5. Scrivi la **Frase segreta** (almeno 8 caratteri) e **Ripeti la frase**.
 6. **Esporta…** e scegli il file.
 
 - Manda la frase segreta per un'altra strada. Senza la frase il pacchetto non si apre e non c'è modo di recuperarla.
-- **Le password** restano solo dentro il pacchetto cifrato: chi conosce la frase può leggerle.
+- **Le password dei database** restano solo dentro il pacchetto cifrato: chi conosce la frase può leggerle. Le passphrase di SSH, proxy e certificati non partono mai: chi importa usa le sue.
 - **Definizioni JSON** porta solo cartelle e connessioni, in chiaro, senza password né segreti SSH.
 
 ## Importare un pacchetto

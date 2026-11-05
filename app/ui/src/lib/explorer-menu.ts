@@ -1,6 +1,6 @@
 import { browseText, hasTool, isSql, relationalCaps, sqlOf } from './family';
 import { openDynamoBuilder } from './dynamo-builder.svelte';
-import { dynamoQuery, dynamoScan } from './nosql2-lang';
+import { dynamoQuery, dynamoScan } from './nosql-lang';
 import { ICON, TOOL_ICON } from './icons';
 import { m } from '../paraglide/messages';
 import type { Dialect, Maintenance } from './bindings';

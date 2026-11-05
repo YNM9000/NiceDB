@@ -2,7 +2,7 @@ import { ApiError, type Api, type ConnectionProfile } from './api';
 import { readPrefs } from './mock-notes';
 import { gate, loosens } from './prodsafety';
 
-export function acceptanceMock(base: Api): Partial<Api> {
+export function prodGateMock(base: Api): Partial<Api> {
   const lowering = async (p: ConnectionProfile, confirm: string | null | undefined) => {
     const before = (await base.connectionsList()).find((c) => c.id === p.id);
     if (before?.environment !== 'production' || p.environment === 'production') return;

@@ -2,7 +2,7 @@ import type { Schema } from './api';
 import type { Capabilities } from './bindings';
 import { cellText } from './ejson';
 import { collectionAt } from './mql';
-import { indexOf, parseRequest } from './nosql2-lang';
+import { indexOf, parseRequest } from './nosql-lang';
 
 export interface DocSource {
   collection: string;

@@ -7,8 +7,11 @@ Una connessione con l'ambiente **produzione** si apre in sola lettura. Per scriv
 2. In **Ambiente** scegli **produzione**.
 3. **Salva**.
 
+Se l'host non è su questo computer (non è `localhost`, `127.0.0.1` o `::1`), sotto **Ambiente** compare «Questo server non è sul tuo computer» con il pulsante **Segna come produzione**. Con il tunnel SSH conta il bastione: un database su `localhost` raggiunto da un server remoto è remoto. L'ambiente cambia solo con il pulsante, mai da solo; le connessioni su file (SQLite, DuckDB) e gli host locali non mostrano l'avviso.
+
 Da quel momento:
-- nella barra del titolo, accanto al nome della connessione, compare il bollo **produzione**;
+- quando la scheda attiva è su quella connessione, la barra del titolo mostra una striscia con il bollo **produzione** e il nome della connessione;
+- le sue schede hanno il bordo e una tinta del colore della produzione, anche quando non sono quelle attive;
 - nella riga sotto le schede compare l'interruttore **Lettura** / **Scrittura**;
 - vale il limite di tempo della produzione (vedi sotto).
 
@@ -34,7 +37,8 @@ Finché la scrittura è chiusa, l'interruttore dice **Sola lettura**.
 
 - Con lo sblocco a tempo accanto all'interruttore scorre il tempo che resta: «ancora 9:42». A zero la scrittura si richiude da sola.
 - Se il tempo scade mentre gira un'istruzione, l'istruzione finisce («tempo scaduto: si chiude a fine statement») e poi la scrittura si chiude.
-- Un clic sull'interruttore aperto richiude subito (**Blocca ora**).
+- Lo sblocco vale per la sessione: scrivono tutte le schede sulla stessa connessione e sullo stesso database. Ognuna lo mostra nella sua linguetta, con il lucchetto aperto e il tempo che resta, anche quando non è la scheda attiva.
+- Un clic sull'interruttore aperto richiude subito (**Blocca ora**), in tutte le schede della sessione.
 - [[Esc]] o un clic fuori chiude il riquadro senza sbloccare.
 - Dopo una riconnessione la sessione riparte in sola lettura: lo sblocco va rifatto.
 - Anche **Importa dati** su una connessione di produzione mostra l'interruttore nella sua finestra.
@@ -91,7 +95,9 @@ In **Impostazioni › Sicurezza** c'è un **Limite di tempo** per ogni ambiente.
 Valori possibili: Nessun limite, 15 s, 30 s, 1 min, 5 min, 15 min, 1 h.
 
 ## Registro delle scritture
-Ogni scrittura, su qualsiasi connessione, viene annotata: quando, utente del sistema, database, righe toccate, testo inviato ed eventuale errore. Vale per editor, vista Dati (anche un filtro che scrive), documenti, chiavi, `COMMIT` di una transazione con scritture, sessioni fermate e ripristini. In produzione si annotano anche sblocco e blocco della scrittura, il cambio di ambiente e l'allentamento delle impostazioni di sicurezza.
+Il registro lo tiene NiceDB sul tuo computer: contiene solo le scritture partite da NiceDB. Quelle fatte con altri programmi (psql, un altro client, un'applicazione) qui non compaiono. Per sapere tutto quello che arriva al database serve l'audit del database stesso, per esempio pgaudit su PostgreSQL.
+
+Ogni scrittura fatta da NiceDB, su qualsiasi connessione, viene annotata: quando, utente del sistema, database, righe toccate, testo inviato ed eventuale errore. Vale per editor, vista Dati (anche un filtro che scrive), documenti, chiavi, `COMMIT` di una transazione con scritture, sessioni fermate e ripristini. In produzione si annotano anche sblocco e blocco della scrittura, il cambio di ambiente e l'allentamento delle impostazioni di sicurezza.
 
 Le password scritte nello SQL (`PASSWORD '…'`, `IDENTIFIED BY …`, `AUTH` di Redis, `pwd` di MongoDB e simili) diventano `***` sia nel registro sia nella cronologia.
 
@@ -103,5 +109,5 @@ Il pannello mostra le ultime 200 scritture della connessione; l'esportazione le 
 
 ## Limiti
 - Con il commit manuale, sbloccare la scrittura chiude una transazione aperta che non ha ancora scritto: era nata in sola lettura.
-- Il registro sta sul computer, nel database locale di NiceDB: non è un registro di controllo del server.
+- Il registro sta sul computer, nel database locale di NiceDB: non è un registro di controllo del server e non vede le scritture fatte da altri programmi.
 - L'utente annotato è quello del sistema operativo, non quello del database.

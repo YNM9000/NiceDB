@@ -3,11 +3,11 @@ import type { Capabilities, DocumentWrite, ObjectRef, Outcome_Serialize as Outco
 import { relationalCaps } from './family';
 import { clickhouseCaps } from './mock-clickhouse';
 import { oracleCaps } from './mock-oracle';
-import { enterpriseCaps } from './mock-enterprise';
+import { enterpriseCaps } from './mock-enterprise-engines';
 import { checkJson, splitCommands, uncomment } from './mql';
 import { DEFAULT_SESSION } from './session';
 import { REDIS_CAPS } from './mock-redis';
-import { nosql2Caps } from './mock-nosql2';
+import { nosqlCaps } from './mock-nosql-engines';
 
 type Driver = ConnectionProfile['target']['driver'];
 
@@ -64,7 +64,7 @@ export function capsOf(driver: Driver): Capabilities {
     case 'cassandra':
     case 'dynamodb':
     case 'elasticsearch':
-      return nosql2Caps(driver);
+      return nosqlCaps(driver);
     default:
       return relationalCaps('postgres');
   }

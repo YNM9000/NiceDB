@@ -189,3 +189,21 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
+
+.prod-suggest {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 8px;
+}
+.prod-suggest > svg {
+  flex: none;
+  color: var(--nd-prod);
+}
+.prod-suggest > span {
+  flex: 1 1 220px;
+}
+.prod-suggest .btn {
+  flex: none;
+  color: var(--nd-prod);
+}

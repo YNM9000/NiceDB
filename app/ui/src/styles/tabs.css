@@ -6,6 +6,9 @@
 .tab.active {
   flex-shrink: 0;
 }
+.tab.unlocked {
+  min-width: 176px;
+}
 .tab:not(.active) .tab-db {
   display: none;
 }
@@ -18,6 +21,23 @@
 }
 .tab-close::before {
   content: none;
+}
+.tab-unlock {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 3px;
+  margin-left: 7px;
+  padding: 1px 5px;
+  border-radius: 3px;
+  background: var(--nd-prod);
+  color: var(--nd-surface);
+  font: 600 10.5px/1.3 var(--nd-font-mono);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.tab-unlock svg {
+  flex: none;
 }
 .tab:is(.dirty, .busy) .tab-close::before {
   content: '';
@@ -144,10 +164,23 @@
   font-weight: 500;
 }
 [data-style='registro'] .tab.prod {
-  box-shadow: inset 0 2px 0 color-mix(in srgb, var(--violet) 70%, transparent), inset 0 1px 0 var(--reg-catch), inset 0 0 0 0.5px rgba(var(--shadow), 0.2);
+  background: color-mix(in srgb, var(--violet) 13%, var(--reg-tab));
+  box-shadow: inset 0 3px 0 var(--violet), inset 0 4px 0 var(--reg-catch), inset 0 0 0 0.5px rgba(var(--shadow), 0.2);
+}
+[data-style='registro'] .tab.prod:not(.active):hover {
+  background: color-mix(in srgb, var(--violet) 8%, var(--reg-tab-hover));
 }
 [data-style='registro'] .tab.prod.active {
-  box-shadow: inset 0 2px 0 var(--violet), inset 0 3px 0 var(--reg-catch), 0 0 0 0.5px rgba(var(--shadow), 0.34), 0 -1px 4px rgba(var(--shadow), 0.1);
+  background: linear-gradient(color-mix(in srgb, var(--violet) 11%, transparent), transparent);
+  box-shadow: inset 0 3px 0 var(--violet), inset 0 4px 0 var(--reg-catch), 0 0 0 0.5px rgba(var(--shadow), 0.34), 0 -1px 4px rgba(var(--shadow), 0.1);
+}
+[data-style='registro'] .tab.prod .tab-db {
+  color: var(--ink-2);
+}
+[data-style='registro'] .tab-unlock {
+  border-radius: 8px;
+  background: var(--violet);
+  font: italic 500 12px/1.2 var(--serif);
 }
 [data-style='registro'] .tab:has(button[role='tab']:focus-visible) {
   outline-color: var(--green);
@@ -263,14 +296,21 @@
   font-weight: 600;
 }
 [data-style='tavola'] .tab.prod {
+  background-color: color-mix(in srgb, var(--prod) 9%, transparent);
   background-image: repeating-linear-gradient(-45deg, var(--prod-hatch) 0 1.5px, transparent 1.5px 4.5px);
   background-position: 0 0;
   background-size: 100% 4px;
   background-repeat: no-repeat;
 }
 [data-style='tavola'] .tab.prod.active {
-  background: repeating-linear-gradient(-45deg, var(--prod-hatch) 0 1.5px, transparent 1.5px 4.5px) 0 2px / 100% 4px no-repeat, var(--grain) var(--sheet);
+  background: repeating-linear-gradient(-45deg, var(--prod-hatch) 0 1.5px, transparent 1.5px 4.5px) 0 2px / 100% 4px no-repeat, linear-gradient(color-mix(in srgb, var(--prod) 10%, transparent), transparent), var(--grain) var(--sheet);
   box-shadow: inset 0 2px 0 var(--prod), inset 1px 0 0 var(--ink), inset -1px 0 0 var(--ink);
+}
+[data-style='tavola'] .tab-unlock {
+  border-radius: 0;
+  background: var(--prod);
+  color: var(--sheet);
+  font: 500 10.5px/1.3 var(--mono);
 }
 [data-style='tavola'] .tab:has(button[role='tab']:focus-visible) {
   outline: 1px solid var(--sel-line);
@@ -364,10 +404,22 @@
   box-shadow: inset 0 1px 2px var(--lo), inset 0 0 0 1px var(--lo), 0 0 0 1px var(--seam), 0 1px 0 0 var(--hi);
 }
 [data-style='banco'] .tab.prod {
-  box-shadow: inset 0 1px 0 var(--hi), inset 0 -2px 0 var(--red-ink), 0 0 0 1px var(--seam), 0 2px 0 0 var(--seam-dk), 0 2px 3px -1px var(--shadow);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--red-ink) 12%, var(--face)), color-mix(in srgb, var(--red-ink) 16%, var(--tile)));
+  box-shadow: inset 0 1px 0 var(--hi), inset 0 -3px 0 var(--red-ink), 0 0 0 1px var(--seam), 0 2px 0 0 var(--seam-dk), 0 2px 3px -1px var(--shadow);
+}
+[data-style='banco'] .tab.prod:not(.active):hover {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--red-ink) 6%, var(--face)), color-mix(in srgb, var(--red-ink) 9%, var(--face-2)));
 }
 [data-style='banco'] .tab.prod.active {
-  box-shadow: inset 0 1px 2px var(--lo), inset 0 -2px 0 var(--red-ink), 0 0 0 1px var(--seam), 0 1px 0 0 var(--hi);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--red-ink) 11%, var(--tile-2)), color-mix(in srgb, var(--red-ink) 11%, var(--tile)));
+  box-shadow: inset 0 1px 2px var(--lo), inset 0 -3px 0 var(--red-ink), 0 0 0 1px var(--seam), 0 1px 0 0 var(--hi);
+}
+[data-style='banco'] .tab-unlock {
+  border-radius: 3px;
+  background: var(--red-ink);
+  color: var(--face);
+  box-shadow: inset 0 1px 1px var(--lo);
+  font: 600 10.5px/1.3 var(--mono);
 }
 [data-style='banco'] .tab button[role='tab']::before {
   content: '';
@@ -440,10 +492,21 @@
 }
 
 [data-style='listino'] .tab.prod {
-  box-shadow: inset 0 2px 0 color-mix(in srgb, var(--l-red) 55%, transparent), inset -1px 0 0 var(--l-line);
+  background: var(--l-red-w);
+  box-shadow: inset 0 2px 0 var(--l-red), inset -1px 0 0 var(--l-line);
+}
+[data-style='listino'] .tab.prod:hover {
+  background: color-mix(in srgb, var(--l-red) 15%, transparent);
 }
 [data-style='listino'] .tab.prod.active {
+  background: linear-gradient(var(--l-red-w), transparent), var(--l-panel);
   box-shadow: inset 0 2px 0 var(--l-red), inset -1px 0 0 var(--l-line), 0 1px 0 var(--l-panel);
+}
+[data-style='listino'] .tab-unlock {
+  border-radius: 0;
+  background: var(--l-red);
+  color: var(--l-panel);
+  font: 600 10.5px/14px var(--l-mono);
 }
 [data-style='listino'] .tab:is(.dirty, .busy) .tab-close::before {
   width: 6px;

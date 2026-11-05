@@ -106,7 +106,7 @@ const SLOTS = [
   ['10923–16383', '10.0.6.13:7002', '10.0.6.16:7005'],
 ];
 
-export function extras3Mock(base: Api, driver: (sid: string) => ConnectionProfile['target'] | undefined): Partial<Api> {
+export function clusterMock(base: Api, driver: (sid: string) => ConnectionProfile['target'] | undefined): Partial<Api> {
   const kind = (sid: string) => driver(sid.split('@')[0] ?? sid)?.driver;
   const cluster = (sid: string) => {
     const t = driver(sid.split('@')[0] ?? sid);

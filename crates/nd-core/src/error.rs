@@ -11,6 +11,8 @@ pub enum CoreError {
     Tunnel(TunnelError),
     #[error("keychain: {0}")]
     Secrets(String),
+    #[error("no default keyring")]
+    NoKeyring,
     #[error("store: {0}")]
     Store(String),
     #[error("not found: {0}")]
@@ -81,6 +83,9 @@ impl From<nd_store::Error> for CoreError {
 
 impl From<nd_secrets::Error> for CoreError {
     fn from(e: nd_secrets::Error) -> Self {
-        Self::Secrets(e.to_string())
+        match e {
+            nd_secrets::Error::NoKeyring => Self::NoKeyring,
+            e @ nd_secrets::Error::Other(_) => Self::Secrets(e.to_string()),
+        }
     }
 }

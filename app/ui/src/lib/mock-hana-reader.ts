@@ -3,7 +3,7 @@ import { DEFAULT_SESSION } from './session';
 
 const params = () => new URLSearchParams(typeof location === 'undefined' ? '' : location.search);
 
-export const EXTRAS8_DEMO: ConnectionProfile[] = params().has('hanareader')
+export const HANA_READER_DEMO: ConnectionProfile[] = params().has('hanareader')
   ? [
       {
         id: 'hana-reader',
@@ -53,7 +53,7 @@ const PRINCIPALS: Principals = {
   ],
 };
 
-export function extras8Mock(base: Api, profileOf: (sessionId: string) => ConnectionProfile | undefined): Partial<Api> {
+export function hanaReaderMock(base: Api, profileOf: (sessionId: string) => ConnectionProfile | undefined): Partial<Api> {
   const reader = (sid: string) => profileOf(sid.split('@')[0] ?? sid)?.id === 'hana-reader';
   return {
     serverActivity: async (sid) => (reader(sid) ? structuredClone(ACTIVITY) : base.serverActivity(sid)),

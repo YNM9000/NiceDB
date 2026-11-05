@@ -28,6 +28,13 @@ NAME=NiceDB
 UPDATER_KEY="${ND_UPDATER_KEY:-$HOME/.config/nicedb/updater.key}"
 export ND_COMMIT="${ND_COMMIT:-$(git -C "$ROOT" rev-parse --short=10 HEAD 2>/dev/null || true)}"
 export ND_BUILT="${ND_BUILT:-$(git -C "$ROOT" log -1 --format=%cs 2>/dev/null || true)}"
+REMAP="--remap-path-prefix=$HOME=~ --remap-path-prefix=$ROOT=."
+for t in x86_64-unknown-linux-gnu x86_64-pc-windows-gnu aarch64-apple-darwin x86_64-apple-darwin; do
+    v="CARGO_TARGET_$(tr 'a-z-' 'A-Z_' <<<"$t")_RUSTFLAGS"
+    export "$v=${!v:-} $REMAP"
+done
+export CFLAGS="${CFLAGS:-} -ffile-prefix-map=$HOME=~ -ffile-prefix-map=$ROOT=."
+export CXXFLAGS="${CXXFLAGS:-} -ffile-prefix-map=$HOME=~ -ffile-prefix-map=$ROOT=."
 
 log()  { printf '\n\033[1m==> %s\033[0m\n' "$*"; }
 die()  { printf '\033[31merror:\033[0m %s\n' "$*" >&2; exit 1; }

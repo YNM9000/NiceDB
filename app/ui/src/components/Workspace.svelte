@@ -3,9 +3,9 @@
   import { namesOf, sqlOf } from '../lib/family';
   import { sqlgenCommands } from '../lib/sqlgen.svelte';
   import { untrack } from 'svelte';
-  import { FlaskConical, History, NotebookPen, Play, Plus, Route, Save, Square, Wand, X } from '@lucide/svelte';
+  import { FlaskConical, History, LockOpen, NotebookPen, Play, Plus, Route, Save, Square, Wand, X } from '@lucide/svelte';
   import { keys, openMenu } from '../lib/contextmenu.svelte';
-  import { writesOpen } from '../lib/guard.svelte';
+  import { clock, remaining, writesOpen } from '../lib/guard.svelte';
   import { explain } from '../lib/plan.svelte';
   import { activeTab, cancel, closeOthers, closeTab, closeTabs, databaseOf, duplicateTab, ensureSession, newTab, renameTab, revive, run, sessionOf, tabKey, workspace, type Tab } from '../lib/workspace.svelte';
   import { openSave, panel, toggleHistory, togglePanel } from '../lib/panel.svelte';
@@ -55,8 +55,15 @@
   const tabProd = (t: Tab) => sessionOf(t)?.info.environment === 'production';
   const tabEdits = (t: Tab) => (void t.data.rev, !!t.data.pending && !t.data.pending.empty);
   const tabTx = (t: Tab) => !!txOf(sessionOf(t)?.info.session_id)?.open;
-  const tabNote = (t: Tab) =>
-    [t.title, multi(t) && databaseOf(t), t.running && m.tab_running(), tabEdits(t) && m.tab_dirty(), tabTx(t) && m.tx_open(), tabProd(t) && m.env_production()].filter(Boolean).join(' · ');
+  const tabOpen = (t: Tab) => {
+    const id = sessionOf(t)?.info.session_id;
+    return id && tabProd(t) && writesOpen(id) ? id : null;
+  };
+  const openNote = (id: string) => (remaining(id) > 0 ? m.tab_unlocked_timed({ time: clock(remaining(id)) }) : m.guard_open());
+  const tabNote = (t: Tab) => {
+    const open = tabOpen(t);
+    return [t.title, multi(t) && databaseOf(t), t.running && m.tab_running(), tabEdits(t) && m.tab_dirty(), tabTx(t) && m.tx_open(), tabProd(t) && m.env_production(), open && openNote(open)].filter(Boolean).join(' · ');
+  };
 
   const sideHistory = $derived(workspace.historyOpen && tab?.view === 'query' && !design && !panel.open);
 
@@ -217,7 +224,8 @@
   <div class="tabstrip">
   <div class="tabs" role="tablist" aria-label={m.tabs_label()} bind:this={tabBar} onwheel={tabWheel}>
     {#each workspace.tabs as t (t.id)}
-      <div class="tab" class:active={t.id === workspace.active} class:busy={t.running} class:prod={tabProd(t)} class:dirty={tabEdits(t) || tabTx(t)} oncontextmenu={(e) => tabMenu(e, t)} onmousedown={(e) => e.button === 1 && e.preventDefault()} onauxclick={(e) => e.button === 1 && void closeTab(t.id)} role="none">
+      {@const open = tabOpen(t)}
+      <div class="tab" class:active={t.id === workspace.active} class:busy={t.running} class:prod={tabProd(t)} class:unlocked={!!open} class:dirty={tabEdits(t) || tabTx(t)} oncontextmenu={(e) => tabMenu(e, t)} onmousedown={(e) => e.button === 1 && e.preventDefault()} onauxclick={(e) => e.button === 1 && void closeTab(t.id)} role="none">
         {#if renaming === t.id}
           <input class="tab-rename" value={t.title} aria-label={m.tab_rename()} use:autoselect onkeydown={(e) => renameKey(e, t)} onblur={(e) => commitRename(e.currentTarget, t)} />
         {:else}
@@ -235,6 +243,7 @@
           >
           {#if multi(t) && databaseOf(t)}<span class="tab-db" data-tip={databaseOf(t)}>{databaseOf(t)}</span>{/if}
         {/if}
+        {#if open}<span class="tab-unlock" role="img" aria-label={openNote(open)} data-tip={openNote(open)}><LockOpen size={11} strokeWidth={2.2} aria-hidden="true" />{#if remaining(open) > 0}<span class="tab-unlock-time">{clock(remaining(open))}</span>{/if}</span>{/if}
         <button class="tab-close" type="button" aria-label={m.tab_close()} onclick={() => void closeTab(t.id)}><X size={12} strokeWidth={2} /></button>
       </div>
     {/each}

@@ -1,6 +1,6 @@
 import type { Api, ConnectionProfile, ExplainRequest, PlanReport, RunEvent, RunRequest, Schema } from './api';
 import type { Capabilities, DocumentWrite, Node_Serialize as Node, ObjectRef_Deserialize as ObjectRef, Report } from './bindings';
-import { consoleCommands, indexOf, parseRequest } from './nosql2-lang';
+import { consoleCommands, indexOf, parseRequest } from './nosql-lang';
 import { DEFAULT_SESSION } from './session';
 
 type Driver = 'cassandra' | 'dynamodb' | 'elasticsearch';
@@ -8,7 +8,7 @@ type Driver = 'cassandra' | 'dynamodb' | 'elasticsearch';
 const params = () => new URLSearchParams(typeof location === 'undefined' ? '' : location.search);
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
-export function nosql2Caps(driver: Driver): Capabilities {
+export function nosqlCaps(driver: Driver): Capabilities {
   const base = { schema: 'inferred', results: 'documents', transactions: false, editable: true, er: false, ddl: true, sort: false, params: false, tools: ['cluster'], cancel: 'between_fetches' } as const;
   if (driver === 'cassandra') {
     return { ...base, family: 'wide_column', language: { kind: 'cql' }, schema: 'declared', tree: { databases: true, namespaces: 'multiple', groups: ['tables', 'materialized_views', 'types'], server: false }, words: { table: 'table', column: 'column' }, explain: true, tools: ['cluster'] };
@@ -31,7 +31,7 @@ const profile = (id: string, name: string, target: ConnectionProfile['target']):
   target,
 });
 
-export const NOSQL2_DEMO: ConnectionProfile[] = params().has('nosql2')
+export const NOSQL_DEMO: ConnectionProfile[] = params().has('nosql2')
   ? [
       profile('scylla', 'Ordini per cliente', { driver: 'cassandra', host: '127.0.0.1', port: 59042, database: 'gestionale', user: '', consistency: 'local_quorum', datacenter: '', tls: 'disable', ca_file: null, ssh: null, proxy: null, client_cert: null }),
       profile('dynamo', 'Catalogo DynamoDB', { driver: 'dynamodb', region: 'eu-west-1', endpoint: 'http://127.0.0.1:58000', profile: '', user: 'nicedb' }),
@@ -87,7 +87,7 @@ function esHits(index: string): Record<string, unknown>[] {
 
 const CQL_COLS = [col('cliente', 'text', true), col('anno', 'int', true), col('numero', 'int', true), col('creato', 'timestamp'), col('righe', 'list<frozen<riga>>'), col('stato', 'text'), col('tag', 'set<text>'), col('totale', 'decimal')];
 
-export function nosql2Schema(driver: Driver, database: string): Schema {
+export function nosqlSchema(driver: Driver, database: string): Schema {
   if (driver === 'cassandra') {
     const space = ns(database, {
       tables: [
@@ -350,7 +350,7 @@ function plan(driver: Driver, req: ExplainRequest): PlanReport {
   };
 }
 
-export function nosql2Mock(base: Api, profileOf: (sessionId: string) => ConnectionProfile | undefined, database: (sessionId: string) => string): Partial<Api> {
+export function nosqlMock(base: Api, profileOf: (sessionId: string) => ConnectionProfile | undefined, database: (sessionId: string) => string): Partial<Api> {
   const mine = (sid: string): Driver | null => {
     const d = profileOf(sid.split('@')[0] ?? sid)?.target.driver;
     return d === 'cassandra' || d === 'dynamodb' || d === 'elasticsearch' ? d : null;
@@ -358,7 +358,7 @@ export function nosql2Mock(base: Api, profileOf: (sessionId: string) => Connecti
   return {
     schemaLoad: async (sid) => {
       const d = mine(sid);
-      return d ? (await sleep(60), nosql2Schema(d, database(sid))) : base.schemaLoad(sid);
+      return d ? (await sleep(60), nosqlSchema(d, database(sid))) : base.schemaLoad(sid);
     },
     objectDdl: async (sid, object) => {
       const d = mine(sid);

@@ -43,7 +43,7 @@ To stop automatic reconnects, clear **Reconnect on its own when the connection d
 
 ## Passwords and the keychain
 NiceDB does not store passwords in its own files: it keeps them in the system keychain, under the service name `app.nicedb.desktop`.
-- **Linux**: a running, unlocked Secret Service (GNOME Keyring, KWallet or similar).
+- **Linux**: a running, unlocked Secret Service (GNOME Keyring, KWallet or similar). Passwords go into its default keyring; without one NiceDB uses the `login` keyring. If there is neither, saving says “No default keyring”: create a keyring in Seahorse (GNOME Keyring) or KWallet, make it the default, then save again.
 - **macOS**: the system Keychain.
 - **Windows**: Credential Manager.
 

@@ -86,7 +86,7 @@ const COUNTS: [string, number][] = [
   ['template1', 0],
 ];
 
-export function extras6Mock(tables: Record<string, Gen>, params: URLSearchParams): Pick<Api, 'dataSummarize' | 'databaseCounts'> {
+export function summaryMock(tables: Record<string, Gen>, params: URLSearchParams): Pick<Api, 'dataSummarize' | 'databaseCounts'> {
   return {
     databaseCounts: async () => (params.has('counts') ? (await new Promise((r) => setTimeout(r, 80)), COUNTS) : []),
     dataSummarize: async (_sid, src, s) => {

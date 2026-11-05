@@ -1,6 +1,6 @@
 import type { FakeRequest, GenDone, GenPreview, GenProfile, Progress, Schema } from './api';
 import type { Check_Serialize as Check, ColumnGen_Serialize as ColumnGen, DataLocale, FakeColumn_Serialize as FakeColumn, GenRule, Gen_Serialize as Gen, Shape_Serialize as Shape } from './bindings';
-import { derivedValue, englishValue, spread, weightedPick } from './mock-polish';
+import { derivedValue, englishValue, spread, weightedPick } from './mock-gen-profiles';
 
 const FIRST = ['Giulia', 'Marco', 'Chiara', 'Luca', 'Sara', 'Paolo', 'Elena', 'Davide', 'Marta', 'Stefano'];
 const LAST = ['Rossi', 'Colombo', 'Ferrari', 'Bianchi', 'Gatti', 'Locatelli', 'Bonomi', 'Pedrali'];
