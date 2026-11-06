@@ -1,0 +1,93 @@
+name: Build Windows zh-CN
+
+# Local Chinese build only. Do NOT include this file in the upstream i18n PR.
+on:
+  push:
+    branches: [zh-cn-build]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: zh-cn-build
+  cancel-in-progress: true
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+
+      # rust-toolchain.toml pins 1.98.0; rustup installs it automatically.
+      - name: Rust toolchain
+        run: rustup show
+
+      - uses: pnpm/action-setup@v4
+        with:
+          package_json_file: app/ui/package.json
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: app/ui/pnpm-lock.yaml
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: '. -> target'
+
+      - name: Install UI dependencies
+        working-directory: app/ui
+        run: pnpm install --frozen-lockfile
+
+      # beforeBuildCommand only runs `pnpm build` (vite), which does NOT
+      # regenerate paraglide. Without this step zh-CN never reaches the exe.
+      - name: Compile i18n (paraglide) with zh-CN
+        working-directory: app/ui
+        run: pnpm i18n
+
+      - name: Verify zh-CN locale is present
+        shell: pwsh
+        run: |
+          if (-not (Select-String -Path app/ui/src/paraglide/runtime.js -Pattern 'zh-CN' -Quiet)) {
+            throw 'zh-CN missing from paraglide runtime'
+          }
+          Write-Output 'zh-CN locale present in compiled runtime'
+
+      # `pnpm check` uses `>/dev/null`, which fails on Windows cmd.
+      # Run svelte-check directly instead.
+      - name: Type check
+        working-directory: app/ui
+        run: pnpm exec svelte-check --tsconfig ./tsconfig.json --fail-on-warnings
+
+      - name: Build frontend
+        working-directory: app/ui
+        run: pnpm build
+        env:
+          NODE_OPTIONS: --max-old-space-size=8192
+
+      # bundle.active is false upstream: official builds also use cargo directly
+      # and ship a bare nicedb.exe (+ WebView2Loader.dll).
+      - name: Build Tauri Windows exe
+        run: cargo build --release --locked -p nicedb-app --bin nicedb
+        env:
+          CARGO_BUILD_JOBS: 4
+
+      - name: Package exe and runtime DLLs
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force -Path out | Out-Null
+          Copy-Item target/release/nicedb.exe out/nicedb.exe
+          Get-ChildItem -Path target/release -Filter '*.dll' -File |
+            ForEach-Object { Copy-Item $_.FullName out/ }
+          if (-not (Test-Path out/nicedb.exe)) { throw 'nicedb.exe not produced' }
+          Get-ChildItem out | Format-Table Name, Length
+          Compress-Archive -Path out/* -DestinationPath NiceDB-zh-CN-windows-x86_64.zip
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NiceDB-zh-CN-windows-x86_64
+          path: NiceDB-zh-CN-windows-x86_64.zip
+          if-no-files-found: error
