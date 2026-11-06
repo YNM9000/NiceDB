@@ -8,7 +8,7 @@ const voice = (a: Appearance) =>
 export const STYLES = ['registro', 'tavola', 'banco', 'listino'] as const;
 export const PALETTES = ['1', '2', '3'] as const;
 export const THEMES = ['system', 'light', 'dark'] as const;
-export const LOCALES = ['it', 'en'] as const;
+export const LOCALES = ['it', 'en', 'zh-CN'] as const;
 export const SCALES = [90, 100, 110, 125, 150] as const;
 
 const dark = typeof matchMedia === 'function' ? matchMedia('(prefers-color-scheme: dark)') : null;

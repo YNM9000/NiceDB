@@ -32,7 +32,7 @@ export const paletteName = (style: Style, palette: Palette) => PALETTE_NAME[`${s
 
 export const themeLabel: Record<Appearance['theme'], () => string> = { system: m.theme_system, light: m.theme_light, dark: m.theme_dark };
 
-export const localeName = (l: Appearance['locale']) => (l === 'it' ? 'Italiano' : 'English');
+export const localeName = (l: Appearance['locale']) => (l === 'it' ? 'Italiano' : l === 'en' ? 'English' : '简体中文');
 
 export function arrowPick<T>(e: KeyboardEvent, list: readonly T[], current: T, pick: (v: T) => void) {
   const step = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key];

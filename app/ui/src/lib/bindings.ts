@@ -1930,7 +1930,7 @@ export type LoadedFile = {
 	data: string,
 };
 
-export type Locale = "it" | "en";
+export type Locale = "it" | "en" | "zh-CN";
 
 export type LockWait = LockWait_Serialize | LockWait_Deserialize;
 

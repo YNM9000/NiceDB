@@ -40,6 +40,8 @@ pub enum Locale {
     #[default]
     It,
     En,
+    #[serde(rename = "zh-CN")]
+    ZhCn,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, specta::Type)]

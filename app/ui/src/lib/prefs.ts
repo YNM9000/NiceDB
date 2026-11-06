@@ -1,3 +1,4 @@
+import type { Locale } from './bindings';
 import type { Preferences } from './api';
 
 export const defaultPreferences: Preferences = {
@@ -31,7 +32,7 @@ export function showDate(v: string): string {
   return time ? `${day} ${time}${zone ?? ''}` : day;
 }
 
-export function showNumber(v: string, locale: 'it' | 'en'): string {
+export function showNumber(v: string, locale: Locale): string {
   const m = NUMBER.exec(v);
   if (!m) return v;
   const [, sign, int, frac] = m;
@@ -49,7 +50,7 @@ export interface CellStyle {
   nulls: NullDisplay;
   dates: boolean;
   numbers: boolean;
-  locale: 'it' | 'en';
+  locale: Locale;
 }
 
 export function cellText(value: string, type: string | null, numeric: boolean, style: CellStyle): string {

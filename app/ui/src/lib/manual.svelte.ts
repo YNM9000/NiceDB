@@ -16,7 +16,7 @@ const asked = typeof location === 'undefined' ? null : new URLSearchParams(locat
 
 export const help = $state({ open: asked !== null, slug: (asked && isSlug(asked) ? asked : 'start') as Slug, anchor: null as string | null, query: '', seq: 0 });
 
-const langOf = (): Lang => (appearance.value.locale === 'en' ? 'en' : 'it');
+const langOf = (): Lang => (appearance.value.locale === 'it' ? 'it' : 'en');
 
 const cache = new Map<string, Page[]>();
 
